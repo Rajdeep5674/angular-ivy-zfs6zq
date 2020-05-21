@@ -11,7 +11,9 @@ export class AppComponent  {
 
   name = 'Angular ' + VERSION.major;
   message_to_user="";
-
+  data_string="";
+  myArray;
+  data;
     constructor(private _enrollmentService:HeroService) { }
 
   ngOnInit() {
@@ -43,18 +45,17 @@ powers = ['Really Smart', 'Super Flexible',
   }
   viewHero(){
            this._enrollmentService.getHeros().subscribe(
-    (data=>{
-      if((data.message_from_server)=="success"){
-        this.message_to_user="you will get data soon";
-        this.submitted = true; 
-        console.log("you will get data soon");
-        }
-      else
-        console.log("Error occured while fetching data from database");
-        
-        this.message_to_user="Error occured while fetching data from database";
-        }
-    ));
+    (data=>{console.log(data);
+    this.submitted = true;
+    this.message_to_user="please find your data below";
+    this.data=data;
+    var data_string = JSON. stringify(data);
+    this.data_string=data_string;
+    console.log(data_string);
+    this.myArray=Object.values(data); 
+    this.myArray.shift(); 
+    console.log(this.myArray);
+    }));
   }
 
 }
