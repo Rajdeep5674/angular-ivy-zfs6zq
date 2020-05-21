@@ -1,5 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 import { Hero } from './hero';
+import {HeroService} from './hero.service';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +11,7 @@ export class AppComponent  {
 
   name = 'Angular ' + VERSION.major;
 
-    constructor() { }
+    constructor(private _enrollmentService:HeroService) { }
 
   ngOnInit() {
   }
@@ -21,9 +22,20 @@ powers = ['Really Smart', 'Super Flexible',
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  onSubmit() { 
+       this._enrollmentService.enroll(this.model).subscribe(
+    (data=>{
+      if((data.message_from_server)=="Data_inserted")
+        console.log("post successful")
+      else
+        console.log("error in posting details")
+        }
+    ));
+    this.submitted = true; 
+  }
 
   newHero() {
     this.model = new Hero(42, '', '');
   }
+
 }
