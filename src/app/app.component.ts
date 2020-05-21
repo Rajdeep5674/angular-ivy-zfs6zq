@@ -45,16 +45,18 @@ powers = ['Really Smart', 'Super Flexible',
   }
   viewHero(){
            this._enrollmentService.getHeros().subscribe(
-    (data=>{console.log(data);
+    (data=>{
+      //console.log(data);
     this.submitted = true;
     this.message_to_user="please find your data below";
     this.data=data;
+    this.myArray=Object.entries(data); 
+    //this.myArray.shift(); 
+    console.log(this.myArray);
     var data_string = JSON. stringify(data);
     this.data_string=data_string;
-    console.log(data_string);
-    this.myArray=Object.values(data); 
-    this.myArray.shift(); 
-    console.log(this.myArray);
+    //console.log(data_string);
+
     }));
   }
 
