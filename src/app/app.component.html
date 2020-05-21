@@ -91,15 +91,19 @@
   <div [hidden]="!submitted">
     <p>{{message_to_user}}</p>
     <div class="card">
-      <table>
+      <table class="table table-striped">
+        <thead>
         <tr>
             <th>Full name</th>
             <th>something</th>
             <th>something</th>
         </tr>
+        </thead>
+        <tbody>
         <tr>
             <td *ngFor="let hero of myArray">{{ hero }}</td>
         </tr>
+        </tbody>
       </table>
     </div>
     <button class="btn btn-primary" (click)="submitted=false">Back</button>
