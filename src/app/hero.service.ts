@@ -15,6 +15,10 @@ export class HeroService {
     return this.result;
     
   }
+  getHeros()
+  {
+    return this.result=this._http.get<any>(this._url);
+  }
 
 
   constructor(private _http:HttpClient ) { }

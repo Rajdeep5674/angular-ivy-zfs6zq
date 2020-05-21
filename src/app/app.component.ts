@@ -41,5 +41,20 @@ powers = ['Really Smart', 'Super Flexible',
   newHero() {
     this.model = new Hero(42, '', '');
   }
+  viewHero(){
+           this._enrollmentService.getHeros().subscribe(
+    (data=>{
+      if((data.message_from_server)=="success"){
+        this.message_to_user="you will get data soon";
+        this.submitted = true; 
+        console.log("you will get data soon");
+        }
+      else
+        console.log("Error occured while fetching data from database");
+        
+        this.message_to_user="Error occured while fetching data from database";
+        }
+    ));
+  }
 
 }
