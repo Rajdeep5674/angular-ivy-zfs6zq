@@ -10,6 +10,7 @@ import {HeroService} from './hero.service';
 export class AppComponent  {
 
   name = 'Angular ' + VERSION.major;
+  message_to_user="";
 
     constructor(private _enrollmentService:HeroService) { }
 
@@ -25,13 +26,16 @@ powers = ['Really Smart', 'Super Flexible',
   onSubmit() { 
        this._enrollmentService.enroll(this.model).subscribe(
     (data=>{
-      if((data.message_from_server)=="Data_inserted")
-        console.log("post successful")
+      if((data.message_from_server)=="Data_inserted"){
+        this.message_to_user="Data saved succesfully";
+        this.submitted = true; 
+        console.log("post successful");
+        }
       else
         console.log("error in posting details")
         }
     ));
-    this.submitted = true; 
+    
   }
 
   newHero() {
