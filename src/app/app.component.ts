@@ -49,13 +49,10 @@ powers = ['Really Smart', 'Super Flexible',
       //console.log(data);
     this.submitted = true;
     this.message_to_user="please find your data below";
-    this.data=data;
-    this.myArray=Object.entries(data); 
-    //this.myArray.shift(); 
-    console.log(this.myArray);
+    //console.log(this.myArray);
     var data_string = JSON. stringify(data);
     this.data_string=data_string;
-    //console.log(data_string);
+    console.log(data_string);
 
     }));
   }
