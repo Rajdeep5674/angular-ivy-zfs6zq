@@ -12,9 +12,11 @@ export class AppComponent  {
   name = 'Angular ' + VERSION.major;
   message_to_user="";
   data_string="";
-  myArray;
-  data;
-    constructor(private _enrollmentService:HeroService) { }
+  full_name_array=[];
+  power_array=[];
+  alterEgo_array=[];
+  master_array=[];
+      constructor(private _enrollmentService:HeroService) { }
 
   ngOnInit() {
   }
@@ -49,11 +51,30 @@ powers = ['Really Smart', 'Super Flexible',
       //console.log(data);
     this.submitted = true;
     this.message_to_user="please find your data below";
-    //console.log(this.myArray);
-    var data_string = JSON. stringify(data);
-    this.data_string=data_string;
-    console.log(data_string);
+    //console.log(typeof(data[0]));
+    //this.myArray=JSON.stringify(data[0]);
+    //this.data_string=JSON.stringify(data[0]);
+    console.log(data[0]);
+    console.log(data.length);
+    this.master_array=[];
+    for(var i=0;i<data.length;i++)
+    {
+    this.full_name_array.push(data[i].full_name);
+    this.power_array.push(data[i].power)
+    this.alterEgo_array.push(data[i].alterEgo);
 
+    /*this.master_array.push(data[i].full_name);
+    this.master_array.push(data[i].power);
+    this.master_array.push(data[i].alterEgo);
+    //console.log(data[i].full_name);*/
+    this.master_array.push(data[i].full_name+"--"+data[i].power+"--"+data[i].alterEgo);
+    }
+    //console.log(typeof(this.full_name_array));
+    //console.log(typeof(Array.of(JSON.stringify(data[0]))));
+    /*this.myArray=[data];
+    console.log(this.myArray[0][0].full_name);*/
+     
+    
     }));
   }
 
