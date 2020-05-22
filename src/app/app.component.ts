@@ -60,7 +60,7 @@ powers = ['Really Smart', 'Super Flexible',
     for(var i=0;i<data.length;i++)
     {
     this.full_name_array.push(data[i].full_name);
-    this.power_array.push(data[i].power)
+    this.power_array.push(data[i].power);
     this.alterEgo_array.push(data[i].alterEgo);
 
     /*this.master_array.push(data[i].full_name);
