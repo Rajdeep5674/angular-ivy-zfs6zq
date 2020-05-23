@@ -27,12 +27,11 @@
       <textarea rows="4" cols="50" name="message" class="form-control" id="message"
                required
                [(ngModel)]="PostModel.message"
-               #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea>
+               #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
 
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
-      <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
       <hr>
-            <button type="button" class="btn btn-default" (click)="viewHero();">View Hero</button>
+            <button type="button" class="btn btn-default" (click)="viewHero();">View all posts</button>
     </form>
   </div>
 
