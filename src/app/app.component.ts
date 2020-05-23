@@ -15,7 +15,7 @@ export class AppComponent  {
   post_id=[];
   full_name=[];
   master_array=[];
-
+i=0;
   data:any;
   data_length=0;
   data_length_array=[];
@@ -70,7 +70,9 @@ export class AppComponent  {
   hideAllPost(){
     this.view_all_post=false;
   }
-  like(){}
+  like(i){
+    console.log(i);
+  }
 
 
 }

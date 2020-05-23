@@ -43,11 +43,11 @@
 
     <div [hidden]="!view_all_post" class="container border py-2 m-2">
       <div class="card py-2 " *ngFor="let post_id of data_length_array">
-        <div class="container py-2 bg-light">{{ data[post_id].full_name }}</div>
-        <div class="container py-2">{{ data[post_id].message }}</div>
+        <h5><span class="badge badge-secondary py-3 m-3">{{ data[post_id].full_name }}</span><hr></h5>
+        <p class="m-2">{{ data[post_id].message }}</p>
         <hr>
       <div class="text-center py-1">
-          <button class="btn btn-success" (click)="like();">like</button>&nbsp;&nbsp;
+          <button class="btn btn-success" (click)="like(post_id+1);">like</button>&nbsp;&nbsp;
           <button class="btn btn-success">comment</button><br>
       </div>
       </div>
