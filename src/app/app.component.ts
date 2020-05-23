@@ -57,18 +57,7 @@ export class AppComponent  {
   hideAllPost(){
     this.view_all_post=false;
   }
-  like(){
-           this._enrollmentService.like().subscribe(
-    (data=>{
-      if((data.message_from_server)=="Data_inserted"){
-        this.message_to_user="You liked the post.";
-        this.submitted = true; 
-        console.log("like added");
-        }
-      else
-        console.log("error in adding like")
-        }
-    ));
-  }
+  like(){}
+
 
 }
