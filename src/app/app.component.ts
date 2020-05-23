@@ -27,7 +27,7 @@ i=0;
   ngOnInit() {
   }
 
-  PostModel = new PostModel('','');
+  PostModel = new PostModel('','',0);
   PostModelAdv=new PostModelAdv(0);
 
 
