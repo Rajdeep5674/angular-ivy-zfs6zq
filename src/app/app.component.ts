@@ -29,7 +29,7 @@ export class AppComponent  {
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
-        this.message_to_user="Data saved succesfully";
+        this.message_to_user="You have sucessfully posted your message.";
         this.submitted = true; 
         console.log("post successful");
         }
