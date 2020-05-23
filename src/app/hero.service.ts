@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AppComponent} from './app.component';
-import { Hero } from './hero';
+import { PostModel } from './post-model';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class HeroService {
    _url='https://netBankingAppServer--rajdeep5674.repl.co/route';
   result:any;
- enroll(user:Hero)
+ enroll(PostModel:PostModel)
   {
-    this.result=this._http.post<any>(this._url,user);
+    this.result=this._http.post<any>(this._url,PostModel);
     console.log("result is "+this.result);
     return this.result;
     

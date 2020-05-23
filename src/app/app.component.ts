@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { Hero } from './hero';
+import { PostModel } from './post-model';
 import {HeroService} from './hero.service';
 
 @Component({
@@ -20,15 +20,13 @@ export class AppComponent  {
 
   ngOnInit() {
   }
-powers = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
 
-  model = new Hero(18, 'Dr IQ', this.powers[0], 'Chuck Overstreet');
+  PostModel = new PostModel('','');
 
   submitted = false;
 
   onSubmit() { 
-       this._enrollmentService.enroll(this.model).subscribe(
+       this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
         this.message_to_user="Data saved succesfully";
@@ -43,7 +41,7 @@ powers = ['Really Smart', 'Super Flexible',
   }
 
   newHero() {
-    this.model = new Hero(42, '', '');
+    this.PostModel = new PostModel('','');
   }
   viewHero(){
            this._enrollmentService.getHeros().subscribe(
