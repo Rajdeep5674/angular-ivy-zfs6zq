@@ -31,7 +31,7 @@
 
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Post</button>
       <hr>
-            <button type="button" class="btn btn-success" (click)="viewHero();">View all posts</button>
+            <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>
     </form>
   </div>
 
@@ -40,6 +40,9 @@
     <button class="btn btn-primary" (click)="submitted=false">Back</button>
   </div>
   <hr>
+      <div class="card">
+      <p>all posts can be viewed here</p>
+    </div>
 </div>
 </div>
 

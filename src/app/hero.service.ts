@@ -15,7 +15,7 @@ export class HeroService {
     return this.result;
     
   }
-  getHeros()
+  getPosts()
   {
     return this.result=this._http.get<any>(this._url);
   }
