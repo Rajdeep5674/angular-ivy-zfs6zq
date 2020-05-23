@@ -1,6 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 import { PostModel } from './post-model';
 import {HeroService} from './hero.service';
+import {PostModelAdv} from './post-model-adv';
 
 @Component({
   selector: 'my-app',
@@ -17,6 +18,7 @@ export class AppComponent  {
   master_array=[];
 i=0;
   data:any;
+  data_from_server_for_like_count:any;
   data_length=0;
   data_length_array=[];
   view_all_post=false;
@@ -26,6 +28,8 @@ i=0;
   }
 
   PostModel = new PostModel('','');
+  PostModelAdv=new PostModelAdv(0);
+
 
   submitted = false;
 
@@ -70,8 +74,20 @@ i=0;
   hideAllPost(){
     this.view_all_post=false;
   }
-  like(i){
-    console.log(i);
+  like(post_id){
+    console.log(post_id);
+    this.PostModelAdv.post_id=post_id;
+    this._enrollmentService.like(this.PostModelAdv).subscribe(
+    (data_from_server_for_like=>{
+      if(typeof(data_from_server_for_like.message_from_server)==="number")
+      {
+        this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
+        //console.log("it's a number");
+      }
+      else console.log("something else");
+          //console.log(data_from_server_for_like);
+        }
+    ));
   }
 
 
