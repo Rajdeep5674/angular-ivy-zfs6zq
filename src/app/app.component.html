@@ -37,23 +37,9 @@
 
   <div [hidden]="!submitted">
     <p>{{message_to_user}}</p>
-    <div class="card">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Full name &nbsp; something &nbsp; something</th>
-        </tr>
-        </thead>
-    <tbody>
-    <tr *ngFor="let master of master_array">
-      <td><ul >{{ master }}</ul>
-      </td>
-    </tr>
-    </tbody>
-      </table>
-    </div>
     <button class="btn btn-primary" (click)="submitted=false">Back</button>
   </div>
+  <hr>
 </div>
 </div>
 
