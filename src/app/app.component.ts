@@ -12,9 +12,7 @@ export class AppComponent  {
   name = 'Angular ' + VERSION.major;
   message_to_user="";
   data_string="";
-  full_name_array=[];
-  power_array=[];
-  alterEgo_array=[];
+  post_id=[];
   master_array=[];
 
   view_all_post=false;
@@ -49,7 +47,8 @@ export class AppComponent  {
       this.master_array=[];
       for(var i=0;i<data.length;i++)
     {
-    this.master_array.push(data[i].full_name+": "+data[i].message);
+      this.post_id.push(data[i].post_id);
+    this.master_array.push(data[i].post_id+")"+data[i].full_name+": "+data[i].message);
     }
   
     }));
@@ -57,6 +56,19 @@ export class AppComponent  {
 
   hideAllPost(){
     this.view_all_post=false;
+  }
+  like(){
+           this._enrollmentService.like().subscribe(
+    (data=>{
+      if((data.message_from_server)=="Data_inserted"){
+        this.message_to_user="You liked the post.";
+        this.submitted = true; 
+        console.log("like added");
+        }
+      else
+        console.log("error in adding like")
+        }
+    ));
   }
 
 }
