@@ -46,7 +46,7 @@
         <h5><span class="badge badge-secondary py-3 m-3">{{ data[post_id].full_name }}</span><hr></h5>
         <p class="m-2">{{ data[post_id].message }}</p>
         <hr>
-        <small>{{data_from_server_for_like_count}}&nbsp;people liked this post</small>
+        <small>{{data[post_id].like_count}}&nbsp;people{{you}} liked this post</small>
       <div class="text-center py-1">
           <button class="btn btn-success" (click)="like(post_id+1);">like</button>&nbsp;&nbsp;
           <button class="btn btn-success">comment</button><br>

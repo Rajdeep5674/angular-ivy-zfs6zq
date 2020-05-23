@@ -18,6 +18,7 @@ export class AppComponent  {
   master_array=[];
 i=0;
   data:any;
+  you="";
   data_from_server_for_like_count:any;
   data_length=0;
   data_length_array=[];
@@ -34,6 +35,7 @@ i=0;
   submitted = false;
 
   onSubmit() { 
+    this.you="";
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
@@ -49,6 +51,7 @@ i=0;
   }
 
   viewAllPost(){
+    this.you="";
     this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
@@ -64,6 +67,7 @@ i=0;
   }
 
   hideAllPost(){
+    this.you="";
     this.view_all_post=false;
   }
   like(post_id){
@@ -80,6 +84,8 @@ i=0;
           //console.log(data_from_server_for_like);
         }
     ));
+
+  this.you=" and you ";
   }
 
 
