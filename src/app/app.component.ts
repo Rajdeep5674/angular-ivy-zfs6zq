@@ -43,7 +43,11 @@ export class AppComponent  {
   viewAllPost(){
            this._enrollmentService.getPosts().subscribe(
     (data=>{
-      
+      for(var i=0;i<data.length;i++)
+    {
+    this.master_array.push(data[i].full_name+":"+data[i].message);
+    }
+
      
     
     }));
