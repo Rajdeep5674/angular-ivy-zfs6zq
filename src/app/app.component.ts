@@ -53,19 +53,11 @@ i=0;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
       this.data=data;
-      this.master_array=[];
-      this.full_name=[];
-      this.post_id=[];
       this.data_length_array=[];
-
-      //this.data_length=data.length;
 
       for(var i=0;i<data.length;i++)
     {
       this.data_length_array.push(i);
-      this.full_name.push(data[i].full_name);
-      this.post_id.push(data[i].post_id);
-      this.master_array.push(data[i].post_id+") "+data[i].full_name+": "+data[i].message);
     }
   
     }));
