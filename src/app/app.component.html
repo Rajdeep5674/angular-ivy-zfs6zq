@@ -42,8 +42,9 @@
   </div>
 
     <div [hidden]="!view_all_post" class="container border py-2 m-2">
-      <div class="card py-2 " *ngFor="let master of master_array">
-        <div class="container py-2 bg-light">{{ master }}</div>
+      <div class="card py-2 " *ngFor="let post_id of data_length_array">
+        <div class="container py-2 bg-light">{{ data[post_id].full_name }}</div>
+        <div class="container py-2">{{ data[post_id].message }}</div>
         <hr>
       <div class="text-center py-1">
           <button class="btn btn-success" (click)="like();">like</button>&nbsp;&nbsp;
@@ -52,11 +53,6 @@
       </div>
     </div>
     <div>
-      <div *ngFor="let i of data_length_array">
-        <p>{{data[i].full_name}}</p>
-        <p>{{data[i].message}}</p>
-        <hr>
-      </div>
     </div>
 </div>
 </div>
