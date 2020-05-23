@@ -13,8 +13,12 @@ export class AppComponent  {
   message_to_user="";
   data_string="";
   post_id=[];
+  full_name=[];
   master_array=[];
 
+  data:any;
+  data_length=0;
+  data_length_array=[];
   view_all_post=false;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -44,9 +48,18 @@ export class AppComponent  {
     this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
+      this.data=data;
       this.master_array=[];
+      this.full_name=[];
+      this.post_id=[];
+      this.data_length_array=[];
+
+      //this.data_length=data.length;
+
       for(var i=0;i<data.length;i++)
     {
+      this.data_length_array.push(i);
+      this.full_name.push(data[i].full_name);
       this.post_id.push(data[i].post_id);
       this.master_array.push(data[i].post_id+") "+data[i].full_name+": "+data[i].message);
     }
