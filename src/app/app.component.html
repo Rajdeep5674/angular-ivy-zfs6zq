@@ -31,17 +31,24 @@
 
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Post</button>
       <hr>
-            <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>
     </form>
   </div>
+            <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
 
+            <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
   <div [hidden]="!submitted">
     <p>{{message_to_user}}</p>
-    <button class="btn btn-primary" (click)="submitted=false">Back</button>
+    <button class="btn btn-success" (click)="submitted=false">Back</button>
   </div>
-  <hr>
-      <div class="card">
-      <p>all posts can be viewed here</p>
+
+    <div [hidden]="!view_all_post" class="container border py-2 m-2">
+      <div class="card py-2 bg-light" *ngFor="let master of master_array">
+        <div class="container py-2">{{ master }}</div>
+        <hr>
+      <div class="text-center py-3">
+          <button class="btn btn-success">like</button>&nbsp;&nbsp;<button class="btn btn-success">comment</button><br>
+      </div>
+      </div>
     </div>
 </div>
 </div>

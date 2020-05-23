@@ -16,6 +16,8 @@ export class AppComponent  {
   power_array=[];
   alterEgo_array=[];
   master_array=[];
+
+  view_all_post=false;
       constructor(private _enrollmentService:HeroService) { }
 
   ngOnInit() {
@@ -41,16 +43,20 @@ export class AppComponent  {
   }
 
   viewAllPost(){
+    this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
+      this.master_array=[];
       for(var i=0;i<data.length;i++)
     {
-    this.master_array.push(data[i].full_name+":"+data[i].message);
+    this.master_array.push(data[i].full_name+": "+data[i].message);
     }
-
-     
-    
+  
     }));
+  }
+
+  hideAllPost(){
+    this.view_all_post=false;
   }
 
 }
