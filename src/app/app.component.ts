@@ -48,7 +48,7 @@ export class AppComponent  {
       for(var i=0;i<data.length;i++)
     {
       this.post_id.push(data[i].post_id);
-    this.master_array.push(data[i].post_id+")"+data[i].full_name+": "+data[i].message);
+    this.master_array.push(data[i].post_id+") "+data[i].full_name+": "+data[i].message);
     }
   
     }));
