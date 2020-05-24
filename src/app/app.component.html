@@ -74,9 +74,11 @@
           </form>
           <!--end of comment form-->
         </div>
-        <div class="card py-2 " *ngFor="let comment of comment_array">
-          <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
-          <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>
+        <div *ngIf="view_all_comments_boolean">
+          <div class="card py-2 " *ngFor="let comment of comment_array">
+            <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
+            <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>
+          </div>
         </div>
       <div class="text-center py-2">
           <button class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"

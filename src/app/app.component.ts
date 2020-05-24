@@ -29,6 +29,9 @@ i=0;
   like_button_pressed=[];
   comment_button_pressed=false;
   comment_array=[];
+
+  view_all_comments_boolean=false;
+
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -127,11 +130,11 @@ i=0;
   }
 
   view_all_comments(post_id){
-
+    this.view_all_comments_boolean=true;
   }
 
   hide_all_comments(post_id){
-    
+    this.view_all_comments_boolean=false;
   }
 
 
