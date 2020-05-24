@@ -50,8 +50,8 @@
         <ng-template #elseBlock><small>&nbsp;{{data[post_id].like_count}}&nbsp;people liked this post</small></ng-template>
         <br>
         <!--form for accepting the comment-->
-        <div *ngIf="===(post_id+1)">
-          <form (ngSubmit)="onSubmit()" #commentForm="ngForm">
+        <div *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post_id+1)">
+          <form (ngSubmit)="commentSubmitted(post_id)" #commentForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
                 <input type="text" class="form-control" id="commentor_name"
@@ -63,13 +63,13 @@
                   Name is required
                 </div>
               </div>
-
+              <input type="hidden" id="hidden_post_id" [(ngModel)]="CommentModel.post_id" value="post_id" name="hidden_post_id"> 
               <textarea rows="4" cols="50" name="comment" class="form-control" id="comment"
                       required
                       [(ngModel)]="CommentModel.comment"
-                      #message="ngModel" placeholder="Type your comment here.">.</textarea><br>
-
-              <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Go</button>
+                      #message="ngModel" placeholder="Type your comment here." name="comment"></textarea><br>
+              <button type="submit" class="btn btn-success" [disabled]="!commentForm.form.valid">Go</button>&nbsp;&nbsp;&nbsp;
+              <button type="submit" class="btn btn-success" [disabled]="!commentForm.form.valid">Cencel</button>
               <hr>
           </form>
           <!--end of comment form-->

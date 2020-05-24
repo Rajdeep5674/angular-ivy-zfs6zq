@@ -98,11 +98,23 @@ i=0;
   //this.you=" and you ";
   }
 
+//event handler for comment button pressed
   comment(post_id){
     console.log("comment pressed for "+post_id);
   this.comment_button_pressed=true;
   this.PostIdAndMessageToUser.post_id_for_comment=post_id;
+//console.log(this.CommentModel);
+  }
 
+  //event handler for go button pressed in comment
+  commentSubmitted(post_id){
+  this.CommentModel.post_id=post_id+1;
+  //console.log(this.CommentModel);
+    this._enrollmentService.comment(this.CommentModel).subscribe(
+    (data_from_server_for_comment=>{
+      console.log(data_from_server_for_comment);
+        }
+    ));
   }
 
 
