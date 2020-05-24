@@ -132,6 +132,19 @@ i=0;
   }
 
   view_all_comments(post_id){
+        this._enrollmentService.fetch_all_comemnts_for_a_post_id(this.CommentModel).subscribe(
+    (data_from_server_for_comment=>{
+      this.data_from_server_for_comment=data_from_server_for_comment;
+      console.log(data_from_server_for_comment);
+      this.comment_array=[];
+
+      for(var i=0;i<data_from_server_for_comment.length;i++)
+    {
+      this.comment_array.push(i);
+    }
+        }
+    ));
+
     this.view_all_comments_boolean=true;
   }
 
