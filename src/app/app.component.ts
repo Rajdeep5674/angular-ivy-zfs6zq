@@ -132,11 +132,6 @@ i=0;
   }
 
   view_all_comments(post_id){
-    this._enrollmentService.viewAllComments(post_id).subscribe(
-      (data_from_server_for_view_comments=>{
-        console.log(data_from_server_for_view_comments);
-      })
-    )
     this.view_all_comments_boolean=true;
   }
 

@@ -32,9 +32,7 @@ export class HeroService {
   {
     return this._http.post<any>(this._url_comment,CommentModel);
   }
-  viewAllComments(post_id){
-    return this._http.get<any>(this._url_comment_view_all,post_id);
-  }
+ 
 
 
 
