@@ -3,6 +3,7 @@ import { PostModel } from './post-model';
 import {HeroService} from './hero.service';
 import {PostModelAdv} from './post-model-adv';
 import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
+import {CommentModel} from './comment-model';
 
 @Component({
   selector: 'my-app',
@@ -25,6 +26,7 @@ i=0;
   data_length_array=[];
   view_all_post=false;
   like_button_pressed=[];
+  comment_button_pressed=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -32,8 +34,9 @@ i=0;
   }
 
   PostModel = new PostModel('','',0);
-  PostModelAdv=new PostModelAdv(0);
-  PostIdAndMessageToUser=new PostIdAndMessageToUser(0,'');
+  PostModelAdv=new PostModelAdv(0,'');
+  PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
+  CommentModel=new CommentModel(0,'','');
 
   submitted = false;
 
@@ -93,6 +96,13 @@ i=0;
     this.PostIdAndMessageToUser.message_to_user="You liked this post";
   //this.page_load=false;
   //this.you=" and you ";
+  }
+
+  comment(post_id){
+    console.log("comment pressed for "+post_id);
+  this.comment_button_pressed=true;
+  this.PostIdAndMessageToUser.post_id_for_comment=post_id;
+
   }
 
 
