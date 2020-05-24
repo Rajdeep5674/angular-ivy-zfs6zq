@@ -76,12 +76,13 @@
         </div>
         <div class="card py-2 " *ngFor="let comment of comment_array">
           <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
-          <small>&nbsp{{data_from_server_for_comment[comment].comment}}</small>
+          <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>
         </div>
       <div class="text-center py-2">
           <button class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
 >like</button>&nbsp;&nbsp;
-          <button class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>
+          <button class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;
+           <button class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>
       </div>
       </div>
     </div>
