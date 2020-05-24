@@ -126,5 +126,13 @@ i=0;
     ));
   }
 
+  view_all_comments(post_id){
+
+  }
+
+  hide_all_comments(post_id){
+    
+  }
+
 
 }
