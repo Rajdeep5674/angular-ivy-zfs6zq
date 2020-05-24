@@ -112,7 +112,7 @@ i=0;
   //console.log(this.CommentModel);
     this._enrollmentService.comment(this.CommentModel).subscribe(
     (data_from_server_for_comment=>{
-      console.log(data_from_server_for_comment.message_from_server);
+      console.log(data_from_server_for_comment);
         }
     ));
   }
