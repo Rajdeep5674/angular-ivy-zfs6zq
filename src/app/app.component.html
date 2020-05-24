@@ -74,7 +74,7 @@
           </form>
           <!--end of comment form-->
         </div>
-        <div *ngIf="view_all_comments_boolean">
+        <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post_id+1)">
           <div class="card py-2 " *ngFor="let comment of comment_array">
             <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
             <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>

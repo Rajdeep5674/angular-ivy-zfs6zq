@@ -4,6 +4,7 @@ import {HeroService} from './hero.service';
 import {PostModelAdv} from './post-model-adv';
 import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
 import {CommentModel} from './comment-model';
+import {PostIdComments} from './post-id-comments'
 
 @Component({
   selector: 'my-app',
@@ -27,6 +28,7 @@ i=0;
   data_length_array=[];
   view_all_post=false;
   like_button_pressed=[];
+  comment_button_pressed_array=[];
   comment_button_pressed=false;
   comment_array=[];
 
@@ -43,6 +45,7 @@ i=0;
   PostModelAdv=new PostModelAdv(0,'');
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','');
+  PostIdComments=new PostIdComments(0,'');
 
   submitted = false;
 
@@ -133,8 +136,12 @@ i=0;
 
   view_all_comments(post_id){
     this.CommentModel.post_id=post_id;
+
+    this.comment_button_pressed_array.push(post_id);
+    this.PostIdComments.post_id=post_id;
+    
         this._enrollmentService.fetch_all_comemnts_for_a_post_id(this.CommentModel).subscribe(
-    (data_from_server_for_a_comment=>{
+    (data_from_server_for_comment=>{
       this.data_from_server_for_comment=data_from_server_for_comment;
       console.log(data_from_server_for_comment);
       this.comment_array=[];
