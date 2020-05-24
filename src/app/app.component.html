@@ -46,9 +46,12 @@
         <h5><span class="badge badge-secondary py-3 m-3">{{ data[post_id].full_name }}</span><hr></h5>
         <p class="m-2">{{ data[post_id].message }}</p>
         <hr>
-        <small>{{data[post_id].like_count}}&nbsp;people{{you}} liked this post</small>
-      <div class="text-center py-1">
-          <button class="btn btn-success" (click)="like(post_id+1);">like</button>&nbsp;&nbsp;
+        <small *ngIf="PostIdAndMessageToUser.post_id===(post_id+1);else elseBlock" style="color:blue">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
+        <ng-template #elseBlock><small>&nbsp;{{data[post_id].like_count}}&nbsp;people liked this post</small></ng-template>
+        <br>
+      <div class="text-center py-2">
+          <button class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
+>like</button>&nbsp;&nbsp;
           <button class="btn btn-success">comment</button><br>
       </div>
       </div>

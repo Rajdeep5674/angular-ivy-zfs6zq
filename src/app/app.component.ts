@@ -2,6 +2,7 @@ import { Component, VERSION } from '@angular/core';
 import { PostModel } from './post-model';
 import {HeroService} from './hero.service';
 import {PostModelAdv} from './post-model-adv';
+import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
 
 @Component({
   selector: 'my-app',
@@ -23,6 +24,8 @@ i=0;
   data_length=0;
   data_length_array=[];
   view_all_post=false;
+  like_button_pressed=[];
+  //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
   ngOnInit() {
@@ -30,7 +33,7 @@ i=0;
 
   PostModel = new PostModel('','',0);
   PostModelAdv=new PostModelAdv(0);
-
+  PostIdAndMessageToUser=new PostIdAndMessageToUser(0,'');
 
   submitted = false;
 
@@ -52,6 +55,7 @@ i=0;
 
   viewAllPost(){
     this.you="";
+    //this.page_load=true;
     this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
@@ -72,6 +76,7 @@ i=0;
   }
   like(post_id){
     console.log(post_id);
+    this.like_button_pressed.push(post_id);
     this.PostModelAdv.post_id=post_id;
     this._enrollmentService.like(this.PostModelAdv).subscribe(
     (data_from_server_for_like=>{
@@ -84,8 +89,10 @@ i=0;
           //console.log(data_from_server_for_like);
         }
     ));
-
-  this.you=" and you ";
+    this.PostIdAndMessageToUser.post_id=post_id;
+    this.PostIdAndMessageToUser.message_to_user="You liked this post";
+  //this.page_load=false;
+  //this.you=" and you ";
   }
 
 
