@@ -20,6 +20,7 @@ export class AppComponent  {
   master_array=[];
 i=0;
   data:any;
+  data_from_server_for_comment:any;
   you="";
   data_from_server_for_like_count:any;
   data_length=0;
@@ -27,6 +28,7 @@ i=0;
   view_all_post=false;
   like_button_pressed=[];
   comment_button_pressed=false;
+  comment_array=[];
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -112,7 +114,14 @@ i=0;
   //console.log(this.CommentModel);
     this._enrollmentService.comment(this.CommentModel).subscribe(
     (data_from_server_for_comment=>{
+      this.data_from_server_for_comment=data_from_server_for_comment;
       console.log(data_from_server_for_comment);
+      this.comment_array=[];
+
+      for(var i=0;i<data_from_server_for_comment.length;i++)
+    {
+      this.comment_array.push(i);
+    }
         }
     ));
   }
