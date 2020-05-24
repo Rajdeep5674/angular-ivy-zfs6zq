@@ -50,7 +50,7 @@
         <ng-template #elseBlock><small>&nbsp;{{data[post_id].like_count}}&nbsp;people liked this post</small></ng-template>
         <br>
         <!--form for accepting the comment-->
-        <div *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post_id+1)">
+        <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post_id+1)">
           <form (ngSubmit)="commentSubmitted(post_id)" #commentForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>

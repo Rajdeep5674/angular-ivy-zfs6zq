@@ -31,6 +31,7 @@ i=0;
   comment_array=[];
 
   view_all_comments_boolean=false;
+  go=false;
 
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
@@ -127,9 +128,15 @@ i=0;
     }
         }
     ));
+    this.go=true;
   }
 
   view_all_comments(post_id){
+    this._enrollmentService.viewAllComments(post_id).subscribe(
+      (data_from_server_for_view_comments=>{
+        console.log(data_from_server_for_view_comments);
+      })
+    )
     this.view_all_comments_boolean=true;
   }
 

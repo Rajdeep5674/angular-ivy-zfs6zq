@@ -11,6 +11,7 @@ export class HeroService {
    _url='https://netBankingAppServer--rajdeep5674.repl.co/route';
    _url_like='https://netBankingAppServer--rajdeep5674.repl.co/like';
    _url_comment='https://netBankingAppServer--rajdeep5674.repl.co/comment';
+   _url_comment_view_all='https://netBankingAppServer--rajdeep5674.repl.co/comment_view_all';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -30,6 +31,9 @@ export class HeroService {
   comment(CommentModel:CommentModel)
   {
     return this._http.post<any>(this._url_comment,CommentModel);
+  }
+  viewAllComments(post_id){
+    return this._http.get<any>(this._url_comment_view_all,post_id);
   }
 
 
