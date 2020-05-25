@@ -199,10 +199,6 @@ console.log(this.CommentModel);
     this.go=true;
   }
 
-  login(){
-    console.log("login pressed");
-    this.login_boolean=true;
-  }
   singup(){
     this.CustomerDetaillsRoot.full_name="";
     this.CustomerDetaillsRoot.email="";
@@ -245,11 +241,20 @@ console.log(this.CommentModel);
   terms(){
     alert("Terms and conditions\n\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
   }
-  loginAuthCheck(){
+    login(){
+      this.LoginModel.user_id="";
+      this.LoginModel.password="";
 
+      console.log("login pressed");
+      this.login_boolean=true;
+      this.login_closed=false;
+  }
+  loginAuthCheck(){
+    console.log( this.LoginModel);
+    
   }
   cancel_login(){
-    
+
   }
 
 }
