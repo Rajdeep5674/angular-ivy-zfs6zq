@@ -74,14 +74,13 @@
           </form>
           <!--end of comment form-->
         </div>
-        <div *ngIf="no_comments_yet">
-          <small>oops,no comment yet</small>
-        </div>
         <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post_id+1)">
           <div class="card py-2 " *ngFor="let comment of comment_array">
             <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
             <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>
           </div>
+          <div *ngIf="no_comments_yet">
+            <small style="color:blue">&nbsp;Oops!! no comment yet, be the first one to comment !!</small></div>
         </div>
       <div class="text-center py-2">
           <button class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
