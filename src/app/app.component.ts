@@ -109,6 +109,7 @@ i=0;
 
 //event handler for comment button pressed
   comment(post_id){
+    this.go=true;
     console.log("comment pressed for "+post_id);
   this.comment_button_pressed=true;
   this.PostIdAndMessageToUser.post_id_for_comment=post_id;
