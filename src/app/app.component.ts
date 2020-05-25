@@ -140,6 +140,10 @@ console.log(this.CommentModel);
   }
 
   view_all_comments(post_id){
+    //if server does not return any comment comment section should not be visible
+    this.view_all_comments_boolean=false;
+    this.data_from_server_for_comment=null;
+    console.log(CommentModel);
     this.CommentModel.post_id=post_id;
 
     this.comment_button_pressed_array.push(post_id);
@@ -147,6 +151,14 @@ console.log(this.CommentModel);
     
         this._enrollmentService.fetch_all_comemnts_for_a_post_id(this.CommentModel).subscribe(
     (data_from_server_for_comment=>{
+
+      //check if server returns object which means there is atleast one comment then only comment shoudl be visible, false otherwise
+      if(typeof(data_from_server_for_comment)==="object"){
+        this.view_all_comments_boolean=true;
+      }
+      else{
+        this.view_all_comments_boolean=false;
+      }
       this.data_from_server_for_comment=data_from_server_for_comment;
       console.log(data_from_server_for_comment);
       this.comment_array=[];
@@ -157,8 +169,6 @@ console.log(this.CommentModel);
     }
         }
     ));
-
-    this.view_all_comments_boolean=true;
   }
 
   hide_all_comments(post_id){
