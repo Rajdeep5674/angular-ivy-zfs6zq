@@ -15,12 +15,12 @@
   <!--existing user login end-->
 
   <!--new user login-->
-  <button class="btn btn-success" (click)="signup_form_submitted();">Sign up</button>
+  <button class="btn btn-success" (click)="">Sign up</button>
   <hr>
   <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
         <h1>Fill the details below</h1>
-              <form (ngSubmit)="singup();" #signupForm="ngForm">
+              <form (ngSubmit)="signup_form_submitted();" #signupForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
                 <input type="text" class="form-control" id="full_name"
