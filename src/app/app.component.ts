@@ -184,6 +184,9 @@ console.log(this.CommentModel);
   hide_all_comments(post_id){
     this.view_all_comments_boolean=false;
   }
+  cancel(post_id){
+    this.go=true;
+  }
 
 
 }
