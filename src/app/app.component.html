@@ -6,16 +6,86 @@
   <p>Post any query/thoughts here. Everyone can see your post </p>
 </div>
 
-<!--login section start-->
+<!--login and signup section start-->
+  <div class="alert alert-info card" role="alert">
+  Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>
+</div>
   <!--existing user login-->
     &nbsp; &nbsp;<button class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
   <!--existing user login end-->
 
   <!--new user login-->
-  <button class="btn btn-success" (click)="signup();">Sign up</button>
+  <button class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
+  <div class="card py-2 "[hidden]="signup_closed" *ngIf="signup_boolean">
+              <form (ngSubmit)="singup()" #signupForm="ngForm">
+              <div class="form-group">
+                <label for="name"></label>
+                <input type="text" class="form-control" id="full_name"
+                      required
+                      [(ngModel)]="CustomerDetaillsRoot.full_name" name="full_name"
+                      #full_name="ngModel" placeholder="Enter your full name">
+                <div [hidden]="full_name.valid || full_name.untouched"
+                    class="alert alert-danger">
+                  Name is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email"></label>
+                <input type="email" class="form-control" id="email"
+                      required
+                      [(ngModel)]="CustomerDetaillsRoot.email" name="email"
+                      #email="ngModel" placeholder="Enter your email id">
+                <div [hidden]="email.valid || email.untouched"
+                    class="alert alert-danger">
+                  Email is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="user_id"></label>
+                <input type="text" class="form-control" id="user_id"
+                      required
+                      [(ngModel)]="CustomerDetaillsRoot.user_id" name="user_id"
+                      #user_id="ngModel" placeholder="Set your user id">
+                <div [hidden]="user_id.valid || user_id.untouched"
+                    class="alert alert-danger">
+                  Userid is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password1"></label>
+                <input type="password" class="form-control" id="password1"
+                      required
+                      [(ngModel)]="CustomerDetaillsRoot.password1" name="password1"
+                      #password1="ngModel" placeholder="Set your password">
+                <div [hidden]="password1.valid || password1.untouched"
+                    class="alert alert-danger">
+                  Password is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password2"></label>
+                <input type="password" class="form-control" id="password2"
+                      required
+                      [(ngModel)]="CustomerDetaillsRoot.password2" name="password2"
+                      #password2="ngModel" placeholder="Confirm your password">
+                <div [hidden]="password2.valid || password2.untouched"
+                    class="alert alert-danger">
+                  Password is required
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="cancel_signup();">Cancel</button>
+              <hr>
+          </form>
+  </div>
   <!--new user login end-->
-<!--login section end-->
+<!--login and signup section end-->
 
 <div class="card border py-3">
   <div class="container">

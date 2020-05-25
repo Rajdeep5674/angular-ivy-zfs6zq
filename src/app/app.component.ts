@@ -4,7 +4,8 @@ import {HeroService} from './hero.service';
 import {PostModelAdv} from './post-model-adv';
 import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
 import {CommentModel} from './comment-model';
-import {PostIdComments} from './post-id-comments'
+import {PostIdComments} from './post-id-comments';
+import {CustomerDetaillsRoot} from './customer-detaills-root';
 
 @Component({
   selector: 'my-app',
@@ -40,7 +41,7 @@ i=0;
   login_boolean=false;
   //variables for signup function
   signup_boolean=false;
-
+  signup_closed=true;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -52,6 +53,7 @@ i=0;
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','');
   PostIdComments=new PostIdComments(0,'');
+  CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
 
   submitted = false;
 
@@ -197,9 +199,13 @@ console.log(this.CommentModel);
     console.log("login pressed");
     this.login_boolean=true;
   }
-  signup(){
+  singup(){
     console.log("signup pressed");
     this.signup_boolean=true;
+    this.signup_closed=false;
+  }
+  cancel_signup(){
+    this.signup_closed=true;
   }
 
 
