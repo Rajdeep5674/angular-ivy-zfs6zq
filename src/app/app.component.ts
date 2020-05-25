@@ -221,7 +221,7 @@ console.log(this.CommentModel);
     }
     else
     {
-      alert("Please wait while we will save your details. Click ok to continue");
+      alert("Please wait while we will save your details. Click ok to continue. This may take few seconds to complete.");
       this.signup_closed=true;
     this._enrollmentService.post_customer_details_root(this.CustomerDetaillsRoot).subscribe(
     (data_from_server_after_posting_customerDetailsRootObject=>{
@@ -241,6 +241,7 @@ console.log(this.CommentModel);
     this.signup_closed=true;
   }
   terms(){
-    alert("Terms and conditions\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
+    alert("Terms and conditions\n\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
+  }
 
 }
