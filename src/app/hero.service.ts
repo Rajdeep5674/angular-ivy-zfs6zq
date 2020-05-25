@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {PostModelAdv} from './post-model-adv';
 import {CommentModel} from './comment-model';
+import {CustomerDetaillsRoot} from './customer-detaills-root';
 
 @Injectable()
 export class HeroService {
@@ -12,6 +13,7 @@ export class HeroService {
    _url_like='https://netBankingAppServer--rajdeep5674.repl.co/like';
    _url_comment='https://netBankingAppServer--rajdeep5674.repl.co/comment';
    _url_comment_view_all='https://netBankingAppServer--rajdeep5674.repl.co/comment_view_all';
+   _url_customer_details_post='https://netBankingAppServer--rajdeep5674.repl.co/customer_details_post';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -34,6 +36,9 @@ export class HeroService {
   }
   fetch_all_comemnts_for_a_post_id(CommentModel:CommentModel){
     return this.result=this._http.post<any>(this._url_comment_view_all,CommentModel);
+  }
+  post_customer_details_root(CustomerDetaillsRoot:CustomerDetaillsRoot){
+     return this._http.post<any>(this._url_customer_details_post,CustomerDetaillsRoot);
   }
 
 

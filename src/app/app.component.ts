@@ -217,6 +217,11 @@ console.log(this.CommentModel);
     {
       this.signup_closed=true;
       alert("Details saved successfully. Now you can login and explore all the posts.");
+    this._enrollmentService.post_customer_details_root(this.CustomerDetaillsRoot).subscribe(
+    (data_from_server_after_posting_customerDetailsRootObject=>{
+        console.log(data_from_server_after_posting_customerDetailsRootObject)
+        }
+    ));
     }
   }
   cancel_signup(){
