@@ -250,6 +250,7 @@ console.log(this.CommentModel);
       this.login_closed=false;
   }
   loginAuthCheck(){
+    alert("Please wait while we will validate your details. This may take few seconds to c")
     console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
       console.log(data_from_server_after_login_auth_check);
