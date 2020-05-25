@@ -51,6 +51,7 @@
                       required
                       [(ngModel)]="CustomerDetaillsRoot.user_id" name="user_id"
                       #user_id="ngModel" placeholder="Set your user id">
+                      <small>Please set your user id as unique. This will be required while login.</small>
                 <div [hidden]="user_id.valid || user_id.untouched"
                     class="alert alert-danger">
                   Userid is required
@@ -63,6 +64,7 @@
                       required
                       [(ngModel)]="CustomerDetaillsRoot.password1" name="password1"
                       #password1="ngModel" placeholder="Set your password">
+                      <small>Please do not set default passwords like 123/test/abc or your name</small>
                 <div [hidden]="password1.valid || password1.untouched"
                     class="alert alert-danger">
                   Password is required
@@ -82,7 +84,8 @@
               </div>
 
               <a href="#message"><button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button></a>&nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-success" (click)="cancel_signup();">Cancel</button>
+              <button type="button" class="btn btn-success" (click)="cancel_signup();">Cancel</button><br>
+              <small>By clicking submit you accept the <button type="button" (click)="terms();">terms and conditions</button> of askany.com</small>
               <hr>
           </form>
       </div>
