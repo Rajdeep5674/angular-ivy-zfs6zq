@@ -36,6 +36,11 @@ i=0;
   go=false;
   no_comments_yet=false;
 
+  //variables for login function
+  login_boolean=false;
+  //variables for signup function
+  signup_boolean=false;
+
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -186,6 +191,15 @@ console.log(this.CommentModel);
   }
   cancel(post_id){
     this.go=true;
+  }
+
+  login(){
+    console.log("login pressed");
+    this.login_boolean=true;
+  }
+  signup(){
+    console.log("signup pressed");
+    this.signup_boolean=true;
   }
 
 
