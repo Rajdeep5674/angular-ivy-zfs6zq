@@ -34,6 +34,7 @@ i=0;
 
   view_all_comments_boolean=false;
   go=false;
+  no_comments_yet=true;
 
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
@@ -155,18 +156,24 @@ console.log(this.CommentModel);
       //check if server returns object which means there is atleast one comment then only comment shoudl be visible, false otherwise
       if(typeof(data_from_server_for_comment)==="object"){
         this.view_all_comments_boolean=true;
+        if(data_from_server_for_comment.length===0){
+            this.no_comments_yet=true;
+        }
+        else{
+          this.data_from_server_for_comment=data_from_server_for_comment;
+          console.log(data_from_server_for_comment);
+          this.comment_array=[];
+
+          for(var i=0;i<data_from_server_for_comment.length;i++)
+          {
+            this.comment_array.push(i);
+          }
+        }
       }
       else{
         this.view_all_comments_boolean=false;
+        console.log("else called");
       }
-      this.data_from_server_for_comment=data_from_server_for_comment;
-      console.log(data_from_server_for_comment);
-      this.comment_array=[];
-
-      for(var i=0;i<data_from_server_for_comment.length;i++)
-    {
-      this.comment_array.push(i);
-    }
         }
     ));
   }
