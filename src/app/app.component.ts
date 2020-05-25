@@ -253,9 +253,9 @@ console.log(this.CommentModel);
     console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
       console.log(data_from_server_after_login_auth_check);
-      if(data_from_server_after_login_auth_check.message_from_server="login_valid"){
+      if(data_from_server_after_login_auth_check.message_from_server=="login_valid"){
         //console.log("login successfull");
-        alert("login successfull");
+        alert("login successful");
       }
       else{
         alert("invalid user id or password");
