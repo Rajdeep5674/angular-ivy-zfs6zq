@@ -42,6 +42,7 @@ i=0;
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
+  userMessage="";
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -54,6 +55,7 @@ i=0;
   CommentModel=new CommentModel(0,'','');
   PostIdComments=new PostIdComments(0,'');
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
+
 
   submitted = false;
 
@@ -201,11 +203,22 @@ console.log(this.CommentModel);
   }
   singup(){
     console.log("signup pressed");
+    console.log(this.CustomerDetaillsRoot);
     this.signup_boolean=true;
     this.signup_closed=false;
   }
   signup_form_submitted(){
-    console.log(CustomerDetaillsRoot);
+    console.log(this.CustomerDetaillsRoot);
+    if(this.CustomerDetaillsRoot.password1 !==this.CustomerDetaillsRoot.password2)
+    {
+      this.userMessage="Both the passwords are not same. Please enter same password twice";
+    }
+    else
+    {
+      this.signup_closed=true;
+      //this.userMessage="Details saved successfully. Now you can login and explore all the posts.";
+      alert("Details saved successfully. Now you can login and explore all the posts.");
+    }
   }
   cancel_signup(){
     this.signup_closed=true;

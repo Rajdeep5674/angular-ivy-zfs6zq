@@ -11,12 +11,13 @@
   Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>
 </div>
   <!--existing user login-->
-    &nbsp; &nbsp;<button class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
+    &nbsp; &nbsp;<button type="button" class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
   <!--existing user login end-->
 
   <!--new user login-->
-  <button class="btn btn-success" (click)="singup();">Sign up</button>
+  <button type="button" class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
+  <div class="card" id="message">{{userMessage}}</div>
   <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
         <h1>Fill the details below</h1>
@@ -81,7 +82,7 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button>&nbsp;&nbsp;&nbsp;
+              <a href="#message"><button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Submit</button></a>&nbsp;&nbsp;&nbsp;
               <button type="button" class="btn btn-success" (click)="cancel_signup();">Cancel</button>
               <hr>
           </form>
