@@ -251,8 +251,14 @@ console.log(this.CommentModel);
   }
   loginAuthCheck(){
     console.log( this.LoginModel);
-    this._enrollmentService.post_login_details_for_auth_check().subscribe(data_from_server_after_login_auth_check=>{
-      console.log(data_from_server_after_login_auth_check)
+    this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
+      console.log(data_from_server_after_login_auth_check);
+      if(data_from_server_after_login_auth_check.message_from_server="login_valid"){
+        alert("login successfull");
+      }
+      else{
+        alert("invalid user id or password");
+      }
     });
 
     
