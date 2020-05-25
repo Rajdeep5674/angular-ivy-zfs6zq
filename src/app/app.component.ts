@@ -41,6 +41,7 @@ i=0;
   //variables for login function
   login_boolean=false;
   login_closed=true;
+  active_session=false;
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
@@ -250,13 +251,14 @@ console.log(this.CommentModel);
       this.login_closed=false;
   }
   loginAuthCheck(){
-    alert("Please wait while we will validate your details. This may take few seconds to c")
+    alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.")
     console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
       console.log(data_from_server_after_login_auth_check);
       if(data_from_server_after_login_auth_check.message_from_server=="login_valid"){
         //console.log("login successfull");
         alert("login successful");
+        this.active_session=true;
       }
       else{
         alert("invalid user id or password");
