@@ -12,6 +12,39 @@
 </div>
   <!--existing user login-->
     &nbsp; &nbsp;<button type="button" class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
+
+  <div class="card border py-3" [hidden]="signup_closed" *ngIf="signup_boolean">
+    <div class="container">
+        <h1>Login form</h1>
+              <form (ngSubmit)="loginAuthCheck();" #loginForm="ngForm">
+            <div class="form-group">
+                <label for="user_id_for_login"></label>
+                <input type="text" class="form-control" id="user_id_for_login"
+                      required
+                      [(ngModel)]="LoginModel.user_id" name="user_id_for_login"
+                      #user_id_for_login="ngModel" placeholder="Enter your user id">
+                <div [hidden]="user_id_for_login.valid || user_id_for_login.untouched"
+                    class="alert alert-danger">
+                  Userid is required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password1"></label>
+                <input type="password" class="form-control" id="password_for_login"
+                      required
+                      [(ngModel)]="LoginModel.password" name="password_for_login"
+                      #password_for_login="ngModel" placeholder="Enter your password">
+                <div [hidden]="password_for_login.valid || password_for_login.untouched"
+                    class="alert alert-danger">
+                  Password is required
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="cancel_login();">Cancel</button><br>
+            </form>
+          </div>
+        </div>
   <!--existing user login end-->
 
   <!--new user login-->

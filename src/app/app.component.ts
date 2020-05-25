@@ -6,6 +6,7 @@ import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
 import {CommentModel} from './comment-model';
 import {PostIdComments} from './post-id-comments';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
+import {LoginModel} from './login-model'
 
 @Component({
   selector: 'my-app',
@@ -39,6 +40,7 @@ i=0;
 
   //variables for login function
   login_boolean=false;
+  login_closed=true;
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
@@ -55,7 +57,7 @@ i=0;
   CommentModel=new CommentModel(0,'','');
   PostIdComments=new PostIdComments(0,'');
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
-
+  LoginModel=new LoginModel('','')
 
   submitted = false;
 
@@ -242,6 +244,12 @@ console.log(this.CommentModel);
   }
   terms(){
     alert("Terms and conditions\n\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
+  }
+  loginAuthCheck(){
+
+  }
+  cancel_login(){
+    
   }
 
 }
