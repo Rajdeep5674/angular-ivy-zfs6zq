@@ -203,6 +203,8 @@ console.log(this.CommentModel);
     console.log("signup pressed");
     this.signup_boolean=true;
     this.signup_closed=false;
+  }
+  signup_form_submitted(){
     console.log(CustomerDetaillsRoot);
   }
   cancel_signup(){
