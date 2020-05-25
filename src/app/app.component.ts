@@ -216,10 +216,16 @@ console.log(this.CommentModel);
     else
     {
       this.signup_closed=true;
-      alert("Details saved successfully. Now you can login and explore all the posts.");
     this._enrollmentService.post_customer_details_root(this.CustomerDetaillsRoot).subscribe(
     (data_from_server_after_posting_customerDetailsRootObject=>{
-        console.log(data_from_server_after_posting_customerDetailsRootObject)
+      if(data_from_server_after_posting_customerDetailsRootObject.message_from_server==="user_id_already_exists"){
+        alert("User id already exists. Please select a different user id.");
+
+      }
+      else{
+              alert("Details saved successfully. Now you can login and explore all the posts.");
+      }
+        //console.log(data_from_server_after_posting_customerDetailsRootObject.)
         }
     ));
     }
