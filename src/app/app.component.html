@@ -17,7 +17,9 @@
   <!--new user login-->
   <button class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
-  <div class="card py-2 m2"[hidden]="signup_closed" *ngIf="signup_boolean">
+  <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
+    <div class="container">
+        <h1>Fill the details </h1>
               <form (ngSubmit)="singup()" #signupForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
@@ -83,6 +85,7 @@
               <button type="button" class="btn btn-success" (click)="cancel_signup();">Cancel</button>
               <hr>
           </form>
+      </div>
   </div>
   <!--new user login end-->
 <!--login and signup section end-->
