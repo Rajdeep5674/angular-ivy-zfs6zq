@@ -17,7 +17,7 @@
   <!--new user login-->
   <button class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
-  <div class="card py-2 "[hidden]="signup_closed" *ngIf="signup_boolean">
+  <div class="card py-2 m2"[hidden]="signup_closed" *ngIf="signup_boolean">
               <form (ngSubmit)="singup()" #signupForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
