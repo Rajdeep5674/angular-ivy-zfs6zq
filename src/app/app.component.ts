@@ -6,7 +6,7 @@ import {PostIdAndMessageToUser} from './post-id-and-message-to-user';
 import {CommentModel} from './comment-model';
 import {PostIdComments} from './post-id-comments';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
-import {LoginModel} from './login-model'
+import {LoginModel} from './login-model';
 
 @Component({
   selector: 'my-app',
@@ -251,10 +251,14 @@ console.log(this.CommentModel);
   }
   loginAuthCheck(){
     console.log( this.LoginModel);
+    this._enrollmentService.post_login_details_for_auth_check().subscribe(data_from_server_after_login_auth_check=>{
+      console.log(data_from_server_after_login_auth_check)
+    });
+
     
   }
   cancel_login(){
-
+  this.login_boolean=false;
   }
 
 }

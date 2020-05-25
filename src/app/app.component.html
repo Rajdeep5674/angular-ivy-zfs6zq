@@ -13,7 +13,7 @@
   <!--existing user login-->
     &nbsp; &nbsp;<button type="button" class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
 
-  <div class="card border py-3" [hidden]="login_closed" *ngIf="logi_boolean">
+  <div class="card border py-3" [hidden]="login_closed" *ngIf="login_boolean">
     <div class="container">
         <h1>Login form</h1>
               <form (ngSubmit)="loginAuthCheck();" #loginForm="ngForm">
@@ -48,7 +48,7 @@
   <!--existing user login end-->
 
   <!--new user login-->
-  <button type="button" class="btn btn-success" (click)="singup();">Sign up</button>
+  <button [hidden]="login_boolean" type="button" class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
   <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
