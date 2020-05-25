@@ -211,12 +211,11 @@ console.log(this.CommentModel);
     console.log(this.CustomerDetaillsRoot);
     if(this.CustomerDetaillsRoot.password1 !==this.CustomerDetaillsRoot.password2)
     {
-      this.userMessage="Both the passwords are not same. Please enter same password twice";
+      alert("Both the passwords are not same. Please enter same password twice");
     }
     else
     {
       this.signup_closed=true;
-      //this.userMessage="Details saved successfully. Now you can login and explore all the posts.";
       alert("Details saved successfully. Now you can login and explore all the posts.");
     }
   }
