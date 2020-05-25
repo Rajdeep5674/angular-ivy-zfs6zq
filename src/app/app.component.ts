@@ -241,6 +241,6 @@ console.log(this.CommentModel);
     this.signup_closed=true;
   }
   terms(){
-    alert("Terms and conditions\n1.no harmful or abusive comments or post will be shared in this website. Authority reserves the right to block users profile if such posts/comments reported and found to be authentic.")
+    alert("Terms and conditions\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
 
 }
