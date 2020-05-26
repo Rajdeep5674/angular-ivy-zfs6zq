@@ -57,7 +57,7 @@ body {
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+  .sidebar a {font-size: 30px;}
 }
 
 /*css for top navigation ::-webkit-meter-bar*/
@@ -119,7 +119,7 @@ body {
   }
   .topnav a, .topnav input[type=text], .topnav .search-container button {
     float: none;
-    display: block;
+    display: inline;
     text-align: left;
     width: 100%;
     margin: 0;
