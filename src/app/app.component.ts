@@ -368,8 +368,5 @@ console.log(this.CommentModel);
   user_id_edit(){
 
   }
-  user_id_edit_text_save(user_id_edit_text_value){
-    console.log(user_id_edit_text_value)
-  }
 
 }

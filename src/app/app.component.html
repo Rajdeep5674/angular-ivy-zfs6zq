@@ -52,13 +52,8 @@
           <th scope="row">2</th>
           <td><div style="color:#5cb85c">User id:</div>
           <div>
-             {{user_id_received_from_server}}
-             <input type="text" id="user_id_edit_text" #user_id_edit_text placeholder="{{user_id_received_from_server}}">
-             <button class="btn btn-success" type="submit" (click)="user_id_edit_text_save(user_id_edit_text.value);">Save</button>
+             {{user_id_received_from_server}}<br>
           </div>
-
-          </td>
-          <td><button class="btn btn-success" (click)="user_id_edit();">Edit</button></td>
         </tr>
         <tr>
           <th scope="row">3</th>
@@ -67,7 +62,6 @@
             {{email_received_from_server}}
           </div>
           </td>
-          <td><button class="btn btn-success" (click)="email_edit();">Edit</button></td>
         </tr>
       </tbody>
     </table>
