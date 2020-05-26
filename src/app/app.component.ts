@@ -359,5 +359,14 @@ console.log(this.CommentModel);
   your_account_back(){
     this.your_account_boolean=false;
   }
+  full_name_edit(){
+
+  }
+  email_edit(){
+
+  }
+  user_id_edit(){
+    
+  }
 
 }

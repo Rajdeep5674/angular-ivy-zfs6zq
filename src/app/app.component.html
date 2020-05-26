@@ -30,7 +30,7 @@
 </div>
 <!--collapsed side nav bar end-->
 <!--your account start-->
-  <div [hidden]="!your_account_boolean">
+  <div class="card border py-3"[hidden]="!your_account_boolean">
         <table class="table table-hover table-striped">
       <thead>
         <tr>
@@ -41,22 +41,34 @@
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Full name: {{full_name_received_from_server}}</td>
-          <td><button class="btn btn-success">Edit</button></td>
+          <td><div style="color:#5cb85c"> Full name:</div> 
+          <div>
+            {{full_name_received_from_server}}
+          </div>
+          </td>
+          <td><button class="btn btn-success" (click)="full_name_edit();">Edit</button></td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>User id:{{user_id_received_from_server}}</td>
-          <td><button class="btn btn-success">Edit</button></td>
+          <td><div style="color:#5cb85c">User id:</div>
+          <div>
+             {{user_id_received_from_server}}
+          </div>
+          </td>
+          <td><button class="btn btn-success" (click)="user_id_edit();">Edit</button></td>
         </tr>
         <tr>
           <th scope="row">3</th>
-          <td>Email id:{{email_received_from_server}}</td>
-          
+          <td><div style="color:#5cb85c">Email id: </div>
+          <div>
+            {{email_received_from_server}}
+          </div>
+          </td>
+          <td><button class="btn btn-success" (click)="email_edit();">Edit</button></td>
         </tr>
       </tbody>
     </table>
-    <button type="button" class="btn btn-success" (click)="your_account_back();">Back
+    <button class="text-center" type="button" class="btn btn-success" (click)="your_account_back();">Back
       </button>
   </div>
 <!--your account end-->
