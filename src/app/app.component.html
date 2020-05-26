@@ -2,7 +2,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--top navigation bar start-->
 <div class="topnav">
-<div id="main">
+<div >
   <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile</button>  
 </div>
   <div class="search-container">
@@ -16,10 +16,13 @@
 <!--collapsed side nav bar start-->
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
-  <a href="#">Name</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+    <div class="card py-2 m1 bg-light">
+      <h4>&nbsp;&nbsp;Welcome Rajdeep</h4>
+    </div>
+  <a href="#">Your Account</a>
+  <a href="#">Your Posts</a>
+  <a href="#">Contact Us</a>
+  <a href="#">Logout</a>
 </div>
 <!--collapsed side nav bar end-->
 
