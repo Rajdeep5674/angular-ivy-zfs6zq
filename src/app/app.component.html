@@ -30,7 +30,7 @@
 </div>
 <!--collapsed side nav bar end-->
 <!--your account start-->
-  <div class="card border py-3"[hidden]="!your_account_boolean">
+  <div id="Your_Account" class="card border py-3"[hidden]="!your_account_boolean">
         <table class="table table-hover table-striped">
       <thead>
         <tr>
@@ -46,7 +46,6 @@
             {{full_name_received_from_server}}
           </div>
           </td>
-          <td><button class="btn btn-success" (click)="full_name_edit();">Edit</button></td>
         </tr>
         <tr>
           <th scope="row">2</th>
