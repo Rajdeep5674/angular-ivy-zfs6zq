@@ -315,5 +315,9 @@ console.log(this.CommentModel);
     this.login_boolean=false;
     alert("Successfully logged out");
   }
+  contact_us(){
+    alert("Please email us your query or issue to\n raj.bhadra94@gmail.com\n");
+    this.closeNav();
+  }
 
 }
