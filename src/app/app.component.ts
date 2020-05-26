@@ -312,7 +312,8 @@ console.log(this.CommentModel);
     this.LoginModel.user_id="";
     this.LoginModel.password="";
 
-    this.login_boolean=f;
+    this.login_boolean=false;
+    alert("Successfully logged out");
   }
 
 }
