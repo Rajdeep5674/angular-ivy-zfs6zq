@@ -333,5 +333,8 @@ console.log(this.CommentModel);
   your_posts_back(){
     this.your_posts_boolean=false;
   }
+  notifications(){
+    this.closeNav();
+  }
 
 }

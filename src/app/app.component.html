@@ -20,6 +20,7 @@
       <h4>&nbsp;&nbsp;Welcome {{full_name_new}}</h4>
     </div>
   <a href="#Your_Account" (click)="closeNav();">Your Account</a>
+  <a href="#Your_Account" (click)="notifications();">Notifications</a>
   <a href="#Your_Posts" (click)="your_posts();">Your Posts</a>
   <a href="#Contact_Us" (click)="contact_us();">Contact Us</a>
   <a href="#Logout" (click)="logout();">Logout</a>
@@ -236,7 +237,7 @@
       <div class="text-center py-2">
           <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
 >like</button>&nbsp;&nbsp;
-          <button [hidden]="!view_while_login_auth_true"class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;<br>
+          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;<br>
            <button class="btn btn-success" (click)="view_all_comments(post_id+1);">View all comments</button><br><br>
            <button class="btn btn-success" (click)="hide_all_comments(post_id+1);">Hide all comments</button>
       </div>
