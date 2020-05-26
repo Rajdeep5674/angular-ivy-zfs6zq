@@ -20,12 +20,18 @@
       <h4>&nbsp;&nbsp;Welcome {{full_name_new}}</h4>
     </div>
   <a href="#Your_Account" (click)="closeNav();">Your Account</a>
-  <a href="#Your_Posts" (click)="closeNav();">Your Posts</a>
+  <a href="#Your_Posts" (click)="your_posts();">Your Posts</a>
   <a href="#Contact_Us" (click)="contact_us();">Contact Us</a>
   <a href="#Logout" (click)="logout();">Logout</a>
 </div>
 <!--collapsed side nav bar end-->
-
+<!--your posts start-->
+  <div [hidden]="!your_posts_boolean">
+    <p>Only your posts will be displayed here</p>
+    <button type="button" class="btn btn-success" (click)="your_posts_back();">Back
+      </button>
+  </div>
+<!--your post ends-->
 <!--login and signup section start-->
   <div class="alert alert-info card" role="alert" [hidden]="view_while_login_auth_true">
   Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>

@@ -44,7 +44,7 @@ i=0;
   active_session=false;
   full_name_new="Guest";
   CustomerDetaillsRoot_array=[];
-
+  your_posts_boolean=false;
   //false value indicates the default view without login, true value indicates user successfully logged in into the website.
   view_while_login_auth_true=false;
   //variables for signup function
@@ -299,8 +299,8 @@ console.log(this.CommentModel);
   document.getElementById("main").style.marginLeft= "0";
   }
   logout(){
-    confirm("You are about to logout.");
-    this.closeNav();
+    var logout_confirmation=confirm("You are about to logout.");
+    if(logout_confirmation){
     this.view_while_login_auth_true=false;
     this.active_session=false;
     this.CustomerDetaillsRoot[0].full_name="";
@@ -314,10 +314,24 @@ console.log(this.CommentModel);
 
     this.login_boolean=false;
     alert("Successfully logged out");
+    this.closeNav();
+    
+    }
+    else{
+      this.closeNav();
+    }
+
   }
   contact_us(){
     alert("Please email us your query or issue to\n raj.bhadra94@gmail.com\n");
     this.closeNav();
+  }
+  your_posts(){
+    this.your_posts_boolean=true;
+    this.closeNav();
+  }
+  your_posts_back(){
+    this.your_posts_boolean=false;
   }
 
 }
