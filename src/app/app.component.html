@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!--top navigation bar start-->
-<div class="topnav">
+<div class="topnav" [hidden]="!view_while_login_auth_true">
 <div id="main">
   <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile</button>  
 </div>
@@ -22,15 +22,16 @@
   <a href="#Your_Account" (click)="closeNav();">Your Account</a>
   <a href="#Your_Posts" (click)="closeNav();">Your Posts</a>
   <a href="#Contact_Us" (click)="closeNav();">Contact Us</a>
-  <a href="#Logout" (click)="closeNav();">Logout</a>
+  <a href="#Logout" (click)="logout();">Logout</a>
 </div>
 <!--collapsed side nav bar end-->
 
 <!--login and signup section start-->
-  <div class="alert alert-info card" role="alert">
+  <div class="alert alert-info card" role="alert" [hidden]="view_while_login_auth_true">
   Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>
 </div>
   <!--existing user login-->
+  <div [hidden]="view_while_login_auth_true">
     &nbsp; &nbsp;<button type="button" class="btn btn-success" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
 
   <div class="card border py-3" [hidden]="login_closed" *ngIf="login_boolean">
@@ -143,7 +144,8 @@
           </form>
       </div>
   </div>
-  <!--new user login end-->
+  </div>
+  <!--new user signup end-->
 <!--login and signup section end-->
 
 <div class="card border py-3">
@@ -168,7 +170,7 @@
                [(ngModel)]="PostModel.message"
                #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
 
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Post</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true">Post</button>
       <hr>
     </form>
   </div>

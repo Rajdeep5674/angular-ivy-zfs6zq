@@ -44,6 +44,9 @@ i=0;
   active_session=false;
   full_name_new="Guest";
   CustomerDetaillsRoot_array=[];
+
+  //false value indicates the default view without login, true value indicates user successfully logged in into the website.
+  view_while_login_auth_true=false;
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
@@ -245,6 +248,7 @@ console.log(this.CommentModel);
     alert("Terms and conditions\n\nNo harmful or abusive comments or post will be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
   }
     login(){
+      console.log("login clicked");
       this.LoginModel.user_id="";
       this.LoginModel.password="";
 
@@ -266,6 +270,8 @@ console.log(this.CommentModel);
           this.CustomerDetaillsRoot=data_from_server_after_login_auth_check;
           this.full_name_new=this.CustomerDetaillsRoot[0].full_name;
 
+          //setting up all the parameters while successful login
+          this.view_while_login_auth_true=true;
         }
         else{
           alert("invalid userid or password");
@@ -291,6 +297,22 @@ console.log(this.CommentModel);
   closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
+  }
+  logout(){
+    confirm("You are about to logout.");
+    this.closeNav();
+    this.view_while_login_auth_true=false;
+    this.active_session=false;
+    this.CustomerDetaillsRoot[0].full_name="";
+    this.CustomerDetaillsRoot[0].email="";
+    this.CustomerDetaillsRoot[0].user_id="";
+    this.CustomerDetaillsRoot[0].password1="";
+    this.CustomerDetaillsRoot[0].password2="";
+
+    this.LoginModel.user_id="";
+    this.LoginModel.password="";
+
+    this.login_boolean=f;
   }
 
 }
