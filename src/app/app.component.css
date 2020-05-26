@@ -2,7 +2,7 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.sidenav {
+.sidebar {
   height: 100%;
   width: 0;
   position: fixed;
@@ -15,7 +15,7 @@ body {
   padding-top: 60px;
 }
 
-.sidenav a {
+.sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
@@ -24,11 +24,11 @@ body {
   transition: 0.3s;
 }
 
-.sidenav a:hover {
+.sidebar a:hover {
   color: #f1f1f1;
 }
 
-.sidenav .closebtn {
+.sidebar .closebtn {
   position: absolute;
   top: 0;
   right: 25px;
@@ -36,45 +36,26 @@ body {
   margin-left: 50px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
   background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
+  color: white;
+  padding: 10px 15px;
+  border: none;
 }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
+.openbtn:hover {
+  background-color: #444;
 }
 
-.sidenav a:hover {
-  color: #f1f1f1;
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
 }
 
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
-
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
 }
