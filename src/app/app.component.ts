@@ -42,7 +42,10 @@ i=0;
   login_boolean=false;
   login_closed=true;
   active_session=false;
-  full_name_new="Guest";
+  full_name_received_from_server="Guest";
+  email_received_from_server="";
+  user_id_received_from_server="";
+
   CustomerDetaillsRoot_array=[];
   your_posts_boolean=false;
   your_account_boolean=false;
@@ -270,7 +273,9 @@ console.log(this.CommentModel);
           alert("login successful, Welcome "+data_from_server_after_login_auth_check[0].full_name);
           this.active_session=true;
           this.CustomerDetaillsRoot=data_from_server_after_login_auth_check;
-          this.full_name_new=this.CustomerDetaillsRoot[0].full_name;
+          this.full_name_received_from_server=this.CustomerDetaillsRoot[0].full_name;
+            this.email_received_from_server=this.CustomerDetaillsRoot[0].email;
+            this.user_id_received_from_server=this.CustomerDetaillsRoot[0].user_id;
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
@@ -319,6 +324,10 @@ console.log(this.CommentModel);
     this.closeNav();
     this.your_posts_boolean=false;
     this.your_account_boolean=false;
+
+    this.full_name_received_from_server="Guest";
+    this.email_received_from_server="";
+    this.user_id_received_from_server="";
     }
     else{
       this.closeNav();

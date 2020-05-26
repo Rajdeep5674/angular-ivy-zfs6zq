@@ -12,7 +12,7 @@
 <div class="jumbotron card ">
   <h1>askany.com
     <div [hidden]="!view_while_login_auth_true">
-      welcomes {{full_name_new}}
+      welcomes {{full_name_received_from_server}}
       </div></h1>      
   <p>Post any query/thoughts here. Everyone can see your post </p>
 </div>
@@ -20,7 +20,7 @@
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
     <div class="card py-2 m bg-light text-center">
-      <h4 style="color:#5cb85c">&nbsp;&nbsp;{{full_name_new}}</h4>
+      <h4 style="color:#5cb85c">&nbsp;&nbsp;{{full_name_received_from_server}}</h4>
     </div>
   <a href="#Your_Account" (click)="your_account();">Your Account</a>
   <a href="#notifications" (click)="notifications();">Notifications</a>
@@ -31,7 +31,31 @@
 <!--collapsed side nav bar end-->
 <!--your account start-->
   <div [hidden]="!your_account_boolean">
-    <p>All your account related information will be displayed here</p>
+        <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Your basic details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Full name: {{full_name_received_from_server}}</td>
+          <td><button class="btn btn-success">Edit</button></td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>User id:{{user_id_received_from_server}}</td>
+          <td><button class="btn btn-success">Edit</button></td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Email id:{{email_received_from_server}}</td>
+          
+        </tr>
+      </tbody>
+    </table>
     <button type="button" class="btn btn-success" (click)="your_account_back();">Back
       </button>
   </div>
