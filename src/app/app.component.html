@@ -19,13 +19,20 @@
     <div class="card py-2 m1 bg-light">
       <h4>&nbsp;&nbsp;Welcome {{full_name_new}}</h4>
     </div>
-  <a href="#Your_Account" (click)="closeNav();">Your Account</a>
-  <a href="#Your_Account" (click)="notifications();">Notifications</a>
+  <a href="#Your_Account" (click)="your_account();">Your Account</a>
+  <a href="#notifications" (click)="notifications();">Notifications</a>
   <a href="#Your_Posts" (click)="your_posts();">Your Posts</a>
   <a href="#Contact_Us" (click)="contact_us();">Contact Us</a>
   <a href="#Logout" (click)="logout();">Logout</a>
 </div>
 <!--collapsed side nav bar end-->
+<!--your account start-->
+  <div [hidden]="!your_account_boolean">
+    <p>All your account related information will be displayed here</p>
+    <button type="button" class="btn btn-success" (click)="your_posts_back();">Back
+      </button>
+  </div>
+<!--your account end-->
 <!--your posts start-->
   <div [hidden]="!your_posts_boolean">
     <p>Only your posts will be displayed here</p>

@@ -45,6 +45,7 @@ i=0;
   full_name_new="Guest";
   CustomerDetaillsRoot_array=[];
   your_posts_boolean=false;
+  your_account_boolean=false;
   //false value indicates the default view without login, true value indicates user successfully logged in into the website.
   view_while_login_auth_true=false;
   //variables for signup function
@@ -316,6 +317,7 @@ console.log(this.CommentModel);
     alert("Successfully logged out");
     this.closeNav();
     this.your_posts_boolean=false;
+    this.your_account_boolean=fal;
     }
     else{
       this.closeNav();
@@ -334,6 +336,10 @@ console.log(this.CommentModel);
     this.your_posts_boolean=false;
   }
   notifications(){
+    this.closeNav();
+  }
+  your_account(){
+    this.your_account_boolean=true;
     this.closeNav();
   }
 
