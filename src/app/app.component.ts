@@ -42,6 +42,8 @@ i=0;
   login_boolean=false;
   login_closed=true;
   active_session=false;
+  full_name_new="raju";
+  CustomerDetaillsRoot_array=[];
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
@@ -252,17 +254,25 @@ console.log(this.CommentModel);
   }
   loginAuthCheck(){
     alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.")
-    console.log( this.LoginModel);
+    //console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
-      console.log(data_from_server_after_login_auth_check);
-      if(data_from_server_after_login_auth_check.message_from_server=="login_valid"){
-        //console.log("login successfull");
-        alert("login successful");
-        this.active_session=true;
+      if(data_from_server_after_login_auth_check.length===0){
+        alert("invalid userid or password");
       }
       else{
-        alert("invalid user id or password");
+        if(data_from_server_after_login_auth_check[0].user_id===this.LoginModel.user_id && data_from_server_after_login_auth_check[0].password===this.LoginModel.password){
+          alert("login successful, Welcome "+data_from_server_after_login_auth_check[0].full_name);
+          this.active_session=true;
+          this.CustomerDetaillsRoot=data_from_server_after_login_auth_check;
+          this.full_name_new=this.CustomerDetaillsRoot[0].full_name;
+
+        }
+        else{
+          alert("invalid userid or password");
+        }
+
       }
+      console.log(data_from_server_after_login_auth_check.length);
     });
 
     
