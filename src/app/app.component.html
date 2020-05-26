@@ -1,6 +1,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<!--top navigation bar start-->
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+<!-- top nevigation bar end-->
 <div class="jumbotron card ">
   <h1>askany.com</h1>      
   <p>Post any query/thoughts here. Everyone can see your post </p>
@@ -15,7 +27,7 @@
 </div>
 <!--collapsed side nav bar end-->
 <div id="main">
-  <button type="button" class="btn btn-success" (click)="openNav();">☰ V profile</button>  
+  <button type="button" class="btn btn-success" (click)="openNav();">☰ Viprofile</button>  
 </div>
 
 <!--login and signup section start-->
