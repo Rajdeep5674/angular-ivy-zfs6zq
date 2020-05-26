@@ -234,9 +234,9 @@
 
         </div>
       <div class="text-center py-2">
-          <button class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
+          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
 >like</button>&nbsp;&nbsp;
-          <button class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;<br>
+          <button [hidden]="!view_while_login_auth_true"class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;<br>
            <button class="btn btn-success" (click)="view_all_comments(post_id+1);">View all comments</button><br><br>
            <button class="btn btn-success" (click)="hide_all_comments(post_id+1);">Hide all comments</button>
       </div>

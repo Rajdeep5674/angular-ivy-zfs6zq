@@ -315,7 +315,7 @@ console.log(this.CommentModel);
     this.login_boolean=false;
     alert("Successfully logged out");
     this.closeNav();
-    
+    this.your_posts_boolean=false;
     }
     else{
       this.closeNav();
