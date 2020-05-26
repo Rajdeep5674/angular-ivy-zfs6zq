@@ -42,7 +42,7 @@ i=0;
   login_boolean=false;
   login_closed=true;
   active_session=false;
-  full_name_new="G";
+  full_name_new="Guest";
   CustomerDetaillsRoot_array=[];
   //variables for signup function
   signup_boolean=false;
