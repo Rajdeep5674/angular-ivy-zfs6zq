@@ -57,6 +57,8 @@ i=0;
   signup_boolean=false;
   signup_closed=true;
   userMessage="";
+
+  user_id_already_exists=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -216,19 +218,21 @@ console.log(this.CommentModel);
   }
 
   singup(){
-    this.CustomerDetaillsRoot.full_name="";
-    this.CustomerDetaillsRoot.email="";
-    this.CustomerDetaillsRoot.email="";
-    this.CustomerDetaillsRoot.password1="";
-    this.CustomerDetaillsRoot.password2="";
-
-    console.log("signup pressed");
-    console.log(this.CustomerDetaillsRoot);
+    if(this.user_id_already_exists===true){
+      //let the value be there in CustomerDetaillsRoot
+    }
+    else{
+          this.CustomerDetaillsRoot.full_name="";
+          this.CustomerDetaillsRoot.email="";
+          this.CustomerDetaillsRoot.user_id="";
+          this.CustomerDetaillsRoot.password1="";
+          this.CustomerDetaillsRoot.password2="";
+    }
     this.signup_boolean=true;
     this.signup_closed=false;
   }
   signup_form_submitted(){
-    this.view_all_posts_standby=true;
+    this.standby_home_page=true;
     console.log(this.CustomerDetaillsRoot);
     if(this.CustomerDetaillsRoot.password1 !==this.CustomerDetaillsRoot.password2)
     {
@@ -242,12 +246,13 @@ console.log(this.CommentModel);
     (data_from_server_after_posting_customerDetailsRootObject=>{
       if(data_from_server_after_posting_customerDetailsRootObject.message_from_server==="user_id_already_exists"){
         alert("User id already exists. Please select a different user id.");
-
+        this.user_id_already_exists=true;
       }
       else{
               alert("Details saved successfully. Now you can login and explore all the posts.");
+              this.user_id_already_exists=false;
       }
-      this.view_all_posts_standby=f;
+      this.standby_home_page=false;
         //console.log(data_from_server_after_posting_customerDetailsRootObject.)
         }
     ));
