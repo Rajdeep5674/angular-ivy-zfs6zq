@@ -45,7 +45,7 @@ i=0;
   full_name_received_from_server="Guest";
   email_received_from_server="";
   user_id_received_from_server="";
-
+  standby_home_page=false;
   CustomerDetaillsRoot_array=[];
   your_posts_boolean=false;
   your_account_boolean=false;
@@ -265,7 +265,8 @@ console.log(this.CommentModel);
       this.login_closed=false;
   }
   loginAuthCheck(){
-    alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.")
+    alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.");
+    this.standby_home_page=true;
     //console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
       if(data_from_server_after_login_auth_check.length===0){
@@ -288,6 +289,7 @@ console.log(this.CommentModel);
         }
 
       }
+      this.standby_home_page=false;
       console.log(data_from_server_after_login_auth_check.length);
     });
 
