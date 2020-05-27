@@ -210,21 +210,11 @@
     <h1>Post Here</h1>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name"
-               required
-               [(ngModel)]="PostModel.name" name="name"
-               #name="ngModel" placeholder="Enter your name">
-        <div [hidden]="name.valid || name.untouched"
-             class="alert alert-danger">
-          Name is required
-        </div>
+        <textarea rows="4" cols="50" name="message" class="form-control" id="message"
+                required
+                [(ngModel)]="PostModel.message"
+                #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
       </div>
-
-      <textarea rows="4" cols="50" name="message" class="form-control" id="message"
-               required
-               [(ngModel)]="PostModel.message"
-               #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
 
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true">Post</button>
       <hr>

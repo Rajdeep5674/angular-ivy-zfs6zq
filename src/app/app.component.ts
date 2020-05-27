@@ -74,6 +74,7 @@ i=0;
 
   onSubmit() { 
     this.you="";
+    this.PostModel.=this.full_name_received_from_server;
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
