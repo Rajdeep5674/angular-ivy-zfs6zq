@@ -300,13 +300,13 @@
               <a style="color:green"  class="nav-link" (click)="like(post.post_id);"><i class="fas fa-thumbs-up"></i></a>
             </li>
             <li class="nav-item">
-              <a style="color:green" class="nav-link" href="#"><i class='far fa-comment'></i></a>
+              <a style="color:green" class="nav-link" (click)="comment(post.post_id);"><i class='far fa-comment'></i></a>
             </li>
             <li class="nav-item">
-              <a style="color:green" class="nav-link" href="#"><i class='far fa-comment-dots'></i></a>
+              <a style="color:green" class="nav-link" (click)="view_all_comments(post.post_id);"><i class='far fa-comment-dots' ></i></a>
             </li>
             <li class="nav-item">
-              <a style="color:green" class="nav-link" href="#"><i class='fas fa-comment-slash'></i></a>
+              <a style="color:green" class="nav-link" ><i class='fas fa-comment-slash'></i></a>
             </li>
           </ul> 
       </div>
