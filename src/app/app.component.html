@@ -240,11 +240,20 @@
     <div>
           <div [hidden]="!view_all_post" class="container border py-2 m-2">
       <div class="card py-2 " *ngFor="let post of data;index as i;">
-        <h5><span class="badge badge-secondary py-3 m-3">{{ post.full_name }}</span><hr></h5>
-        <p class="m-2">{{ post.message }}</p>{{ post.post_id }}
-        <hr>
+          <div class="card text-center">
+              <div class="card-header">
+                Post id-{{post.post_id}}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title text-primary">{{ post.full_name }}</h5>
+                <p class="card-text">{{ post.message }}</p>
+              </div>
+              <div class="card-footer text-muted">
+                posted on 23/01/2019-17:23:42
+              </div>
+          </div>
         <small *ngIf="PostIdAndMessageToUser.post_id===(post.post_id);else elseBlock" style="color:blue">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
-        <ng-template #elseBlock><small>&nbsp;{{post.like_count}}&nbsp;people liked this post</small></ng-template>
+        <ng-template #elseBlock><small class="text-right text-primary font-italic">&nbsp;{{post.like_count}}&nbsp;people liked this post</small></ng-template>
         <br>
         <!--form for accepting the comment-->
         <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post.post_id)">
@@ -273,12 +282,21 @@
         </div>
         <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post.post_id)">
             <div *ngIf="no_comments_yet; else elseBlock">
-              <small style="color:blue">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
+              <small style="color:blue" class="text-primary font-italic">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
             </div>
             <ng-template #elseBlock>
-          <div class="card py-2 " *ngFor="let comment of comment_array">
-            <small style="color:blue">&nbsp;{{data_from_server_for_comment[comment].commentor_name}}:</small>
-            <small>&nbsp;{{data_from_server_for_comment[comment].comment}}</small>
+          <div *ngFor="let comment of comment_array">
+            <div class="card">
+              <div class="card-header">
+                {{data_from_server_for_comment[comment].commentor_name}}
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{data_from_server_for_comment[comment].comment}}</p>
+                  <footer class="blockquote-footer">commented on <cite title="Source Title">23/01/2019-17:23:42</cite></footer>
+                </blockquote>
+              </div>
+            </div>
           </div>
             </ng-template>
 
@@ -288,7 +306,7 @@
 >like</button>&nbsp;&nbsp;
           <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="comment(post.post_id);" >comment</button><br>&nbsp;&nbsp;<br>
            <button class="btn btn-success" (click)="view_all_comments(post.post_id);">View all comments</button><br><br>
-           <button class="btn btn-success" (click)="hide_all_comments();">Hide all comments</button>
+           <button class="btn btn-success" (click)="hide_all_comments(post.post_id);">Hide all comments</button>
       </div>
       </div>
     </div>
