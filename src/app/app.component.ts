@@ -19,6 +19,7 @@ export class AppComponent  {
   message_to_user="";
   data_string="";
   post_id=[];
+  view_all_posts_standby=false;
   full_name=[];
   master_array=[];
 i=0;
@@ -90,6 +91,7 @@ i=0;
   }
 
   viewAllPost(){
+    this.view_all_posts_standby=true;
     this.you="";
     //this.page_load=true;
     this.view_all_post=true;
@@ -102,7 +104,7 @@ i=0;
     {
       this.data_length_array.push(i);
     }
-  
+    this.view_all_posts_standby=false;
     }));
   }
 

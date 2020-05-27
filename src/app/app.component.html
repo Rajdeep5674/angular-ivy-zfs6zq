@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <div [hidden]="!standby_home_page">
   <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-    
     <div class="card-body">
       <p class="card-text">Validating your details...</p>
     </div>
@@ -238,7 +237,14 @@
     <p>{{message_to_user}}</p>
     <button class="btn btn-success" (click)="submitted=false">Back</button>
   </div>
-    <div>
+    <div [hidden]="!view_all_posts_standby">
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+      <div class="card-body">
+        <p class="card-text">Loading posts...</p>
+      </div>
+  </div>
+    </div>
+    <div [hidden]="view_all_posts_standby">
           <div [hidden]="!view_all_post" class="container border py-2 m-2">
       <div class="card py-2 " *ngFor="let post of data;index as i;">
           <div class="card text-center">
