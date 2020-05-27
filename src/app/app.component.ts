@@ -347,6 +347,8 @@ console.log(this.CommentModel);
   }
   your_posts(){
     this.your_posts_boolean=true;
+    this.notifications_back();
+    this.your_account_back();
     this.closeNav();
   }
   your_posts_back(){
@@ -354,6 +356,8 @@ console.log(this.CommentModel);
   }
   notifications(){
     this.notifications_boolean=true;
+    this.your_posts_back();
+    this.your_account_back();
     this.closeNav();
   }
   notifications_back(){
@@ -361,19 +365,13 @@ console.log(this.CommentModel);
   }
   your_account(){
     this.your_account_boolean=true;
+    this.your_posts_back();
+    this.notifications_back();
     this.closeNav();
   }
   your_account_back(){
     this.your_account_boolean=false;
   }
-  full_name_edit(){
 
-  }
-  email_edit(){
-
-  }
-  user_id_edit(){
-
-  }
 
 }
