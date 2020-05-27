@@ -135,7 +135,7 @@
   <!--existing user login end-->
 
   <!--new user login-->
-  <button [hidden]="login_boolean" type="button" class="btn btn-success" (click)="singup();">Sign up</button>
+  <button [hidden]="login_boolean || new_user_created_successfully" type="button" class="btn btn-success" (click)="singup();">Sign up</button>
   <hr>
   <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">

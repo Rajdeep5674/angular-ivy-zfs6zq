@@ -59,6 +59,7 @@ i=0;
   userMessage="";
 
   user_id_already_exists=false;
+  new_user_created_successfully=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -251,6 +252,7 @@ console.log(this.CommentModel);
       else{
               alert("Details saved successfully. Now you can login and explore all the posts.");
               this.user_id_already_exists=false;
+              this.new_user_created_successfully=true;
       }
       this.standby_home_page=false;
         //console.log(data_from_server_after_posting_customerDetailsRootObject.)
