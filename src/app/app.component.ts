@@ -60,6 +60,8 @@ i=0;
 
   user_id_already_exists=false;
   new_user_created_successfully=false;
+
+  view_all_commeents_loading=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -138,15 +140,13 @@ i=0;
 
 //event handler for comment button pressed
   comment(post_id){
+    this.comment_button_pressed=true;
     this.CommentModel.post_id=0;
     this.CommentModel.commentor_name="";
     this.CommentModel.comment="";
 
     this.go=false;
-    console.log("comment pressed for "+post_id);
-  this.comment_button_pressed=true;
-  this.PostIdAndMessageToUser.post_id_for_comment=post_id;
-console.log(this.CommentModel);
+    this.PostIdAndMessageToUser.post_id_for_comment=post_id;
   }
 
   //event handler for go button pressed in comment
@@ -171,6 +171,7 @@ console.log(this.CommentModel);
   }
 
   view_all_comments(post_id){
+    this.view_all_commeents_loading=true;
     //if server does not return any comment comment section should not be visible
     this.view_all_comments_boolean=false;
     this.data_from_server_for_comment=null;
@@ -207,7 +208,9 @@ console.log(this.CommentModel);
         this.view_all_comments_boolean=false;
         console.log("else called");
       }
+      this.view_all_commeents_loading=false;
         }
+      
     ));
   }
 

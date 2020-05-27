@@ -278,6 +278,9 @@
           </form>
           <!--end of comment form-->
         </div>
+              <div [hidden]="!view_all_commeents_loading" class="card-body">
+                <p class="card-text">Loading comemnts...</p>
+              </div>
         <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post.post_id)">
             <div *ngIf="no_comments_yet; else elseBlock">
               <small style="color:blue" class="text-primary font-italic">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
