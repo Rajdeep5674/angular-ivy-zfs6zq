@@ -3,5 +3,6 @@ export class PostModel {
     public name:string,
     public message:string,
     public like_count:number,
+    public post_time:string
   ){}
 }

@@ -68,10 +68,10 @@ i=0;
   ngOnInit() {
   }
 
-  PostModel = new PostModel('','',0);
+  PostModel = new PostModel('','',0,'');
   PostModelAdv=new PostModelAdv(0,'');
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
-  CommentModel=new CommentModel(0,'','');
+  CommentModel=new CommentModel(0,'','',);
   PostIdComments=new PostIdComments(0,'');
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
   LoginModel=new LoginModel('','')
@@ -80,6 +80,7 @@ i=0;
 
   onSubmit() { 
     this.you="";
+    this.PostModel.post_time=new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
     this.PostModel.name=this.full_name_received_from_server;
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
@@ -157,6 +158,8 @@ i=0;
   commentSubmitted(post_id){
   this.CommentModel.post_id=post_id;
   this.CommentModel.commentor_name=this.full_name_received_from_server;
+  this.CommentModel.comment_time=new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+
   //console.log(this.CommentModel);
     this._enrollmentService.comment(this.CommentModel).subscribe(
     (data_from_server_for_comment=>{
