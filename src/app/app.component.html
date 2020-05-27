@@ -256,7 +256,7 @@
                 <p class="card-text">{{ post.message }}</p>
               </div>
               <div class="card-footer text-muted">
-                posted on 23/01/2019-17:23:42
+                posted on {{post.post_time}}
               </div>
           </div>
         <small *ngIf="PostIdAndMessageToUser.post_id===(post.post_id);else elseBlock" style="color:green">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
@@ -294,7 +294,7 @@
               <div class="card-body">
                 <blockquote class="blockquote mb-0">
                   <small>{{data_from_server_for_comment[comment].comment}}</small>
-                  <footer class="blockquote-footer"><small>commented on <cite title="Source Title">23/01/2019-17:23:42</cite></small></footer>
+                  <footer class="blockquote-footer"><small>commented on <cite title="Source Title">{{data_from_server_for_comment[comment].comment_time}}</cite></small></footer>
                 </blockquote>
               </div>
             </div>
