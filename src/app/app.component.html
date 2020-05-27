@@ -272,12 +272,12 @@
           <div *ngFor="let comment of comment_array">
             <div class="card">
               <div class="card-header">
-                {{data_from_server_for_comment[comment].commentor_name}}
+                <small>{{data_from_server_for_comment[comment].commentor_name}}</small>
               </div>
               <div class="card-body">
                 <blockquote class="blockquote mb-0">
-                  <p>{{data_from_server_for_comment[comment].comment}}</p>
-                  <footer class="blockquote-footer">commented on <cite title="Source Title">23/01/2019-17:23:42</cite></footer>
+                  <small>{{data_from_server_for_comment[comment].comment}}</small>
+                  <footer class="blockquote-footer"><small>commented on <cite title="Source Title">23/01/2019-17:23:42</cite></small></footer>
                 </blockquote>
               </div>
             </div>
