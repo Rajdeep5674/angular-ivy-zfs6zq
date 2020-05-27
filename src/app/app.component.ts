@@ -228,6 +228,7 @@ console.log(this.CommentModel);
     this.signup_closed=false;
   }
   signup_form_submitted(){
+    this.view_all_posts_standby=true;
     console.log(this.CustomerDetaillsRoot);
     if(this.CustomerDetaillsRoot.password1 !==this.CustomerDetaillsRoot.password2)
     {
@@ -246,6 +247,7 @@ console.log(this.CommentModel);
       else{
               alert("Details saved successfully. Now you can login and explore all the posts.");
       }
+      this.view_all_posts_standby=f;
         //console.log(data_from_server_after_posting_customerDetailsRootObject.)
         }
     ));
