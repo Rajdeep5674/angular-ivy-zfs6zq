@@ -161,6 +161,7 @@ console.log(this.CommentModel);
     }
         }
     ));
+    this.view_all_comments(post_id);
     this.go=true;
   }
 

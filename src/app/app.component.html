@@ -264,7 +264,7 @@
           </form>
           <!--end of comment form-->
         </div>
-        <div id="post_display_section" *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post.post_id)">
+        <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post.post_id)">
             <div *ngIf="no_comments_yet; else elseBlock">
               <small style="color:blue" class="text-primary font-italic">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
             </div>
@@ -288,17 +288,17 @@
         </div>
           <ul class="nav">
 
+            <li  [hidden]="!view_while_login_auth_true" class="nav-item">
+              <a style="color:green"  class="nav-link" (click)="like(post.post_id);"><i class="fas fa-thumbs-up"></i></a>
+            </li>
             <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  href="#post_display_section" class="nav-link" (click)="like(post.post_id);"><i class="fas fa-thumbs-up"></i></a>
-            </li>
-            <li [hidden]="!view_while_login_auth_true"class="nav-item">
-              <a style="color:green"  href="#post_display_section"  class="nav-link" (click)="comment(post.post_id);"><i class='far fa-comment'></i></a>
+              <a style="color:green"  class="nav-link" (click)="comment(post.post_id);"><i class='far fa-comment'></i></a>
             </li>
             <li class="nav-item">
-              <a style="color:green"  href="#post_display_section"  class="nav-link" (click)="view_all_comments(post.post_id);"><i class='far fa-comment-dots' ></i></a>
+              <a style="color:green" class="nav-link" (click)="view_all_comments(post.post_id);"><i class='far fa-comment-dots' ></i></a>
             </li>
             <li class="nav-item">
-              <a style="color:green"  href="#post_display_section"  class="nav-link" ><i class='fas fa-comment-slash'></i></a>
+              <a style="color:green" class="nav-link" (click)="hide_all_comments(post.post_id);"><i class='fas fa-comment-slash'></i></a>
             </li>
           </ul> 
       </div>
