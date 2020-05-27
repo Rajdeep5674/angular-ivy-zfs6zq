@@ -96,6 +96,10 @@ i=0;
   }
 
   viewAllPost(){
+    var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+
+    //console.log(typeof(indiaTime));
+
     this.view_all_posts_standby=true;
     this.you="";
     //this.page_load=true;
