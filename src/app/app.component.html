@@ -237,18 +237,18 @@
     <p>{{message_to_user}}</p>
     <button class="btn btn-success" (click)="submitted=false">Back</button>
   </div>
-
-    <div [hidden]="!view_all_post" class="container border py-2 m-2">
-      <div class="card py-2 " *ngFor="let post_id of data_length_array">
-        <h5><span class="badge badge-secondary py-3 m-3">{{ data[post_id].full_name }}</span><hr></h5>
-        <p class="m-2">{{ data[post_id].message }}</p>
+    <div>
+          <div [hidden]="!view_all_post" class="container border py-2 m-2">
+      <div class="card py-2 " *ngFor="let post of data;index as i;">
+        <h5><span class="badge badge-secondary py-3 m-3">{{ post.full_name }}</span><hr></h5>
+        <p class="m-2">{{ post.message }}</p>{{ post.post_id }}
         <hr>
-        <small *ngIf="PostIdAndMessageToUser.post_id===(post_id+1);else elseBlock" style="color:blue">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
-        <ng-template #elseBlock><small>&nbsp;{{data[post_id].like_count}}&nbsp;people liked this post</small></ng-template>
+        <small *ngIf="PostIdAndMessageToUser.post_id===(post.post_id);else elseBlock" style="color:blue">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
+        <ng-template #elseBlock><small>&nbsp;{{post.like_count}}&nbsp;people liked this post</small></ng-template>
         <br>
         <!--form for accepting the comment-->
-        <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post_id+1)">
-          <form (ngSubmit)="commentSubmitted(post_id)" #commentForm="ngForm">
+        <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post.post_id)">
+          <form (ngSubmit)="commentSubmitted(post.post_id)" #commentForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
                 <input type="text" class="form-control" id="commentor_name"
@@ -260,18 +260,18 @@
                   Name is required
                 </div>
               </div>
-              <input type="hidden" id="hidden_post_id" [(ngModel)]="CommentModel.post_id" value="post_id" name="hidden_post_id"> 
+              <input type="hidden" id="hidden_post_id" [(ngModel)]="CommentModel.post_id" value="post.post_id" name="hidden_post_id"> 
               <textarea rows="4" cols="50" name="comment" class="form-control" id="comment"
                       required
                       [(ngModel)]="CommentModel.comment"
                       #message="ngModel" placeholder="Type your comment here." name="comment"></textarea><br>
               <button type="submit" class="btn btn-success" [disabled]="!commentForm.form.valid">Go</button>&nbsp;&nbsp;&nbsp;
-              <button type="button" class="btn btn-success" (click)="cancel(post_id+1);">Cancel</button>
+              <button type="button" class="btn btn-success" (click)="cancel(post[i].post_id+1);">Cancel</button>
               <hr>
           </form>
           <!--end of comment form-->
         </div>
-        <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post_id+1)">
+        <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(post.post_id)">
             <div *ngIf="no_comments_yet; else elseBlock">
               <small style="color:blue">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
             </div>
@@ -284,15 +284,14 @@
 
         </div>
       <div class="text-center py-2">
-          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="like(post_id+1);" [disabled]="like_button_pressed.includes(post_id+1)"
+          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="like(post.post_id);" [disabled]="like_button_pressed.includes(post.post_id)"
 >like</button>&nbsp;&nbsp;
-          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="comment(post_id+1);" >comment</button><br>&nbsp;&nbsp;<br>
-           <button class="btn btn-success" (click)="view_all_comments(post_id+1);">View all comments</button><br><br>
-           <button class="btn btn-success" (click)="hide_all_comments(post_id+1);">Hide all comments</button>
+          <button [hidden]="!view_while_login_auth_true" class="btn btn-success" (click)="comment(post.post_id);" >comment</button><br>&nbsp;&nbsp;<br>
+           <button class="btn btn-success" (click)="view_all_comments(post.post_id);">View all comments</button><br><br>
+           <button class="btn btn-success" (click)="hide_all_comments();">Hide all comments</button>
       </div>
       </div>
     </div>
-    <div>
     </div>
 </div>
 </div>
