@@ -146,7 +146,8 @@ console.log(this.CommentModel);
 
   //event handler for go button pressed in comment
   commentSubmitted(post_id){
-  this.CommentModel.post_id=post_id+1;
+  this.CommentModel.post_id=post_id;
+  this.CommentModel.commentor_name=this.full_name_received_from_server;
   //console.log(this.CommentModel);
     this._enrollmentService.comment(this.CommentModel).subscribe(
     (data_from_server_for_comment=>{
