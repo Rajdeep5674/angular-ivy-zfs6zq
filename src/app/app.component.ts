@@ -295,7 +295,7 @@ i=0;
       this.login_closed=false;
   }
   loginAuthCheck(){
-    alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.");
+    //alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.");
     this.standby_home_page=true;
     //console.log( this.LoginModel);
     this._enrollmentService.post_login_details_for_auth_check(this.LoginModel).subscribe(data_from_server_after_login_auth_check=>{
@@ -304,7 +304,7 @@ i=0;
       }
       else{
         if(data_from_server_after_login_auth_check[0].user_id===this.LoginModel.user_id && data_from_server_after_login_auth_check[0].password===this.LoginModel.password){
-          alert("login successful, Welcome "+data_from_server_after_login_auth_check[0].full_name);
+          //alert("login successful, Welcome "+data_from_server_after_login_auth_check[0].full_name);
           this.active_session=true;
           this.CustomerDetaillsRoot=data_from_server_after_login_auth_check;
           this.full_name_received_from_server=this.CustomerDetaillsRoot[0].full_name;
