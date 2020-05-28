@@ -140,6 +140,7 @@
   <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
         <h1>Fill the details below</h1>
+        <small class="font-italic" style="color:red"> *All fileds are mandatory to fill</small>
               <form (ngSubmit)="signup_form_submitted();" #signupForm="ngForm">
               <div class="form-group">
                 <label for="name"></label>
