@@ -7,6 +7,7 @@ import {CommentModel} from './comment-model';
 import {PostIdComments} from './post-id-comments';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
+import {ImageSnippet} from './image-snippet';
 //import * as CryptoJS from '@types/crypto-js';
 
 
@@ -77,7 +78,8 @@ i=0;
   CommentModel=new CommentModel(0,'','','');
   PostIdComments=new PostIdComments(0,'');
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
-  LoginModel=new LoginModel('','')
+  LoginModel=new LoginModel('','');
+  selectedFile: ImageSnippet;
 
   submitted = false;
 
@@ -403,6 +405,10 @@ i=0;
   }
   your_account_back(){
     this.your_account_boolean=false;
+  }
+  processFile(imageFile){
+    console.log(imageFile);
+    
   }
 
 

@@ -232,6 +232,16 @@
       <hr>
     </form>
   </div>
+
+<label class="image-upload-container btn btn-bwm">
+  <span>Select Image</span>
+  <input #imageInput
+         type="file"
+         accept="image/*"
+         (change)="processFile(imageInput)">
+</label>
+
+
             <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
 
             <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
