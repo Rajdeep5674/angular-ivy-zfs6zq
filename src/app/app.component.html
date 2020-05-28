@@ -219,9 +219,10 @@
   <div class="container">
   <div [hidden]="submitted">
     <h1>Post Here</h1>
+    <small [hidden]="view_while_login_auth_true" class="font-italic" style="color:green">Please login to post something</small><br>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
       <div class="form-group">
-        <textarea rows="4" cols="50" name="message" class="form-control" id="message"
+        <textarea [disabled]="!view_while_login_auth_true" rows="4" cols="50" name="message" class="form-control" id="message"
                 required
                 [(ngModel)]="PostModel.message"
                 #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
