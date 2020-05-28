@@ -252,8 +252,8 @@ i=0;
     }
     else
     {
-      alert("Please wait while we will save your details. Click ok to continue. This may take few seconds to complete.");
-      this.signup_closed=true;
+      //alert("Please wait while we will save your details. Click ok to continue. This may take few seconds to complete.");
+      //this.signup_closed=true;
     this._enrollmentService.post_customer_details_root(this.CustomerDetaillsRoot).subscribe(
     (data_from_server_after_posting_customerDetailsRootObject=>{
       if(data_from_server_after_posting_customerDetailsRootObject.message_from_server==="user_id_already_exists"){
@@ -264,6 +264,7 @@ i=0;
               alert("Details saved successfully. Now you can login and explore all the posts.");
               this.user_id_already_exists=false;
               this.new_user_created_successfully=true;
+              
       }
       this.standby_home_page=false;
         //console.log(data_from_server_after_posting_customerDetailsRootObject.)
