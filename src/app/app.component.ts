@@ -248,6 +248,7 @@ i=0;
     if(this.CustomerDetaillsRoot.password1 !==this.CustomerDetaillsRoot.password2)
     {
       alert("Both the passwords are not same. Please enter same password twice");
+      this.standby_home_page=false;
     }
     else
     {
