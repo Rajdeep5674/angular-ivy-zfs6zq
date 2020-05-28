@@ -56,6 +56,7 @@ i=0;
   //variables for signup function
   signup_boolean=false;
   signup_closed=true;
+  signup_calcelled=false;
   userMessage="";
 
   user_id_already_exists=false;
@@ -279,6 +280,7 @@ i=0;
     this.CustomerDetaillsRoot.password1="";
     this.CustomerDetaillsRoot.password2="";
     this.signup_closed=true;
+    this.signup_calcelled=true;
   }
   terms(){
     alert("Terms and conditions\n\nNo harmful or abusive comments or post shoul be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")

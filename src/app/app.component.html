@@ -148,7 +148,7 @@
                       required
                       [(ngModel)]="CustomerDetaillsRoot.full_name" name="full_name"
                       #full_name="ngModel" placeholder="Enter your full name">
-                <div [hidden]="full_name.valid || full_name.untouched"
+                <div [hidden]="full_name.valid || full_name.untouched "
                     class="alert alert-danger">
                   Name is required
                 </div>
@@ -160,7 +160,7 @@
                       required
                       [(ngModel)]="CustomerDetaillsRoot.email" name="email"
                       #email="ngModel" placeholder="Enter your email id">
-                <div [hidden]="email.valid || email.untouched"
+                <div [hidden]="email.valid || email.untouched || signup_calcelled"
                     class="alert alert-danger">
                   Email is required
                 </div>
@@ -173,9 +173,9 @@
                       [(ngModel)]="CustomerDetaillsRoot.user_id" name="user_id"
                       #user_id="ngModel" placeholder="Set your user id">
                       <small>Please set your user id as unique. This will be required while login.</small>
-                <div [hidden]="user_id.valid || user_id.untouched"
+                <div [hidden]="user_id.valid || user_id.untouched || signup_calcelled"
                     class="alert alert-danger">
-                  Userid is required
+                  User id is required
                 </div>
               </div>
 
@@ -186,7 +186,7 @@
                       [(ngModel)]="CustomerDetaillsRoot.password1" name="password1"
                       #password1="ngModel" placeholder="Set your password">
                       <small>Please do not set default passwords like 123/test/abc or your name</small>
-                <div [hidden]="password1.valid || password1.untouched"
+                <div [hidden]="password1.valid || password1.untouched || signup_calcelled"
                     class="alert alert-danger">
                   Password is required
                 </div>
@@ -198,7 +198,7 @@
                       required
                       [(ngModel)]="CustomerDetaillsRoot.password2" name="password2"
                       #password2="ngModel" placeholder="Confirm your password">
-                <div [hidden]="password2.valid || password2.untouched"
+                <div [hidden]="password2.valid || password2.untouched || signup_calcelled"
                     class="alert alert-danger">
                   Password is required
                 </div>
