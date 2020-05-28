@@ -273,6 +273,11 @@ i=0;
     }
   }
   cancel_signup(){
+    this.CustomerDetaillsRoot.full_name="";
+    this.CustomerDetaillsRoot.email="";
+    this.CustomerDetaillsRoot.user_id="";
+    this.CustomerDetaillsRoot.password1="";
+    this.CustomerDetaillsRoot.password2="";
     this.signup_closed=true;
   }
   terms(){
