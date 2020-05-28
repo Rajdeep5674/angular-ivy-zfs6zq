@@ -7,6 +7,8 @@ import {CommentModel} from './comment-model';
 import {PostIdComments} from './post-id-comments';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
+//import * as CryptoJS from '@types/crypto-js';
+
 
 @Component({
   selector: 'my-app',
@@ -98,6 +100,8 @@ i=0;
   }
 
   viewAllPost(){
+    //var hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
+    //console.log(hash);
     var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
 
     //console.log(typeof(indiaTime));
