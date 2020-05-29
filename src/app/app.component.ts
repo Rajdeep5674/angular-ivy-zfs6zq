@@ -75,7 +75,7 @@ i=0;
   }
 
   PostModel = new PostModel('','',0,'');
-  PostModelAdv=new PostModelAdv(0,'','');
+  PostModelAdv=new PostModelAdv(0,'','','',false);
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','','');
   PostIdComments=new PostIdComments(0,'');
@@ -141,6 +141,12 @@ i=0;
     this.like_button_pressed.push(post_id);
     this.PostModelAdv.post_id=post_id;
     this.PostModelAdv.liker_name=this.full_name_received_from_server;
+    this.PostModelAdv.liker_user_id=this.user_id_received_from_server;
+    this.PostModelAdv.like_indicator=true;
+
+
+    console.log(this.PostModelAdv.liker_user_id);
+    console.log(this.PostModelAdv.like_indicator);
     this._enrollmentService.like(this.PostModelAdv).subscribe(
     (data_from_server_for_like=>{
       if(typeof(data_from_server_for_like.message_from_server)==="number")
@@ -182,6 +188,13 @@ i=0;
   );
   }
 
+get_my_liked_post_id(my_user_id){
+  this.CustomerDetaillsRoot.user_id=my_user_id;
+this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(my_like_post_ids=>{
+  console.log(my_like_post_ids);
+});
+
+}
 //event handler for comment button pressed
   comment(post_id){
     this.comment_button_pressed=true;

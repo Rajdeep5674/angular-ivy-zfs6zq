@@ -17,6 +17,7 @@ export class HeroService {
    _url_comment_view_all='https://netBankingAppServer--rajdeep5674.repl.co/comment_view_all';
    _url_customer_details_post='https://netBankingAppServer--rajdeep5674.repl.co/customer_details_post';
    _url_login_auth_check='https://netBankingAppServer--rajdeep5674.repl.co/login_auth_check';
+   _url_get_my_liked_posts='https://netBankingAppServer--rajdeep5674.repl.co/l';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -48,6 +49,9 @@ export class HeroService {
   }
   who_liked(PostModelAdv:PostModelAdv){
     return this._http.post<any>(this._url_who_like,PostModelAdv);
+  }
+  get_my_liked_posts(CustomerDetaillsRoot:CustomerDetaillsRoot){
+    return this._http.post<any>(this._url_get_my_liked_posts,CustomerDetaillsRoot);
   }
 
 
