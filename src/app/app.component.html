@@ -261,8 +261,8 @@
                 posted on {{post.post_time}}
               </div>
           </div>
-        <small *ngIf="PostIdAndMessageToUser.post_id===(post.post_id);else elseBlock" style="color:green">&nbsp;&nbsp;{{PostIdAndMessageToUser.message_to_user}}</small>
-        <ng-template #elseBlock><small style="color:green" class="text-right text-primary font-italic">&nbsp;{{post.like_count}}&nbsp;people liked this post</small></ng-template>
+        <small *ngIf="PostIdAndMessageToUser.post_id===(post.post_id) && like_clicked;else elseBlock" style="color:green">&nbsp;You and {{data_from_server_for_like_count-1}}&nbsp;others liked this post</small>
+        <ng-template #elseBlock><small style="color:green" class="text-right text-primary font-italic"><a (click)="who_liked(post.post_id);">&nbsp;{{post.like_count}}&nbsp;people liked this post</a></small></ng-template>
         <br>
         <!--form for accepting the comment-->
         <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(post.post_id)">

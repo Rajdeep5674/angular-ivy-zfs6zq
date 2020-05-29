@@ -67,6 +67,7 @@ i=0;
 
   view_all_commeents_loading=false;
   hide_all_post_clicked=false;
+  like_clicked=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -114,6 +115,7 @@ i=0;
 
     this.view_all_posts_standby=true;
     this.you="";
+    //this.PostIdAndMessageToUser.message_to_user="";
     //this.page_load=true;
     this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
@@ -144,16 +146,22 @@ i=0;
       if(typeof(data_from_server_for_like.message_from_server)==="number")
       {
         this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
-        //console.log("lik "+this.data_from_server_for_like_count);
+        //console.log("like in this post "+this.data_from_server_for_like_count);
+            this.PostIdAndMessageToUser.post_id=post_id;
+        this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
       }
       else console.log("something else");
           //console.log(data_from_server_for_like);
         }
+      
     ));
-    this.PostIdAndMessageToUser.post_id=post_id;
-    this.PostIdAndMessageToUser.message_to_user="You liked this post";
+    this.like_clicked=true;
   //this.page_load=false;
   //this.you=" and you ";
+  }
+  who_liked(post_id){
+    this.PostModelAdv.post_id=post_id;
+  this._enrollmentService.who_liked(this.PostModelAdv).subscribe();
   }
 
 //event handler for comment button pressed
