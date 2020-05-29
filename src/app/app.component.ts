@@ -170,7 +170,7 @@ i=0;
           //something
           this.who_liked_string=this.who_liked_string+who_liked[i].liker_name+" , ";
       }
-      alert("People who liked your post\n"+this.who_liked_string);
+      alert("People who liked your post\n\n"+this.who_liked_string);
       this.who_liked_string="";
 
       }else{
