@@ -205,7 +205,7 @@ i=0;
     this.like_clicked=true;
     }
     else{
-      alert("already liked");
+      alert("You have already liked this post");
       this.like_can_be_done===false;
     }
   //this.page_load=false;
