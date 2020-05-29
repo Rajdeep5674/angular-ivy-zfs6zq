@@ -74,7 +74,7 @@ i=0;
   }
 
   PostModel = new PostModel('','',0,'');
-  PostModelAdv=new PostModelAdv(0,'');
+  PostModelAdv=new PostModelAdv(0,'','');
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','','');
   PostIdComments=new PostIdComments(0,'');
@@ -138,12 +138,13 @@ i=0;
     console.log(post_id);
     this.like_button_pressed.push(post_id);
     this.PostModelAdv.post_id=post_id;
+    this.PostModelAdv.liker_name=this.full_name_received_from_server;
     this._enrollmentService.like(this.PostModelAdv).subscribe(
     (data_from_server_for_like=>{
       if(typeof(data_from_server_for_like.message_from_server)==="number")
       {
         this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
-        //console.log("it's a number");
+        //console.log("lik "+this.data_from_server_for_like_count);
       }
       else console.log("something else");
           //console.log(data_from_server_for_like);
