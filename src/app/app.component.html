@@ -232,23 +232,13 @@
       <hr>
     </form>
   </div>
-
-<label class="image-upload-container btn btn-bwm">
-  <span>Select Image</span>
-  <input #imageInput
-         type="file"
-         accept="image/*"
-         (change)="processFile(imageInput)">
-</label>
-
-
-            <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
-
-            <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
   <div [hidden]="!submitted">
-    <p>{{message_to_user}}</p>
-    <button class="btn btn-success" (click)="submitted=false">Back</button>
+    <!--<p>{{message_to_user}}</p>-->
   </div>
+
+      <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
+
+      <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
     <div [hidden]="!view_all_posts_standby">
       <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
       <div class="card-body">

@@ -66,6 +66,7 @@ i=0;
   new_user_created_successfully=false;
 
   view_all_commeents_loading=false;
+  hide_all_post_clicked=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -84,6 +85,7 @@ i=0;
   submitted = false;
 
   onSubmit() { 
+    this.message_to_user="posting your message...";
     this.you="";
     this.PostModel.post_time=new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
     this.PostModel.name=this.full_name_received_from_server;
@@ -93,9 +95,11 @@ i=0;
         this.message_to_user="You have sucessfully posted your message.";
         this.submitted = true; 
         console.log("post successful");
+        this.viewAllPost();
         }
-      else
-        console.log("error in posting details")
+      else{
+        this.message_to_user="Error occuered while posting your message. Please try after sometime.";
+      }
         }
     ));
     
@@ -128,6 +132,7 @@ i=0;
   hideAllPost(){
     this.you="";
     this.view_all_post=false;
+    this.hide_all_post_clicked=true;
   }
   like(post_id){
     console.log(post_id);
