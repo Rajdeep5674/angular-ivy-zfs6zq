@@ -159,9 +159,27 @@ i=0;
   //this.page_load=false;
   //this.you=" and you ";
   }
+  who_liked_string="";
   who_liked(post_id){
     this.PostModelAdv.post_id=post_id;
-  this._enrollmentService.who_liked(this.PostModelAdv).subscribe();
+  this._enrollmentService.who_liked(this.PostModelAdv).subscribe(
+    who_liked=>{
+      console.log(who_liked);
+      if(who_liked.length!==0){
+              for(var i=0;i<who_liked.length;i++){
+          //something
+          this.who_liked_string=this.who_liked_string+who_liked[i].liker_name+" , ";
+      }
+      alert("People who liked your post\n"+this.who_liked_string);
+      this.who_liked_string="";
+
+      }else{
+        alert("Oops!! no like yet.");
+      this.who_liked_string="";
+      }
+
+    }
+  );
   }
 
 //event handler for comment button pressed
