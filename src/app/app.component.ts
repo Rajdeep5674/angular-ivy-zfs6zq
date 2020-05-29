@@ -30,6 +30,7 @@ i=0;
   data_from_server_for_comment:any;
   you="";
   data_from_server_for_like_count:any;
+  my_like_post_ids:any;
   data_length=0;
   data_length_array=[];
   view_all_post=false;
@@ -68,6 +69,8 @@ i=0;
   view_all_commeents_loading=false;
   hide_all_post_clicked=false;
   like_clicked=false;
+  like_hidden=false;
+  like_can_be_done=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
 
@@ -136,7 +139,45 @@ i=0;
     this.view_all_post=false;
     this.hide_all_post_clicked=true;
   }
+  
+  like_validity_check(post_id,my_like_post_ids){
+      //console.log(my_like_post_ids[0].post_id);
+    var true_counter=0;
+    //console.log(my_like_post_ids.length);
+      for(var i=0;i<my_like_post_ids.length;i++)
+      {
+        //console.log(post_id);
+        //console.log(my_like_post_ids[i].post_id);
+        if(post_id===my_like_post_ids[i].post_id)
+        {
+          //console.log(post_id);
+          //console.log(my_like_post_ids[i].post_id);
+          true_counter=true_counter+1;
+          //alert("you already liked this post.")
+        }
+        if(true_counter===0){
+          this.like_can_be_done=true;
+          //user can like that post
+          //this.like_hidden=false;
+        }
+        else{
+          this.like_can_be_done=false;
+          //user cnt like this post
+          //this.like_hidden=true;
+        }
+        console.log(true_counter);
+      }
+    }
+
   like(post_id){
+    //check if user already likes this post or not
+
+    this.like_validity_check(post_id,this.my_like_post_ids);
+
+
+    if(this.like_can_be_done===true){
+
+    
     console.log(post_id);
     this.like_button_pressed.push(post_id);
     this.PostModelAdv.post_id=post_id;
@@ -162,6 +203,11 @@ i=0;
       
     ));
     this.like_clicked=true;
+    }
+    else{
+      alert("already liked");
+      this.like_can_be_done===false;
+    }
   //this.page_load=false;
   //this.you=" and you ";
   }
@@ -191,7 +237,9 @@ i=0;
 get_my_liked_post_id(my_user_id){
   this.CustomerDetaillsRoot.user_id=my_user_id;
 this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(my_like_post_ids=>{
+  this.my_like_post_ids=my_like_post_ids;
   console.log(my_like_post_ids);
+  
 });
 
 }
@@ -364,6 +412,8 @@ this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
+          this.get_my_liked_post_id(this.user_id_received_from_server);
+
         }
         else{
           alert("invalid userid or password");
