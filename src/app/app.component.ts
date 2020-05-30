@@ -78,7 +78,7 @@ i=0;
   ngOnInit() {
   }
 
-  PostModel = new PostModel('','',0,'');
+  PostModel = new PostModel('','','',0,'');
   PostModelAdv=new PostModelAdv(0,'','','',false);
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','','');
@@ -95,6 +95,7 @@ i=0;
     this.you="";
     this.PostModel.post_time=new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
     this.PostModel.name=this.full_name_received_from_server;
+    this.PostModel.user_id=this.user_id_received_from_server;
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
@@ -545,6 +546,7 @@ this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(
     this.closeNav();
   }
   your_posts(){
+    this.get_my_posts(this.user_id_received_from_server);
     this.your_posts_boolean=true;
     this.notifications_back();
     this.your_account_back();
@@ -575,6 +577,16 @@ this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(
     console.log(imageFile);
     
   }
+  my_posts:any;
+get_my_posts(user_id){
+  this.LoginModel.user_id=this.user_id_received_from_server;
+  console.log(this.user_id_received_from_server);
+  //this.CustomerDetaillsRoot.user_id=this.user_id_received_from_server;
+  this._enrollmentService.get_my_posts(this.LoginModel).subscribe(my_posts=>{
+    this.my_posts=my_posts;
+    console.log(my_posts);
+  })
+}
 
 
 }

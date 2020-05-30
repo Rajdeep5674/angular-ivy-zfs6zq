@@ -90,9 +90,26 @@
 <!--notofication end-->
 <!--your posts start-->
   <div [hidden]="!your_posts_boolean">
-    <p>Only your posts will be displayed here</p>
+          <div class="card py-2 " *ngFor="let my_post of my_posts;">
+          <div class="card text-center">
+              <div class="card-header">
+                Post id-{{my_post.post_id}}
+              </div>
+              <div class="card-body">
+                <h5 style="color:green"class="card-title text-primary">{{ my_post.full_name }}</h5>
+                <p class="card-text">{{ my_post.message }}</p>
+              </div>
+              <div class="card-footer text-muted">
+                posted on {{my_post.post_time}}
+              </div>
+          </div>
+        <small *ngIf="PostIdAndMessageToUser.post_id===(my_post.post_id) && like_clicked;else elseBlock" style="color:green">{{PostIdAndMessageToUser.message_to_user}}</small>
+        <ng-template #elseBlock><small style="color:green" class="text-right text-primary font-italic"><a (click)="who_liked(my_post.post_id);">&nbsp;{{my_post.like_count}}&nbsp;people liked this post</a></small></ng-template>
+
+
     <button type="button" class="btn btn-success" (click)="your_posts_back();">Back
       </button>
+  </div>
   </div>
 <!--your post ends-->
 <!--login and signup section start-->
