@@ -139,52 +139,21 @@ i=0;
     this.view_all_post=false;
     this.hide_all_post_clicked=true;
   }
-  
-  like_validity_check(post_id,my_like_post_ids){
-      //console.log(my_like_post_ids[0].post_id);
-    var true_counter=0;
-    //console.log(my_like_post_ids.length);
-      for(var i=0;i<my_like_post_ids.length;i++)
-      {
-        //console.log(post_id);
-        //console.log(my_like_post_ids[i].post_id);
-        if(post_id===my_like_post_ids[i].post_id)
-        {
-          //console.log(post_id);
-          //console.log(my_like_post_ids[i].post_id);
-          true_counter=true_counter+1;
-          //alert("you already liked this post.")
-        }
-        if(true_counter===0){
-          this.like_can_be_done=true;
-          //user can like that post
-          //this.like_hidden=false;
-        }
-        else{
-          this.like_can_be_done=false;
-          //user cnt like this post
-          //this.like_hidden=true;
-        }
-        console.log(true_counter);
-      }
-    }
 
+like_button_visible=true;
   like(post_id){
+
+    this.like_button_visible=false;
     //check if user already likes this post or not
 
-    this.like_validity_check(post_id,this.my_like_post_ids);
+    //this.like_validity_check(post_id,this.my_like_post_ids);
 
-
-    if(this.like_can_be_done===true){
-
-    
     console.log(post_id);
     this.like_button_pressed.push(post_id);
     this.PostModelAdv.post_id=post_id;
     this.PostModelAdv.liker_name=this.full_name_received_from_server;
     this.PostModelAdv.liker_user_id=this.user_id_received_from_server;
     this.PostModelAdv.like_indicator=true;
-
 
     console.log(this.PostModelAdv.liker_user_id);
     console.log(this.PostModelAdv.like_indicator);
@@ -194,8 +163,8 @@ i=0;
       {
         this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
         //console.log("like in this post "+this.data_from_server_for_like_count);
-            this.PostIdAndMessageToUser.post_id=post_id;
-        this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
+            //this.PostIdAndMessageToUser.post_id=post_id;
+        //this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
       }
       else console.log("something else");
           //console.log(data_from_server_for_like);
@@ -203,14 +172,44 @@ i=0;
       
     ));
     this.like_clicked=true;
-    }
-    else{
-      alert("You have already liked this post");
-      this.like_can_be_done===false;
-    }
   //this.page_load=false;
   //this.you=" and you ";
   }
+  unlike(post_id){
+    this.like_button_visible=true;
+    //check if user already likes this post or not
+
+    //this.like_validity_check(post_id,this.my_like_post_ids);
+
+    console.log(post_id);
+    this.like_button_pressed.push(post_id);
+    this.PostModelAdv.post_id=post_id;
+    this.PostModelAdv.liker_name=this.full_name_received_from_server;
+    this.PostModelAdv.liker_user_id=this.user_id_received_from_server;
+    this.PostModelAdv.like_indicator=false;
+
+
+    console.log(this.PostModelAdv.liker_user_id);
+    console.log(this.PostModelAdv.like_indicator);
+    this._enrollmentService.unlike(this.PostModelAdv).subscribe(
+    (data_from_server_for_like=>{
+      if(typeof(data_from_server_for_like.message_from_server)==="number")
+      {
+        //this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
+        //console.log("like in this post "+this.data_from_server_for_like_count);
+           //this.PostIdAndMessageToUser.post_id=post_id;
+        //this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
+      }
+      else console.log("something else");
+          //console.log(data_from_server_for_like);
+        }
+      
+    ));
+    this.like_clicked=false;
+  //this.page_load=false;
+  //this.you=" and you ";
+  }
+
   who_liked_string="";
   who_liked(post_id){
     this.PostModelAdv.post_id=post_id;

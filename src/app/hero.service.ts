@@ -12,6 +12,7 @@ import {LoginModel} from './login-model';
 export class HeroService {
    _url='https://netBankingAppServer--rajdeep5674.repl.co/route';
    _url_like='https://netBankingAppServer--rajdeep5674.repl.co/like';
+    _url_unlike='https://netBankingAppServer--rajdeep5674.repl.co/unlike';
    _url_who_like="https://netBankingAppServer--rajdeep5674.repl.co/who_like";
    _url_comment='https://netBankingAppServer--rajdeep5674.repl.co/comment';
    _url_comment_view_all='https://netBankingAppServer--rajdeep5674.repl.co/comment_view_all';
@@ -33,6 +34,10 @@ export class HeroService {
   like(PostModelAdv:PostModelAdv)
   {
     return this._http.post<any>(this._url_like,PostModelAdv);
+  }
+  unlike(PostModelAdv:PostModelAdv)
+  {
+    return this._http.post<any>(this._url_unlike,PostModelAdv);
   }
   comment(CommentModel:CommentModel)
   {
