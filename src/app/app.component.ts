@@ -110,6 +110,7 @@ i=0;
   }
 
   viewAllPost(){
+    this.like_clicked=false;
     //var hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
     //console.log(hash);
     var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
@@ -143,7 +144,12 @@ i=0;
 like_button_visible=true;
   like(post_id){
 
-    this.like_button_visible=false;
+    this.PostIdAndMessageToUser.post_id=post_id;
+    this.PostIdAndMessageToUser.message_to_user="You liked this post";
+
+    this.like_clicked=true;
+
+    //this.like_button_visible=false;
     //check if user already likes this post or not
 
     //this.like_validity_check(post_id,this.my_like_post_ids);
@@ -171,12 +177,16 @@ like_button_visible=true;
         }
       
     ));
-    this.like_clicked=true;
+    
   //this.page_load=false;
   //this.you=" and you ";
   }
   unlike(post_id){
-    this.like_button_visible=true;
+
+    this.PostIdAndMessageToUser.post_id=post_id;
+    this.PostIdAndMessageToUser.message_to_user="Like removed";
+    this.like_clicked=true;
+    //this.like_button_visible=true;
     //check if user already likes this post or not
 
     //this.like_validity_check(post_id,this.my_like_post_ids);
@@ -195,7 +205,7 @@ like_button_visible=true;
     (data_from_server_for_like=>{
       if(typeof(data_from_server_for_like.message_from_server)==="number")
       {
-        //this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
+        this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
         //console.log("like in this post "+this.data_from_server_for_like_count);
            //this.PostIdAndMessageToUser.post_id=post_id;
         //this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
@@ -205,7 +215,7 @@ like_button_visible=true;
         }
       
     ));
-    this.like_clicked=false;
+    //this.like_clicked=true;
   //this.page_load=false;
   //this.you=" and you ";
   }
@@ -216,15 +226,24 @@ like_button_visible=true;
   this._enrollmentService.who_liked(this.PostModelAdv).subscribe(
     who_liked=>{
       console.log(who_liked);
+      console.log(who_liked.length);
       if(who_liked.length!==0){
               for(var i=0;i<who_liked.length;i++){
           //something
+          if(who_liked[i].like_indicator===true){
+            console.log("true found");
           this.who_liked_string=this.who_liked_string+who_liked[i].liker_name+" , ";
+          }
       }
-      alert("People who liked your post\n\n"+this.who_liked_string);
+      if(this.who_liked_string.length!==0){
+        alert("People who liked your post\n\n"+this.who_liked_string);
       this.who_liked_string="";
-
-      }else{
+      }
+      else{
+        alert("Oops!! no like yet.");
+      this.who_liked_string="";
+      }
+    }else{
         alert("Oops!! no like yet.");
       this.who_liked_string="";
       }
