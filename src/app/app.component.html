@@ -89,6 +89,7 @@
   </div>
 <!--notofication end-->
 <!--your posts start-->
+  <div [hidden]="!your_posts_boolean">
       <div class="card py-2 " *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
               <div class="card-header">
@@ -164,8 +165,9 @@
               <a style="color:green" class="nav-link" (click)="hide_all_comments(my_post.post_id);"><i class='fas fa-comment-slash'></i></a>
             </li>
           </ul> 
-      </div>
-
+      </div><br>
+      <div class="text-center"><button class="btn btn-success" (click)="your_posts_back()">Close</button></div>
+</div>
 <!--your post ends-->
 <!--login and signup section start-->
   <div class="alert alert-info card" role="alert" [hidden]="view_while_login_auth_true">
@@ -290,7 +292,7 @@
   <!--new user signup end-->
 <!--login and signup section end-->
 
-<div class="card border py-3">
+<div [hidden]="your_posts_boolean" class="card border py-3">
   <div class="container">
   <div [hidden]="submitted">
     <h1>Post Here</h1>
@@ -310,10 +312,11 @@
   <div [hidden]="!submitted">
     <!--<p>{{message_to_user}}</p>-->
   </div>
-
+    <div [hidden]="your_posts_boolean">
       <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
 
       <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
+    </div>
     <div [hidden]="!view_all_posts_standby">
       <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
       <div class="card-body">

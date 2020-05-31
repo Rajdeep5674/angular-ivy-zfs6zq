@@ -454,6 +454,7 @@ i=0;
   }
   your_posts_back(){
     this.your_posts_boolean=false;
+    this.hideAllPost();
   }
   notifications(){
     this.notifications_boolean=true;
