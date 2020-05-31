@@ -9,6 +9,7 @@ import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
 import {ImageSnippet} from './image-snippet';
 import {PostIdLikeButtonVisible} from './post-id-like-button-visible';
+import {PostDelete} from './post-delete';
 //import * as CryptoJS from '@types/crypto-js';
 
 
@@ -86,6 +87,7 @@ i=0;
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
   LoginModel=new LoginModel('','');
   PostIdLikeButtonVisible=new PostIdLikeButtonVisible(0,true);
+  PostDelete=new PostDelete('',0);
   selectedFile: ImageSnippet;
 
   submitted = false;
@@ -456,6 +458,21 @@ i=0;
     this.your_posts_boolean=false;
     this.hideAllPost();
   }
+  your_posts_delete(post_id){
+    alert("Do you really want to delete this post?");
+    this.PostDelete.user_id=this.user_id_received_from_server;
+    this.PostDelete.post_id=post_id;
+    console.log(post_id);
+    this._enrollmentService.delete_my_post(this.PostDelete).subscribe(message_from_server_for_delete_my_post=>{
+      //console.log(message_from_server_for_delete_my_post);
+      if(message_from_server_for_delete_my_post.message_from_server==="post_deleted"){
+          this.your_posts();
+      }
+      else{
+        this.your_posts();
+      }
+    })
+  }
   notifications(){
     this.notifications_boolean=true;
     this.your_posts_back();
@@ -489,5 +506,9 @@ get_my_posts(user_id){
   })
 }
 
+home(){
+  this.your_account_boolean=false;
+  this.notifications_back();
+}
 
 }

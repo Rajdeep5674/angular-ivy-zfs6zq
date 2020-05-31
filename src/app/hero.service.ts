@@ -7,6 +7,7 @@ import {PostModelAdv} from './post-model-adv';
 import {CommentModel} from './comment-model';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
+import {PostDelete} from './post-delete';
 
 @Injectable()
 export class HeroService {
@@ -20,6 +21,7 @@ export class HeroService {
    _url_login_auth_check='https://netBankingAppServer--rajdeep5674.repl.co/login_auth_check';
    _url_get_my_liked_post_ids='https://netBankingAppServer--rajdeep5674.repl.co/get_my_liked_postids';
    _url_get_my_posts='https://netBankingAppServer--rajdeep5674.repl.co/get_my_posts';
+   _url_delete_my_post='https://netBankingAppServer--rajdeep5674.repl.co/delete_my_post';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -61,6 +63,9 @@ export class HeroService {
   }
   get_my_posts(LoginModel:LoginModel){
     return this._http.post<any>(this._url_get_my_posts,LoginModel);
+  }
+  delete_my_post(PostDelete:PostDelete){
+    return this._http.post<any>(this._url_delete_my_post,PostDelete);
   }
 
 
