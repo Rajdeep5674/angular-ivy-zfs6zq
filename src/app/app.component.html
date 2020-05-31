@@ -332,9 +332,6 @@
               <a style="color:green"  class="nav-link" (click)="like(post.post_id);"><i class='far fa-thumbs-up'></i></a>
             </li>
 
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="unlike(post.post_id);"><i class='far fa-thumbs-down'></i></a>
-            </li>
 
             <li [hidden]="!view_while_login_auth_true" class="nav-item">
               <a style="color:green"  class="nav-link" (click)="comment(post.post_id);"><i class='far fa-comment'></i></a>

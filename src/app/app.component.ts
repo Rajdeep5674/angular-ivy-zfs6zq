@@ -146,52 +146,10 @@ i=0;
 
   like_button_visible=true;
   like_manager_preset_value=0;
-  likeManager(post_id){
-    for(var i=0;i<this.my_like_post_ids.length;i++){
-      if(post_id===this.my_like_post_ids[i].post_id && this.my_like_post_ids[i].like_indicator===true)
-      {
-        console.log(1);
-        //like is not possible only unlike possible
-        this.like_manager_preset_value=1;
-        break;
-      }
-      else if(post_id===this.my_like_post_ids[i].post_id && this.my_like_post_ids[i].like_indicator===false)
-      {
-        console.log(-1);
-        //like is possible but dislike is not possible
-        this.like_manager_preset_value=-1;
-        break;
-      }
-      else{
-        console.log(0);
-          //other posts which is not liked yet, so like is possible, but dislike is not possible.
-          this.like_manager_preset_value=0;
-      }
-    }
-  }
-
-  get_my_liked_post_id(my_user_id){
-  this.CustomerDetaillsRoot.user_id=my_user_id;
-this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(my_like_post_ids=>{
-  this.my_like_post_ids=my_like_post_ids;
-  console.log(my_like_post_ids);
   
-});
-
-}
-
   like(post_id){
 
-    this.likeManager(post_id);
-    console.log(this.like_manager_preset_value);
-    if(this.like_manager_preset_value===1)
-    {
-      alert("already liked.");
-    }
-    else if(this.like_manager_preset_value===-1 || this.like_manager_preset_value===0 )
-    {
-          this.PostIdAndMessageToUser.post_id=post_id;
-    this.PostIdAndMessageToUser.message_to_user="You liked this post";
+    this.PostIdAndMessageToUser.post_id=post_id;
 
     this.like_clicked=true;
     this.PostIdLikeButtonVisible.post_id=post_id;
@@ -212,76 +170,19 @@ this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(
     console.log(this.PostModelAdv.like_indicator);
     this._enrollmentService.like(this.PostModelAdv).subscribe(
     (data_from_server_for_like=>{
-      if(typeof(data_from_server_for_like.message_from_server)==="number")
-      {
-        this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
-        //console.log("like in this post "+this.data_from_server_for_like_count);
-            //this.PostIdAndMessageToUser.post_id=post_id;
-        //this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
+      if(data_from_server_for_like.message_from_server==="like_accepted"){
+        //alert("you liked this post");
+        this.PostIdAndMessageToUser.message_to_user="You liked this post";
       }
-      else console.log("something else");
-          //console.log(data_from_server_for_like);
-        }
+      else{
+        //alert("already liked");
+        this.PostIdAndMessageToUser.message_to_user="Oops!! You have already liked this post";
+      }
+    }
       
     ));
-    }
-    else{
-      //value is other than -1,0,1
-    }
-    this.like_manager_preset_value=0;//resetting the value after use
   }
-  unlike(post_id){
-
-    this.likeManager(post_id);
-
-    if(this.like_manager_preset_value===-1){
-      alert("like is already removed");
-    }
-    else if(this.like_manager_preset_value===1 ||this.like_manager_preset_value===0){
-      this.PostIdAndMessageToUser.post_id=post_id;
-    this.PostIdAndMessageToUser.message_to_user="Like removed";
-    this.like_clicked=true;
-    
-    this.PostIdLikeButtonVisible.post_id=post_id;
-    this.PostIdLikeButtonVisible.like_button_visible=true;
-    //check if user already likes this post or not
-
-    //this.like_validity_check(post_id,this.my_like_post_ids);
-
-    console.log(post_id);
-    this.like_button_pressed.push(post_id);
-    this.PostModelAdv.post_id=post_id;
-    this.PostModelAdv.liker_name=this.full_name_received_from_server;
-    this.PostModelAdv.liker_user_id=this.user_id_received_from_server;
-    this.PostModelAdv.like_indicator=false;
-
-
-    console.log(this.PostModelAdv.liker_user_id);
-    console.log(this.PostModelAdv.like_indicator);
-    this._enrollmentService.unlike(this.PostModelAdv).subscribe(
-    (data_from_server_for_like=>{
-      if(typeof(data_from_server_for_like.message_from_server)==="number")
-      {
-        this.data_from_server_for_like_count=data_from_server_for_like.message_from_server;
-        //console.log("like in this post "+this.data_from_server_for_like_count);
-           //this.PostIdAndMessageToUser.post_id=post_id;
-        //this.PostIdAndMessageToUser.message_to_user="You and "+(this.data_from_server_for_like_count-1)+" others liked this post";
-      }
-      else console.log("something else");
-          //console.log(data_from_server_for_like);
-        }
-      
-    ));
-    }
-    else{
-      //value is other than -1,0,1
-    }
-    this.like_manager_preset_value=0;//resetting the value after use
-    //this.like_clicked=true;
-  //this.page_load=false;
-  //this.you=" and you ";
-  }
-
+  
   who_liked_string="";
   who_liked(post_id){
     this.PostModelAdv.post_id=post_id;
@@ -483,7 +384,6 @@ this._enrollmentService.get_my_liked_posts(this.CustomerDetaillsRoot).subscribe(
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
-          this.get_my_liked_post_id(this.user_id_received_from_server);
 
         }
         else{
