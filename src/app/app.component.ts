@@ -459,8 +459,9 @@ i=0;
     this.hideAllPost();
   }
   your_posts_delete(post_id){
-    alert("Do you really want to delete this post?");
-    this.PostDelete.user_id=this.user_id_received_from_server;
+    var response=confirm("Do you really want to delete this post?");
+    if(response===true){
+          this.PostDelete.user_id=this.user_id_received_from_server;
     this.PostDelete.post_id=post_id;
     console.log(post_id);
     this._enrollmentService.delete_my_post(this.PostDelete).subscribe(message_from_server_for_delete_my_post=>{
@@ -472,6 +473,9 @@ i=0;
         this.your_posts();
       }
     })
+    }else{
+      /
+    }
   }
   notifications(){
     this.notifications_boolean=true;
