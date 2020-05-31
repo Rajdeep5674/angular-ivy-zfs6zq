@@ -508,7 +508,8 @@ get_my_posts(user_id){
 
 home(){
   this.your_account_boolean=false;
-  
+  this.closeNav();
+  this.your_posts_back();
 }
 
 }
