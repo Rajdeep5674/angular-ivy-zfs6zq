@@ -185,35 +185,25 @@ i=0;
     ));
   }
   who_liked_only_show=false;
+  who_liked_obj:any;
   who_liked_string="";
+  loading_status=false;
   who_liked(post_id){
+    this.loading_status=true;
     this.who_liked_only_show=true;
     this.who_liked_string="loading..";
     this.PostModelAdv.post_id=post_id;
   this._enrollmentService.who_liked(this.PostModelAdv).subscribe(
     who_liked=>{
-      console.log(who_liked);
-      console.log(who_liked.length);
+      //console.log(who_liked);
+      //console.log(who_liked.length);
       this.who_liked_string="";
       if(who_liked.length!==0){
-              for(var i=0;i<who_liked.length;i++){
-          //something
-          if(who_liked[i].like_indicator===true){
-            console.log("true found");
-          this.who_liked_string=this.who_liked_string+who_liked[i].liker_name+" , ";
-          }
-      }
-      if(this.who_liked_string.length!==0){
-        //alert("People who liked your post\n\n"+this.who_liked_string);
-        //this.who_liked_string="";
-      }
-      else{
-        this.who_liked_string="Oops!! no like yet.";
-        //alert("Oops!! no like yet.");
-        //this.who_liked_string="";
-      }
+        this.loading_status=false;
+        this.who_liked_obj=who_liked;
     }else{
       this.who_liked_string="Oops!! no like yet.";
+
         //alert("Oops!! no like yet.");
       //this.who_liked_string="";
       }
@@ -224,6 +214,7 @@ i=0;
   who_liked_close(){
     this.who_liked_only_show=false;
     this.who_liked_string="";
+    this.who_liked_obj=[];
   }
 
 //event handler for comment button pressed

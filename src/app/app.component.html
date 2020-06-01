@@ -15,8 +15,14 @@
   </div>
 </div>
 <div [hidden]="!who_liked_only_show">
-  <div class="alert alert-primary" role="alert">
-  {{who_liked_string}}
+  <div class="card bg-info" [hidden]="!loading_status"><p>{{who_liked_string}}</p></div>
+  <div *ngFor="let people of who_liked_obj">
+  <div class="card bg-light">
+    <div class="p-2 m1">
+      <span style="display:inline"><h4><img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/profile-icon.jpg" alt="Avatar" class="avatar">
+        {{people.liker_name}}</h4></span>
+      </div>
+    </div>
 </div><br>
   <button class="btn btn-success" (click)="who_liked_close();">Close</button>
 </div>
@@ -439,6 +445,4 @@
 
 <!-- Initialize Firebase -->
 <script src="/__/firebase/init.js"></script>
-
-<img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/lord-ganesh%20(1).jpg" alt="Avatar" class="avatar">
 
