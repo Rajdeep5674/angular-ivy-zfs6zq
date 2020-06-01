@@ -203,7 +203,6 @@ i=0;
         this.who_liked_obj=who_liked;
     }else{
       this.who_liked_string="Oops!! no like yet.";
-
         //alert("Oops!! no like yet.");
       //this.who_liked_string="";
       }
@@ -215,6 +214,7 @@ i=0;
     this.who_liked_only_show=false;
     this.who_liked_string="";
     this.who_liked_obj=[];
+    this.loading_status=false;
   }
 
 //event handler for comment button pressed
