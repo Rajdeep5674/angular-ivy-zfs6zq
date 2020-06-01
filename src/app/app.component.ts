@@ -474,7 +474,7 @@ i=0;
       }
     })
     }else{
-      /
+      //
     }
   }
   notifications(){
