@@ -194,7 +194,7 @@ i=0;
     who_liked=>{
       console.log(who_liked);
       console.log(who_liked.length);
-      
+      this.who_liked_string="";
       if(who_liked.length!==0){
               for(var i=0;i<who_liked.length;i++){
           //something
