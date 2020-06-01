@@ -184,14 +184,17 @@ i=0;
       
     ));
   }
-  
+  who_liked_only_show=false;
   who_liked_string="";
   who_liked(post_id){
+    this.who_liked_only_show=true;
+    this.who_liked_string="loading..";
     this.PostModelAdv.post_id=post_id;
   this._enrollmentService.who_liked(this.PostModelAdv).subscribe(
     who_liked=>{
       console.log(who_liked);
       console.log(who_liked.length);
+      
       if(who_liked.length!==0){
               for(var i=0;i<who_liked.length;i++){
           //something
@@ -201,20 +204,26 @@ i=0;
           }
       }
       if(this.who_liked_string.length!==0){
-        alert("People who liked your post\n\n"+this.who_liked_string);
-      this.who_liked_string="";
+        //alert("People who liked your post\n\n"+this.who_liked_string);
+        //this.who_liked_string="";
       }
       else{
-        alert("Oops!! no like yet.");
-      this.who_liked_string="";
+        this.who_liked_string="Oops!! no like yet.";
+        //alert("Oops!! no like yet.");
+        //this.who_liked_string="";
       }
     }else{
-        alert("Oops!! no like yet.");
-      this.who_liked_string="";
+      this.who_liked_string="Oops!! no like yet.";
+        //alert("Oops!! no like yet.");
+      //this.who_liked_string="";
       }
 
     }
   );
+  }
+  who_liked_close(){
+    this.who_liked_only_show=false;
+    this.who_liked_string="";
   }
 
 //event handler for comment button pressed

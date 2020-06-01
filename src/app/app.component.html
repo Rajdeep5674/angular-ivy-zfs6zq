@@ -14,7 +14,13 @@
     </div>
   </div>
 </div>
-<div [hidden]="standby_home_page">
+<div [hidden]="!who_liked_only_show">
+  <div class="alert alert-primary" role="alert">
+  {{who_liked_string}}
+</div><br>
+  <button class="btn btn-success" (click)="who_liked_close();">Close</button>
+</div>
+<div [hidden]="standby_home_page || who_liked_only_show">
 <!--top navigation bar start-->
 <div class="topnav" [hidden]="!view_while_login_auth_true">
 <div id="main">
