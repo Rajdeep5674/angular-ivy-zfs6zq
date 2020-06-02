@@ -8,6 +8,7 @@ import {CommentModel} from './comment-model';
 import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
 import {PostDelete} from './post-delete';
+import {Notification} from './notification';
 
 @Injectable()
 export class HeroService {
@@ -23,6 +24,8 @@ export class HeroService {
    _url_get_my_posts='https://netBankingAppServer--rajdeep5674.repl.co/get_my_posts';
    _url_delete_my_post='https://netBankingAppServer--rajdeep5674.repl.co/delete_my_post';
    _url_notofications='https://netBankingAppServer--rajdeep5674.repl.co/notifications';
+   _url_notofication_update='https://netBankingAppServer--rajdeep5674.repl.co/notification_update';
+   _url_get_how_many_notifications_read='https://netBankingAppServer--rajdeep5674.repl.co/get_how_many_notifications_read';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -70,6 +73,12 @@ export class HeroService {
   }
   notifications(PostModel:PostModel){
     return this._http.post<any>(this._url_notofications,PostModel);
+  }
+  update_notification(Notification:Notification){
+    return this._http.post<any>(this._url_notofication_update,Notification);
+  }
+  get_how_many_notifications_read(Notification:Notification){
+     return this._http.post<any>(this._url_get_how_many_notifications_read,Notification);
   }
 
 

@@ -10,6 +10,7 @@ import {LoginModel} from './login-model';
 import {ImageSnippet} from './image-snippet';
 import {PostIdLikeButtonVisible} from './post-id-like-button-visible';
 import {PostDelete} from './post-delete';
+import {Notification} from './notification';
 //import * as CryptoJS from '@types/crypto-js';
 
 
@@ -88,6 +89,7 @@ i=0;
   LoginModel=new LoginModel('','');
   PostIdLikeButtonVisible=new PostIdLikeButtonVisible(0,true);
   PostDelete=new PostDelete('',0);
+  Notification=new Notification('',0,false);
   selectedFile: ImageSnippet;
 
   submitted = false;
@@ -367,7 +369,7 @@ i=0;
       this.login_boolean=true;
       this.login_closed=false;
   }
-  loginAuthCheck(){
+   async loginAuthCheck(){
     //alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.");
     this.standby_home_page=true;
     //console.log( this.LoginModel);
@@ -386,7 +388,7 @@ i=0;
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
-          this.notifications();
+          this.get_how_many_notifications_read();
 
         }
         else{
@@ -485,12 +487,13 @@ i=0;
   notification_loading_status=false;
   notification_counter:any;
   notifications(){
+    console.log("notifications");
     this.notification_loading_status=true;
     this.notification_loading="loading...";
     this.notifications_boolean=true;
     this.your_posts_back();
     this.your_account_back();
-    this.closeNav();
+    this.closeNav();;
     //this.PostModel;
       this.PostModel.user_id=this.user_id_received_from_server
      this._enrollmentService.notifications(this.PostModel).subscribe(notifications=>{
@@ -500,7 +503,9 @@ i=0;
          this.notification_counter=0;
        }
        else{
-          this.notification_counter=notifications.length;
+          this.Notification.notification_count=(notifications.length-this.how_many_notification_read);
+          this.notification_counter=(notifications.length-this.how_many_notification_read);
+          console.log("notification"+this.notification_counter);
        }
        //console.log(notifications);
        if(notifications.length===0){
@@ -512,9 +517,27 @@ i=0;
        }
      })
   }
+  get_how_many_notifications_read(){
+    console.log("get how many notifications");
+    this.Notification.user_id=this.user_id_received_from_server;
+    this._enrollmentService.get_how_many_notifications_read(this.Notification).subscribe(response_get_how_many_notifications_read=>{
+      this.how_many_notification_read=response_get_how_many_notifications_read[0].notification_count;
+      this.notifications();
+      //console.log(response_get_how_many_notifications_read);
+    });
+  }
+  how_many_notification_read=0;
   notifications_back(){
+    console.log("notification back");
     this.notifications_boolean=false;
     this.notification_counter=0;
+    this.Notification.user_id=this.user_id_received_from_server;
+    this.Notification.notification_read=true;
+
+    this._enrollmentService.update_notification(this.Notification).subscribe(response_from_server_after_updating_notification_status=>{
+      this.how_many_notification_read=response_from_server_after_updating_notification_status[0].notification_count;
+        //console.log(response_from_server);
+    });
   }
   your_account(){
     this.your_account_boolean=true;
