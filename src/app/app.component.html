@@ -30,7 +30,7 @@
 <!--top navigation bar start-->
 <div class="topnav" [hidden]="!view_while_login_auth_true">
 <div id="main">
-  <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile</button>  
+  <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile  <span class="badge badge-light">{{notification_counter}}</span></button>  
 </div>
   <div class="search-container">
   </div>
@@ -51,7 +51,7 @@
     </div>
   <a href="#home" (click)="home();">Home</a>
   <a href="#Your_Account" (click)="your_account();">Your Account</a>
-  <a href="#notifications" (click)="notifications();">Notifications</a>
+  <a href="#notifications" (click)="notifications();">Notifications<span class="badge badge-light">{{notification_counter}}</span></a>
   <a href="#Your_Posts" (click)="your_posts();">Your Posts</a>
   <a href="#Contact_Us" (click)="contact_us();">Contact Us</a>
   <a href="#Logout" (click)="logout();">Logout</a>
@@ -98,8 +98,19 @@
 <!--your account end-->
 <!--notification start-->
   <div [hidden]="!notifications_boolean">
-    <p>All your notification will be displayed here</p>
-    <button type="button" class="btn btn-success" (click)="notifications_back();">Back
+        <div class="card bg-info" [hidden]="!notification_loading_status"><p>{{notification_loading}}</p></div>
+        <div *ngFor="let notification of notification_obj">
+        <div class="card bg-light">
+          <div class="p-2 m1">
+            <div *ngIf="full_name_received_from_server===notification.commentor_name; else elseBlock"><p>{{notification_string}}You commented on your post({{notification.post_id}}) on {{notification.comment_time}} with comment-"{{notification.comment}}"</p>
+            </div>
+            <div>
+            <ng-template #elseBlock><p>{{notification_string}}{{notification.commentor_name}} commented on your post({{notification.post_id}}) on {{notification.comment_time}} with comment-"{{notification.comment}}"</p></ng-template>
+          </div>
+      </div><br>
+  </div>
+  </div>
+      <button type="button" class="btn btn-success" (click)="notifications_back();">Back
       </button>
   </div>
 <!--notofication end-->

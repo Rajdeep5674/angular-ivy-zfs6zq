@@ -22,6 +22,7 @@ export class HeroService {
    _url_get_my_liked_post_ids='https://netBankingAppServer--rajdeep5674.repl.co/get_my_liked_postids';
    _url_get_my_posts='https://netBankingAppServer--rajdeep5674.repl.co/get_my_posts';
    _url_delete_my_post='https://netBankingAppServer--rajdeep5674.repl.co/delete_my_post';
+   _url_notofications='https://netBankingAppServer--rajdeep5674.repl.co/notifications';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -66,6 +67,9 @@ export class HeroService {
   }
   delete_my_post(PostDelete:PostDelete){
     return this._http.post<any>(this._url_delete_my_post,PostDelete);
+  }
+  notifications(PostModel:PostModel){
+    return this._http.post<any>(this._url_notofications,PostModel);
   }
 
 

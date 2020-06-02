@@ -386,6 +386,7 @@ i=0;
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
+          this.notifications();
 
         }
         else{
@@ -477,14 +478,42 @@ i=0;
       //
     }
   }
+  notification_obj:any;
+  notification_loading="";
+  notification_string="";
+  notification_loading_status=false;
+  notification_counter:any;
   notifications(){
+    this.notification_loading_status=true;
+    this.notification_loading="loading...";
     this.notifications_boolean=true;
     this.your_posts_back();
     this.your_account_back();
     this.closeNav();
+    //this.PostModel;
+      this.PostModel.user_id=this.user_id_received_from_server
+     this._enrollmentService.notifications(this.PostModel).subscribe(notifications=>{
+       this.notification_loading="";
+       this.notification_loading_status=false;
+       if(this.notification_counter===0){
+         
+       }
+       else{
+          this.notification_counter=notifications.length;
+       }
+       //console.log(notifications);
+       if(notifications.length===0){
+         this.notification_string="No notification to show"
+       }
+       else{
+         this.notification_string="";
+         this.notification_obj=notifications;
+       }
+     })
   }
   notifications_back(){
     this.notifications_boolean=false;
+    this.notification_counter=0;
   }
   your_account(){
     this.your_account_boolean=true;
