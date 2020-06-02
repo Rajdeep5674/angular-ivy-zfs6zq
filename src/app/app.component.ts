@@ -438,6 +438,7 @@ i=0;
     this.full_name_received_from_server="Guest";
     this.email_received_from_server="";
     this.user_id_received_from_server="";
+    this.notifications_back();
     }
     else{
       this.closeNav();
@@ -496,7 +497,7 @@ i=0;
        this.notification_loading="";
        this.notification_loading_status=false;
        if(this.notification_counter===0){
-         
+         this.notification_counter=0;
        }
        else{
           this.notification_counter=notifications.length;
