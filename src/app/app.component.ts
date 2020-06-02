@@ -509,7 +509,7 @@ get_my_posts(user_id){
     console.log(my_posts);
   })
 }
-
+as
 home(){
   this.your_account_boolean=false;
   this.closeNav();
