@@ -493,7 +493,7 @@ i=0;
     this.notifications_boolean=true;
     this.your_posts_back();
     this.your_account_back();
-    this.closeNav();;
+    this.closeNav();
     //this.PostModel;
       this.PostModel.user_id=this.user_id_received_from_server
      this._enrollmentService.notifications(this.PostModel).subscribe(notifications=>{
@@ -503,9 +503,10 @@ i=0;
          this.notification_counter=0;
        }
        else{
-          this.Notification.notification_count=(notifications.length-this.how_many_notification_read);
+          this.Notification.notification_count=thnotifications.length;
           this.notification_counter=(notifications.length-this.how_many_notification_read);
-          console.log("notification"+this.notification_counter);
+          console.log("new notification"+this.notification_counter);
+          console.log("total"+notifications.length);
        }
        //console.log(notifications);
        if(notifications.length===0){
