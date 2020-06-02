@@ -481,6 +481,10 @@ i=0;
       //
     }
   }
+  notification_show_pressed(){
+    this.notifications_boolean=true;
+    this.closeNav();
+  }
   notification_obj:any;
   notification_loading="";
   notification_string="";
@@ -490,7 +494,6 @@ i=0;
     console.log("notifications");
     this.notification_loading_status=true;
     this.notification_loading="loading...";
-    this.notifications_boolean=true;
     this.your_posts_back();
     this.your_account_back();
     this.closeNav();
@@ -503,7 +506,7 @@ i=0;
          this.notification_counter=0;
        }
        else{
-          this.Notification.notification_count=thnotifications.length;
+          this.Notification.notification_count=notifications.length;
           this.notification_counter=(notifications.length-this.how_many_notification_read);
           console.log("new notification"+this.notification_counter);
           console.log("total"+notifications.length);
