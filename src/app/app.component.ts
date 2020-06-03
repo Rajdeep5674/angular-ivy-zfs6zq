@@ -77,7 +77,7 @@ i=0;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
   ngAfterViewInit(){
-    
+    this.showSlides(1);
   }
   ngOnInit() {
   }
