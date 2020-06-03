@@ -77,7 +77,7 @@ i=0;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
   ngAfterViewInit(){
-    this.showSlides();
+    
   }
   ngOnInit() {
   }
@@ -575,22 +575,36 @@ home(){
   //this.showSlides(1);
 }
 /////////
-slideIndex = 0;
-//showSlides();
-slides:any;
-showSlides() {
-  this.slides = document.getElementsByClassName("mySlides");
-  for (var i = 0; i < this.slides.length; i++) {
-    this.slides[i].style.display = "none";
-  }
-  this.slideIndex++;
-  if (this.slideIndex > this.slides.length) {this.slideIndex = 1}
-  this.slides[this.slideIndex-1].style.display = "block";
-  setTimeout(() => {
-          //console.log('hello');
-          this.showSlides();
-      }, 3000);
+slideIndex = 1;
 
+// Next/previous controls
+plusSlides(n) {
+  console.log("plus slide method called");
+  this.showSlides(this.slideIndex += n);
+}
+
+// Thumbnail image controls
+currentSlide(n) {
+  this.showSlides(this.slideIndex = n);
+}
+slides:any;
+dots:any;
+
+showSlides(n) {
+  console.log("show slide method called n"+n);
+  this.slides = document.getElementsByClassName("mySlides");
+  this.dots = document.getElementsByClassName("dot");
+  if (n > this.slides.length) {this.slideIndex = 1}
+  if (n < 1) {this.slideIndex = this.slides.length}
+  for (var i = 0; i < this.slides.length; i++) {
+      this.slides[i].style.display = "none";
+  }
+  for (var i = 0; i < this.dots.length; i++) {
+      this.dots[i].className = this.dots[i].className.replace(" active", "");
+  }
+  console.log(this.slideIndex);
+  this.slides[this.slideIndex-1].style.display = "block";
+  this.dots[this.slideIndex-1].className += " active";
 } 
 
 }

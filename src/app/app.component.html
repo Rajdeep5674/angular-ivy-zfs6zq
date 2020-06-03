@@ -469,20 +469,29 @@
 
 <div class="mySlides">
   <div class="numbertext">1 / 3</div>
-  <img src="img_nature_wide.jpg" style="width:100%">
+  <img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/autumn-autumn-colours-brown-countryside-358238.jpg" style="width:100%">
   <div class="text">Caption Text</div>
 </div>
 
 <div class="mySlides">
   <div class="numbertext">2 / 3</div>
-  <img src="img_snow_wide.jpg" style="width:100%">
+  <img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/bridge-cascade-environment-fall-358457.jpg" style="width:100%">
   <div class="text">Caption Two</div>
 </div>
 
 <div class="mySlides">
   <div class="numbertext">3 / 3</div>
-  <img src="img_mountains_wide.jpg" style="width:100%">
+  <img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/tree-with-brunch-and-green-leaves-during-sunset-70365.jpg" style="width:100%">
   <div class="text">Caption Three</div>
 </div>
+<a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+<a class="next" (click)="plusSlides(1)">&#10095;</a>
+
 </div>
+<div style="text-align:center">
+  <span class="dot" (click)="currentSlide(1)"></span> 
+  <span class="dot" (click)="currentSlide(2)"></span> 
+  <span class="dot" (click)="currentSlide(3)"></span> 
+</div>
+
 
