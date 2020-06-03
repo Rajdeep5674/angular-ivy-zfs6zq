@@ -145,8 +145,8 @@ img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 600px;
-  max-height: 150px;
+  max-width: 1000px;
+  max-height: 250px;
   overflow: auto;
   position: relative;
   margin: auto;
@@ -160,9 +160,9 @@ img {vertical-align: middle;}
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
+  color: red;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 30px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -181,8 +181,8 @@ img {vertical-align: middle;}
 
 /* Caption text */
 .text {
-  color: #f2f2f2;
-  font-size: 15px;
+  color: green;
+  font-size: 30px;
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
@@ -212,7 +212,7 @@ img {vertical-align: middle;}
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: black;
 }
 
 /* Fading animation */
