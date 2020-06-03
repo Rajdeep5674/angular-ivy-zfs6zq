@@ -573,4 +573,34 @@ home(){
   this.your_posts_back();
 }
 
+/////////
+slideIndex = 1;
+
+// Next/previous controls
+plusSlides(n) {
+  this.showSlides(this.slideIndex += n);
+}
+
+// Thumbnail image controls
+currentSlide(n) {
+  this.showSlides(this.slideIndex = n);
+}
+slides:any;
+dots:any;
+
+showSlides(n) {
+  this.slides = document.getElementsByClassName("mySlides");
+  this.dots = document.getElementsByClassName("dot");
+  if (n > this.slides.length) {this.slideIndex = 1}
+  if (n < 1) {this.slideIndex = this.slides.length}
+  for (var i = 0; i < this.slides.length; i++) {
+      this.slides[i].style.display = "none";
+  }
+  for (i = 0; i < this.dots.length; i++) {
+      this.dots[i].className = this.dots[i].className.replace(" active", "");
+  }
+  this.slides[this.slideIndex-1].style.display = "block";
+  this.dots[this.slideIndex-1].className += " active";
+} 
+
 }
