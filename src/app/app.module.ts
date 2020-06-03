@@ -8,7 +8,7 @@ import { HeroService } from './hero.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,HttpClientModule ],
+  imports:      [BrowserModule, FormsModule,HttpClientModule ],
   declarations: [ AppComponent, HelloComponent ],
   bootstrap:    [ AppComponent ],
   providers: [HeroService]

@@ -76,7 +76,8 @@ i=0;
   like_can_be_done=false;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
-
+  ngAfterViewInit(){
+  }
   ngOnInit() {
   }
 
@@ -566,18 +567,18 @@ get_my_posts(user_id){
     console.log(my_posts);
   })
 }
-as
 home(){
   this.your_account_boolean=false;
   this.closeNav();
   this.your_posts_back();
+  //this.showSlides(1);
 }
-
 /////////
 slideIndex = 1;
 
 // Next/previous controls
 plusSlides(n) {
+  console.log("plus slide method called");
   this.showSlides(this.slideIndex += n);
 }
 
@@ -589,6 +590,7 @@ slides:any;
 dots:any;
 
 showSlides(n) {
+  console.log("show slide method called n"+n);
   this.slides = document.getElementsByClassName("mySlides");
   this.dots = document.getElementsByClassName("dot");
   if (n > this.slides.length) {this.slideIndex = 1}
@@ -596,11 +598,17 @@ showSlides(n) {
   for (var i = 0; i < this.slides.length; i++) {
       this.slides[i].style.display = "none";
   }
-  for (i = 0; i < this.dots.length; i++) {
+  for (var i = 0; i < this.dots.length; i++) {
       this.dots[i].className = this.dots[i].className.replace(" active", "");
   }
+  console.log(this.slideIndex);
   this.slides[this.slideIndex-1].style.display = "block";
   this.dots[this.slideIndex-1].className += " active";
+  setTimeout(() => {
+          console.log('hello');
+          //this.showSlides(this.slideIndex);
+      }, 3000);
+    this.slideIndex=this.slideIndex+1;
 } 
 
 }
