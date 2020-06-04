@@ -367,20 +367,34 @@
         <textarea [disabled]="!view_while_login_auth_true" rows="4" cols="50" name="message" class="form-control" id="message"
                 required
                 [(ngModel)]="PostModel.message"
-                #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea><br>
+                #name="ngModel" placeholder="Enter your message/query/post here">Type here..</textarea>
       </div>
+      <div class="form-group">
+            <label for="topics">Select topic of the post</label>
+            <select #topic="ngModel" [disabled]="!view_while_login_auth_true" [(ngModel)]="PostModel.topics" name="topics" required class="form-control" (change)="validateTopic(topic.value)">
+                <option>Select your topic</option>
+                <option *ngFor="let topic of topics">{{topic}}</option>
+            </select>
+            <div [hidden]="!topicHasError"
+                    class="alert alert-danger">
+                    <small>
+                  Topic is required,if your topic does not match with any of the topics listed, please choose others.</small>
+            </div>
+        </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true">Post</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true ">Post</button>
       <hr>
     </form>
   </div>
+  <br>
   <div [hidden]="!submitted">
     <!--<p>{{message_to_user}}</p>-->
   </div>
+  <br><br>
     <div [hidden]="your_posts_boolean">
-      <button type="button" class="btn btn-success" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
+      <button type="button" class="btn btn-success myShadow" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
 
-      <button type="button" class="btn btn-success" (click)="hideAllPost();">Hide all posts</button><br><br>
+      <button type="button" class="btn btn-success myShadow" (click)="hideAllPost();">Hide all posts</button><br><br>
     </div>
     <div [hidden]="!view_all_posts_standby">
       <div class="card text-white bg-success mb-3" style="max-width: 18rem;">

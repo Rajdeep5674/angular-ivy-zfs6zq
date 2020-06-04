@@ -74,6 +74,10 @@ i=0;
   like_clicked=false;
   like_hidden=false;
   like_can_be_done=false;
+
+  //topics 
+
+  topics:any=['Technology','Science','Movies ','Music','Health','Food','Books','Visiting and Travel','Business','Psychology','Others'];
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
   ngAfterViewInit(){
@@ -82,7 +86,7 @@ i=0;
   ngOnInit() {
   }
 
-  PostModel = new PostModel('','','',0,'');
+  PostModel = new PostModel('','','',0,'','');
   PostModelAdv=new PostModelAdv(0,'','','',false);
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','','');
@@ -572,6 +576,7 @@ home(){
   this.your_account_boolean=false;
   this.closeNav();
   this.your_posts_back();
+  this.your_posts_boolean=false;
   //this.showSlides(1);
 }
 /////////
@@ -605,6 +610,14 @@ showSlides(n) {
   console.log(this.slideIndex);
   this.slides[this.slideIndex-1].style.display = "block";
   this.dots[this.slideIndex-1].className += " active";
-} 
-
+}
+topicHasError=false;
+validateTopic(topic){
+  if(topic==="Select your topic"){
+    this.topicHasError=true;
+  }
+  else{
+    this.topicHasError=false;
+  }
+}
 }

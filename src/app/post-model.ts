@@ -4,6 +4,7 @@ export class PostModel {
     public user_id:string,
     public message:string,
     public like_count:number,
-    public post_time:string
+    public post_time:string,
+    public topics:string
   ){}
 }
