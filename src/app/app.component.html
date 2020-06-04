@@ -382,7 +382,7 @@
             </div>
         </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true ">Post</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true || topicHasError">Post</button>
       <hr>
     </form>
   </div>
@@ -407,7 +407,7 @@
           <div [hidden]="!view_all_post" class="container border py-2 m-2">
       <div class="card py-2 " *ngFor="let post of data;index as i;">
           <div class="card text-center">
-              <div class="card-header">
+              <div class="card-header"><span class="badge badge-primary">{{post.topic}}</span>
                 Post id-{{post.post_id}}
               </div>
               <div class="card-body">
