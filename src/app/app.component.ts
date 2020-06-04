@@ -572,11 +572,13 @@ get_my_posts(user_id){
     console.log(my_posts);
   })
 }
+
 home(){
   this.your_account_boolean=false;
   this.closeNav();
   this.your_posts_back();
-  this.your_posts_boolean=false;
+  this.default=true;
+  //this.your_posts_boolean=false;
   //this.showSlides(1);
 }
 /////////

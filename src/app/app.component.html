@@ -125,7 +125,7 @@
   <div [hidden]="!your_posts_boolean">
       <div class="card py-2 " *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
-              <div class="card-header">
+              <div class="card-header"><span class="badge badge-primary">{{my_post.topic}}</span>
                 Post id-{{my_post.post_id}}
               </div>
               <div class="card-body">
