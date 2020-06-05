@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=device-width,initial-sc"
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -213,7 +213,7 @@
   <div [hidden]="view_while_login_auth_true">
     &nbsp; &nbsp;<button type="button" class="btn btn-success myShadow" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
 
-  <div class="card border py-3" [hidden]="login_closed" *ngIf="login_boolean">
+  <div class="card border py-3 myShadow" [hidden]="login_closed" *ngIf="login_boolean">
     <div class="container">
         <h1>Login form</h1>
               <form (ngSubmit)="loginAuthCheck();" #loginForm="ngForm">
@@ -250,7 +250,7 @@
   <!--new user login-->
   <button [hidden]="login_boolean || new_user_created_successfully" type="button" class="btn btn-success myShadow" (click)="singup();">Sign up</button>
   <hr>
-  <div class="card border py-3"[hidden]="signup_closed" *ngIf="signup_boolean">
+  <div class="card border py-3 myShadow"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
         <h1>Fill the details below</h1>
         <small class="font-italic" style="color:red"> *All fileds are mandatory to fill</small>
@@ -327,7 +327,7 @@
   </div>
   <!--new user signup end-->
 
-   <div class="slideshow-container">
+   <div class="slideshow-container ">
 
 <div class="mySlides myShadow">
   <div class="numbertext">1 / 3</div>
