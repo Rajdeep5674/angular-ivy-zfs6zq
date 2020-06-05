@@ -57,12 +57,12 @@
     <div class="card py-2 m bg-light text-center">
       <h4 style="color:#5cb85c"><img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/profile-icon.jpg" alt="Avatar" class="avatar">&nbsp;&nbsp;{{full_name_received_from_server}}</h4>
     </div>
-  <a href="#home" (click)="home();">Home</a>
-  <a href="#Your_Account" (click)="your_account();">Your Account</a>
-  <a href="#notifications" (click)="notification_show_pressed();">Notifications<span class="badge badge-da">{{notification_counter}}</span></a>
-  <a href="#Your_Posts" (click)="your_posts();">Your Posts</a>
-  <a href="#Contact_Us" (click)="contact_us();">Contact Us</a>
-  <a href="#Logout" (click)="logout();">Logout</a>
+  <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/74/74807.svg" class="icons">&nbsp;&nbsp;Home</a>
+  <a href="#Your_Account" (click)="your_account();"><img src="" class="icons">&nbsp;&nbsp;Your Account</a>
+  <a href="#notifications" (click)="notification_show_pressed();"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons">&nbsp;&nbsp;Notifications<span class="badge badge-da">{{notification_counter}}</span></a>
+  <a href="#Your_Posts" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons">&nbsp;&nbsp;Your Posts</a>
+  <a href="#Contact_Us" (click)="contact_us();"><img src="https://image.flaticon.com/icons/svg/482/482997.svg " class="icons">&nbsp;&nbsp;Contact Us</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/660/660350.svg" class="icons">&nbsp;&nbsp;Logout</a>
 </div>
 <!--collapsed side nav bar end-->
 <!--your account start-->
@@ -404,7 +404,7 @@
       </div>
   </div>
     </div>
-    <div [hidden]="view_all_posts_standby" lc>
+    <div [hidden]="view_all_posts_standby" class="myShadow">
           <div [hidden]="!view_all_post" class="container border py-2 m-2">
       <div class="card py-2 " *ngFor="let post of data;index as i;">
           <div class="card text-center">

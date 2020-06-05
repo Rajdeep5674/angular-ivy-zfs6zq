@@ -136,6 +136,11 @@ body {
   height: 50px;
   border-radius: 50%;
 }
+.icons {
+  vertical-align: middle;
+  width: 20px;
+  height: 18px;
+}
 
 /*--------*/
 * {box-sizing: border-box}
