@@ -661,18 +661,15 @@ setCookie_userName(user_id, user_id_value, exdays) {
   document.cookie = user_id + "=" + user_id_value + ";" + expires + ";path=/";
 }
 setCookie_password(password, password_value, exdays) {
-  console.log(password,password_value,exdays);
+
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   var expires = "expires="+d.toUTCString();
   document.cookie = password + "=" + password_value + ";" + expires + ";path=/";
 }
 getCookie(cname) {
-  console.log("get name"+cname);
   var name = cname + "=";
   var ca = document.cookie.split(';');
-  console.log("splitter"+ca);
-  console.log("splitter length"+ca.length);
   for(var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
@@ -686,11 +683,8 @@ getCookie(cname) {
 }
 user_id_pwd="";
 checkCookie() {
-  console.log("check cookies called");
   var user_id = this.getCookie("user_id");
-  console.log("user_id"+user_id);
   var password = this.getCookie("password");
-  console.log("password"+password);
   if (user_id != "" && user_id !=null && password!="" && password!=null) {
     //alert("Welcome again " + user_id);
     this.LoginModel.user_id=user_id;
