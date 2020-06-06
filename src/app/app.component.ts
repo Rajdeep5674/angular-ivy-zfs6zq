@@ -448,7 +448,7 @@ i=0;
     this.LoginModel.password="";
 
     this.login_boolean=false;
-    alert("Successfully logged out");;
+    alert("Successfully logged out");
     this.closeNav();
     this.your_posts_boolean=false;
     this.your_account_boolean=false;
