@@ -141,7 +141,20 @@ body {
   width: 20px;
   height: 18px;
 }
-
+/*--footer after authentication--*/
+.footer_after_login{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /*text-align: center;*/
+}
+.my_footer{
+  display: inline-block;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+}
 /*--------*/
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
