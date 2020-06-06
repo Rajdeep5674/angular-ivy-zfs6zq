@@ -105,7 +105,7 @@
   </div>
 <!--your account end-->
 <!--notification start-->
-  <div [hidden]="!notifications_boolean">
+  <div id="notifications" [hidden]="!notifications_boolean">
         <div class="card bg-info" [hidden]="!notification_loading_status"><p>{{notification_loading}}</p></div>
         <div *ngFor="let notification of notification_obj">
         <div class="card bg-light">
@@ -123,7 +123,7 @@
   </div>
 <!--notofication end-->
 <!--your posts start-->
-  <div [hidden]="!your_posts_boolean">
+  <div id="_post" [hidden]="!your_posts_boolean">
       <div class="card py-2 " *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
               <div class="card-header"><span class="badge badge-primary">{{my_post.topic}}</span>
@@ -360,7 +360,7 @@
 
 <div [hidden]="your_posts_boolean" class="card border">
   <div class="card py-3" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/brown-paper-clips-1097930.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
-  <div [hidden]="submitted" class="myShadow">
+  <div id="post_here" [hidden]="submitted" class="myShadow">
     <h1 class="text-center">Post Here</h1>
     <small [hidden]="view_while_login_auth_true" class="font-italic container bg-light" style="color:green">Please login to post something</small><br>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
@@ -492,9 +492,9 @@
 <footer [hidden]="!view_while_login_auth_true" class="page-footer font-small blue footer_after_login">
   <div class=" my_footer card bg-light footer-copyright text-center py-3">
     <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/74/74807.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/1822/1822786.svg " class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#notifications" (click)="notification_show_pressed();"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#Your_Posts" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#post_here"><img src="https://image.flaticon.com/icons/svg/1822/1822786.svg " class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </div>
 </footer>
 <!--footer when login true end-->
