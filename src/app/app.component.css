@@ -154,6 +154,7 @@ body {
   justify-content: space-around;
   text-align: center;
   width: 100%;
+  color: green;
 }
 /*--------*/
 * {box-sizing: border-box}

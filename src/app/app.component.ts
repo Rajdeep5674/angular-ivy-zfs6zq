@@ -578,6 +578,7 @@ home(){
   this.closeNav();
   this.your_posts_back();
   this.submitted=false;
+  this.notifications_back();
   //this.your_posts_boolean=false;
   //this.showSlides(1);
 }
