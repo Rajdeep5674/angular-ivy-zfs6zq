@@ -81,8 +81,9 @@ i=0;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
   ngAfterViewInit(){
+    this.checkCookie();
     this.showSlides(1);
-    
+    //this.viewAllPost();
   }
   ngOnInit() {
   }
@@ -392,6 +393,9 @@ i=0;
           this.full_name_received_from_server=this.CustomerDetaillsRoot[0].full_name;
             this.email_received_from_server=this.CustomerDetaillsRoot[0].email;
             this.user_id_received_from_server=this.CustomerDetaillsRoot[0].user_id;
+          //setting up cookies
+            this.setCookie_userName("user_id", this.user_id_received_from_server, 365);
+            this.setCookie_password("password", this.CustomerDetaillsRoot[0].paasword, 365);
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
@@ -642,5 +646,53 @@ snackbar() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+} 
+//cookies
+setCookie_userName(user_id, user_id_value, exdays) {
+  console.log(user_id,user_id_value,exdays);
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = user_id + "=" + user_id_value + ";" + expires + ";path=/";
+}
+setCookie_password(password, password_value, exdays) {
+  console.log(password,password_value,exdays);
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = password + "=" + password_value + ";" + expires + ";path=/";
+}
+getCookie(cname) {
+  console.log("get name"+cname);
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  console.log("splitter"+ca);
+  console.log("splitter length"+ca.length);
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+user_id_pwd="";
+checkCookie() {
+  console.log("check cookies called");
+  var user_id = this.getCookie("user_id");
+  console.log("user_id"+user_id);
+  var password = this.getCookie("password");
+  console.log("password"+password);
+  if (user_id != "" || user_id !=null || password!="" || password!=null) {
+    //alert("Welcome again " + user_id);
+    this.LoginModel.user_id=user_id;
+    this.LoginModel.password=password;
+    this.loginAuthCheck();
+  } else {
+    this.login();
+  }
 } 
 }
