@@ -598,7 +598,7 @@ slides:any;
 dots:any;
 
 showSlides(n) {
-  console.log("show slide method called n"+n);
+  /console.log("show slide method called n"+n);
   this.slides = document.getElementsByClassName("mySlides");
   this.dots = document.getElementsByClassName("dot");
   if (n > this.slides.length) {this.slideIndex = 1}
