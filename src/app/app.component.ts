@@ -448,15 +448,22 @@ i=0;
     this.LoginModel.password="";
 
     this.login_boolean=false;
-    alert("Successfully logged out");
+    alert("Successfully logged out");;
     this.closeNav();
     this.your_posts_boolean=false;
     this.your_account_boolean=false;
 
+    //clear cookies section
+    document.cookie = "user_id=this.user_id_received_from_server; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
+    document.cookie = "password=this.password_received_from_server; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
+    //document.cookie = "username=rajdeep; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+
     this.full_name_received_from_server="Guest";
     this.email_received_from_server="";
     this.user_id_received_from_server="";
+    this.password_received_from_server="";
     this.notifications_back();
+
     }
     else{
       this.closeNav();
@@ -654,14 +661,12 @@ snackbar() {
 } 
 //cookies
 setCookie_userName(user_id, user_id_value, exdays) {
-  console.log(user_id,user_id_value,exdays);
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   var expires = "expires="+d.toUTCString();
   document.cookie = user_id + "=" + user_id_value + ";" + expires + ";path=/";
 }
 setCookie_password(password, password_value, exdays) {
-
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
   var expires = "expires="+d.toUTCString();
