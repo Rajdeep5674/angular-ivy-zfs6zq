@@ -597,6 +597,9 @@ get_my_posts(user_id){
     console.log(my_posts);
   })
 }
+post_here(){
+  this.home();
+}
 home(){
   this.your_account_boolean=false;
   this.closeNav();
