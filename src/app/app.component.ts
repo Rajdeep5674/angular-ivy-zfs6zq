@@ -74,7 +74,7 @@ i=0;
   like_clicked=false;
   like_hidden=false;
   like_can_be_done=false;
-
+  no_notification=false;
   //topics 
 
   topics:any=['Technology','Science','Movies ','Music','Health','Food','Books','Visiting and Travel','Business','Psychology','Others'];
@@ -491,6 +491,7 @@ i=0;
   notification_show_pressed(){
     this.notifications_boolean=true;
     this.closeNav();
+    this.no_notification=true;
   }
   notification_obj:any;
   notification_loading="";
@@ -520,7 +521,8 @@ i=0;
        }
        //console.log(notifications);
        if(notifications.length===0){
-         this.notification_string="No notification to show"
+         this.notification_string="No new notification"
+         console.log("no notification");
        }
        else{
          this.notification_string="";
@@ -549,6 +551,7 @@ i=0;
       this.how_many_notification_read=response_from_server_after_updating_notification_status[0].notification_count;
         //console.log(response_from_server);
     });
+    this.no_notification=false;
   }
   your_account(){
     this.your_account_boolean=true;
