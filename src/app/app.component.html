@@ -123,7 +123,7 @@
   </div>
 <!--notofication end-->
 <!--your posts start-->
-  <div id="_post" [hidden]="!your_posts_boolean">
+  <div id="your_post" [hidden]="!your_posts_boolean">
       <div class="card py-2 " *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
               <div class="card-header"><span class="badge badge-primary">{{my_post.topic}}</span>
@@ -391,7 +391,6 @@
   <div [hidden]="!submitted">
     <!--<p>{{message_to_user}}</p>-->
   </div>
-  <br><br>
     <div [hidden]="your_posts_boolean">
       <button type="button" class="btn btn-success myShadow" (click)="viewAllPost();">View all posts</button>&nbsp; &nbsp; &nbsp; &nbsp;
 
