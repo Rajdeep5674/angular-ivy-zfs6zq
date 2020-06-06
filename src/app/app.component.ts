@@ -11,6 +11,7 @@ import {ImageSnippet} from './image-snippet';
 import {PostIdLikeButtonVisible} from './post-id-like-button-visible';
 import {PostDelete} from './post-delete';
 import {Notification} from './notification';
+//import {MatCheckboxModule} from '@angular/material/checkbox';
 //import * as CryptoJS from '@types/crypto-js';
 
 
@@ -98,7 +99,7 @@ i=0;
   CommentModel=new CommentModel(0,'','','');
   PostIdComments=new PostIdComments(0,'');
   CustomerDetaillsRoot=new CustomerDetaillsRoot('','','','','');
-  LoginModel=new LoginModel('','');
+  LoginModel=new LoginModel('','',false);
   PostIdLikeButtonVisible=new PostIdLikeButtonVisible(0,true);
   PostDelete=new PostDelete('',0);
   Notification=new Notification('',0,false);
@@ -382,6 +383,7 @@ i=0;
       this.login_closed=false;
   }
    async loginAuthCheck(){
+     //console.log(this.LoginModel.remember_me);
     //alert("Please wait while we will validate your details. This may take few seconds to complete. Click ok to continue.");
     this.standby_home_page=true;
     //console.log( this.LoginModel);
@@ -398,10 +400,11 @@ i=0;
             this.email_received_from_server=this.CustomerDetaillsRoot[0].email;
             this.user_id_received_from_server=this.CustomerDetaillsRoot[0].user_id;
             this.password_received_from_server=this.CustomerDetaillsRoot[0].password;
-          //setting up cookies
+          //setting up cookiesk
+            if(this.LoginModel.remember_me){
             this.setCookie_userName("user_id", this.user_id_received_from_server, 365);
             this.setCookie_password("password",this.password_received_from_server, 365);
-
+            }
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
           this.get_how_many_notifications_read();

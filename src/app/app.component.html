@@ -246,6 +246,9 @@
                   Password is required
                 </div>
               </div>
+              <input [(ngModel)]="LoginModel.remember_me"  type="checkbox" id="remember_me" name="remember_me" [value]=true>
+              <label for="vehicle1">Remember me</label><br>
+              <br>
               <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Submit</button>&nbsp;&nbsp;&nbsp;
               <button type="button" class="btn btn-success" (click)="cancel_login();">Cancel</button><br>
             </form>
