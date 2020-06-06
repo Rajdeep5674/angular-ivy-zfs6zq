@@ -53,6 +53,7 @@ i=0;
   full_name_received_from_server="Guest";
   email_received_from_server="";
   user_id_received_from_server="";
+  password_received_from_server="";
   standby_home_page=false;
   CustomerDetaillsRoot_array=[];
   your_posts_boolean=false;
@@ -81,6 +82,9 @@ i=0;
   //page_load=true;
       constructor(private _enrollmentService:HeroService) { }
   ngAfterViewInit(){
+    //document.cookie = "user_id=rajdeep; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
+    //document.cookie = "password=123; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
+    //document.cookie = "username=rajdeep; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
     this.checkCookie();
     this.showSlides(1);
     //this.viewAllPost();
@@ -393,9 +397,10 @@ i=0;
           this.full_name_received_from_server=this.CustomerDetaillsRoot[0].full_name;
             this.email_received_from_server=this.CustomerDetaillsRoot[0].email;
             this.user_id_received_from_server=this.CustomerDetaillsRoot[0].user_id;
+            this.password_received_from_server=this.CustomerDetaillsRoot[0].password;
           //setting up cookies
             this.setCookie_userName("user_id", this.user_id_received_from_server, 365);
-            this.setCookie_password("password", this.CustomerDetaillsRoot[0].paasword, 365);
+            this.setCookie_password("password",this.password_received_from_server, 365);
 
           //setting up all the parameters while successful login
           this.view_while_login_auth_true=true;
@@ -686,7 +691,7 @@ checkCookie() {
   console.log("user_id"+user_id);
   var password = this.getCookie("password");
   console.log("password"+password);
-  if (user_id != "" || user_id !=null || password!="" || password!=null) {
+  if (user_id != "" && user_id !=null && password!="" && password!=null) {
     //alert("Welcome again " + user_id);
     this.LoginModel.user_id=user_id;
     this.LoginModel.password=password;
