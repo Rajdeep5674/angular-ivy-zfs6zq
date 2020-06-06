@@ -400,7 +400,7 @@ i=0;
             this.email_received_from_server=this.CustomerDetaillsRoot[0].email;
             this.user_id_received_from_server=this.CustomerDetaillsRoot[0].user_id;
             this.password_received_from_server=this.CustomerDetaillsRoot[0].password;
-          //setting up cookiesk
+          //setting up cookies
             if(this.LoginModel.remember_me){
             this.setCookie_userName("user_id", this.user_id_received_from_server, 365);
             this.setCookie_password("password",this.password_received_from_server, 365);
@@ -424,7 +424,9 @@ i=0;
   cancel_login(){
   this.login_boolean=false;
   }
-
+  remember_me_know_more(){
+    alert("By clicking Remember me you agree to store your user id and password in the local cookies in your website. Hence we will remember you while you login next time. Please left the box unchecked if you do not want to save your credentails in cookies.")
+  }
   //functions for collapsed side nav bars
   openNav(){
     console.log("open called");
