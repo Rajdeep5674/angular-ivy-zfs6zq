@@ -107,10 +107,9 @@
 <!--notification start-->
   <div id="notifications" [hidden]="!notifications_boolean">
         <div class="card bg-info" [hidden]="!notification_loading_status"><p>{{notification_loading}}</p></div>
-                    <div class ="card bg-info p-2 m1 text-center" *ngIf="no_notification">
-              <p>{{notification_string}}</p>
-            </div>
+              <div id="snackbar">No new notification</div>
             <br>
+        <div [hidden]="!notification_exist">
         <div *ngFor="let notification of notification_obj">
         <div class="card bg-light">
           <div class="p-2 m1">
@@ -124,12 +123,14 @@
   </div>
       <button type="button" class="btn btn-success" (click)="notifications_back();">Close Notification
       </button>
+      </div>
   </div>
   <br>
 <!--notofication end-->
 <!--your posts start-->
-  <div id="your_post" [hidden]="!your_posts_boolean">
-      <div  *ngFor="let my_post of my_posts;index as i;">
+<div id="your_post"></div>
+  <div class="card py-2 " [hidden]="!your_posts_boolean">
+      <div *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
               <div class="card-header"><span class="badge badge-primary">{{my_post.topic}}</span>
                 Post id-{{my_post.post_id}}
@@ -497,7 +498,7 @@
   <div class=" my_footer card bg-light footer-copyright text-center py-3">
     <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/74/74807.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="#notifications" (click)="notification_show_pressed();"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#Your_Posts" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#your_post" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="#post_here"><img src="https://image.flaticon.com/icons/svg/1822/1822786.svg " class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </div>
 </footer>

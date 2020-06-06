@@ -489,16 +489,19 @@ i=0;
     }
   }
   notification_show_pressed(){
+    this.notifications();
     this.notifications_boolean=true;
     this.closeNav();
-    this.no_notification=true;
+    //this.no_notification=true;
   }
   notification_obj:any;
   notification_loading="";
   notification_string="";
   notification_loading_status=false;
   notification_counter:any;
+  notification_exist=false;
   notifications(){
+    this.your_posts_back();
     console.log("notifications");
     this.notification_loading_status=true;
     this.notification_loading="loading...";
@@ -521,10 +524,12 @@ i=0;
        }
        //console.log(notifications);
        if(notifications.length===0){
-         this.notification_string="No new notification"
+         this.notification_string="No new notification";
+         this.snackbar();
          console.log("no notification");
        }
        else{
+         this.notification_exist=true;
          this.notification_string="";
          this.notification_obj=notifications;
        }
@@ -626,4 +631,16 @@ validateTopic(topic){
     this.topicHasError=false;
   }
 }
+//js for snackbar
+snackbar() {
+  console.log("snackbar called");
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+} 
 }
