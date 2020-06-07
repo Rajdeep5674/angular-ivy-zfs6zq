@@ -65,6 +65,25 @@
   <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/660/660350.svg" class="icons">&nbsp;&nbsp;Logout</a>
 </div>
 <!--collapsed side nav bar end-->
+<!--collapsed side bar for topic start here-->
+<div id="mySidebar_right" class="sidebar_right">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav_right()">×</a>
+    <div class="card py-2 m bg-light text-center">
+      <h4 style="color:#5cb85c">&nbsp;&nbsp;Topics Library</h4>
+    </div>
+  <a href="#home" (click)="home();"><img src="" class="icons">&nbsp;&nbsp;Technology</a>
+  <a href="#Your_Account" (click)="your_account();"><img src="https://image.flaticon.com/icons/svg/2452/2452568.svg" class="icons">&nbsp;&nbsp;Science</a>
+  <a href="#notifications" (click)="notification_show_pressed();"><img src="https://image.flaticon.com/icons/svg/2749/2749373.svg" class="icons">&nbsp;&nbsp;Movies</a>
+  <a href="#Your_Posts" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/814/814099.svg" class="icons">&nbsp;&nbsp;Music</a>
+  <a href="#Contact_Us" (click)="contact_us();"><img src="https://image.flaticon.com/icons/svg/1438/1438520.svg" class="icons">&nbsp;&nbsp;Health</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/254/254096.svg" class="icons">&nbsp;&nbsp;Food</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/png/512/2092/2092308.png" class="icons">&nbsp;&nbsp;Books</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/655/655840.svg" class="icons">&nbsp;&nbsp;Visiting and Travel</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/618/618625.svg" class="icons">&nbsp;&nbsp;Business</a>
+  <a href="#Logout" (click)="logout();"><img src="https://www.flaticon.com/premium-icon/icons/svg/563/563546.svg" class="icons">&nbsp;&nbsp;Psychology</a>
+  <a href="#Logout" (click)="logout();"><img src="https://image.flaticon.com/icons/svg/620/620419.svg" class="icons">&nbsp;&nbsp;Others</a>
+</div>
+<!--collapsed sidebar for topic ends here-->
 <!--your account start-->
   <div id="Your_Account" class="card border py-3" [hidden]="!your_account_boolean">
         <table class="table table-hover table-striped">

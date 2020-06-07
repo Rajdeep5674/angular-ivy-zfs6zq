@@ -438,6 +438,18 @@ i=0;
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
   }
+  //functions for right sidebar for topics
+    openNav_right(){
+    console.log("open called for topic");
+    document.getElementById("mySidebar_right").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  closeNav_right() {
+    console.log("close navbar for topic called");
+  document.getElementById("mySidebar_right").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  }
   logout(){
     var logout_confirmation=confirm("You are about to logout.");
     if(logout_confirmation){
@@ -658,6 +670,7 @@ validateTopic(topic){
 //topic wise paginf start 
 topic_wise_paging(){
   console.log("topic called");
+  this.openNav_right();
 }
 //js for snackbar
 snackbar() {
