@@ -529,6 +529,7 @@ i=0;
       //console.log(message_from_server_for_delete_my_post);
       if(message_from_server_for_delete_my_post.message_from_server==="post_deleted"){
           this.your_posts();
+          this.get_how_many_notifications_read();
       }
       else{
         this.your_posts();
@@ -640,12 +641,8 @@ home(){
   this.your_posts_back();
   this.submitted=false;
   this.notifications_back();
-    this.PostModel.message="";
-
-    this.PostModel.topics="";
-  //this.reset_post_Model();
-  //this.your_posts_boolean=false;
-  //this.showSlides(1);
+  this.PostModel.message="";
+  this.PostModel.topics="";
 }
 /////////
 slideIndex = 1;
