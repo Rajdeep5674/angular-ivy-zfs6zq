@@ -90,7 +90,7 @@ i=0;
     //document.cookie = "username=rajdeep; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
     this.checkCookie();
     this.showSlides(1);
-    //this.viewAllPost();
+    /this.viewAllPost();
   }
   ngOnInit() {
   }
