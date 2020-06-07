@@ -208,22 +208,12 @@
 
         <!--like comment show all comment hide all comments section-->
         </div>
-          <ul class="nav">
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="like(my_post.post_id);"><i class='far fa-thumbs-up'></i></a>
-            </li>
-
-
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="comment(my_post.post_id);"><i class='far fa-comment'></i></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:green" class="nav-link" (click)="view_all_comments(my_post.post_id);"><i class='far fa-comment-dots' ></i></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:green" class="nav-link" (click)="hide_all_comments(my_post.post_id);"><i class='fas fa-comment-slash'></i></a>
-            </li>
-          </ul> 
+                <div class="like_comment_section">
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="like(my_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-thumbs-up'><figcaption><small>Like</small></figcaption></i></div></a>
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="comment(my_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment'><figcaption><small>Comment</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="view_all_comments(my_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment-dots' ><figcaption><small>View comments</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="hide_all_comments(my_post.post_id);"><div class="myfigcaption_for_post"><i class='fas fa-comment-slash'><figcaption><small>Hide comments</small></figcaption></i></div></a>
+        </div>
           <hr>
           <div class="text-center"><button class="btn btn-success" (click)="your_posts_delete(my_post.post_id)">Delete this post</button></div>
       </div><br>
@@ -291,22 +281,12 @@
             </ng-template>
         <!--like comment show all comment hide all comments section-->
         </div>
-          <ul class="nav">
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="like(posts_by_topic_single_post.post_id);"><i class='far fa-thumbs-up'></i></a>
-            </li>
-
-
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="comment(posts_by_topic_single_post.post_id);"><i class='far fa-comment'></i></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:green" class="nav-link" (click)="view_all_comments(posts_by_topic_single_post.post_id);"><i class='far fa-comment-dots' ></i></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:green" class="nav-link" (click)="hide_all_comments(posts_by_topic_single_post.post_id);"><i class='fas fa-comment-slash'></i></a>
-            </li>
-          </ul> 
+                        <div class="like_comment_section">
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="like(posts_by_topic_single_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-thumbs-up'><figcaption><small>Like</small></figcaption></i></div></a>
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="comment(posts_by_topic_single_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment'><figcaption><small>Comment</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="view_all_comments(posts_by_topic_single_post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment-dots' ><figcaption><small>View comments</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="hide_all_comments(.post_id);"><div class="myfigcaption_for_post"><i class='fas fa-comment-slash'><figcaption><small>Hide comments</small></figcaption></i></div></a>
+        </div>
           <hr>
       </div><br>
       <div class="text-center"><button class="btn btn-success" (click)="viewAllPost_topic_wise_close()">Close</button></div>
