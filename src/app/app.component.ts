@@ -483,12 +483,26 @@ i=0;
     this.user_id_received_from_server="";
     this.password_received_from_server="";
     this.notifications_back();
-
+    /*    public name:string,
+    public user_id:string,
+    public message:string,
+    public like_count:number,
+    public post_time:string,
+    public topics:string*/
+    this.reset_post_Model();
     }
     else{
       this.closeNav();
     }
 
+  }
+  reset_post_Model(){
+    this.PostModel.name="";
+    this.PostModel.user_id="";
+    this.PostModel.message="";
+    this.PostModel.like_count=0;
+    this.PostModel.post_time="";
+    this.PostModel.topics="";
   }
   contact_us(){
     alert("Please email us your query or issue to\n raj.bhadra94@gmail.com\n");
@@ -626,6 +640,10 @@ home(){
   this.your_posts_back();
   this.submitted=false;
   this.notifications_back();
+    this.PostModel.message="";
+
+    this.PostModel.topics="";
+  //this.reset_post_Model();
   //this.your_posts_boolean=false;
   //this.showSlides(1);
 }
