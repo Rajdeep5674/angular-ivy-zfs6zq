@@ -655,6 +655,10 @@ validateTopic(topic){
     this.topicHasError=false;
   }
 }
+//topic wise paginf start 
+topic_wise_paging(){
+  console.log("topic called");
+}
 //js for snackbar
 snackbar() {
   console.log("snackbar called");
