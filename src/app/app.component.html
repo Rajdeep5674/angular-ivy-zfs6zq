@@ -493,7 +493,8 @@
             </div>
         </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true || topicHasError">Post</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true || topicHasError">Post</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-success" (click)="post_close();">Ca</button>
       <hr>
     </form>
   </div>

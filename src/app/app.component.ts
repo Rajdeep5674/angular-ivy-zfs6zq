@@ -90,7 +90,7 @@ i=0;
     //document.cookie = "username=rajdeep; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/"; 
     this.checkCookie();
     this.showSlides(1);
-    /this.viewAllPost();
+    this.viewAllPost();
   }
   ngOnInit() {
   }
@@ -162,6 +162,9 @@ i=0;
     this.you="";
     this.view_all_post=false;
     this.hide_all_post_clicked=true;
+  }
+  post_close(){
+    this.reset_post_Model();
   }
 
   like_button_visible=true;
