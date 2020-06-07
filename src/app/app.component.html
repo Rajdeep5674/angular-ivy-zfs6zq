@@ -232,7 +232,7 @@
 <!--your post ends-->
 <!--posts by topic wise start-->
 <div id="your_post_by_topic" [hidden]="!no_post_to_this_topic_boolean">
-  <div id="snackbar_if_no_post_by_topic">Currently no post is available in this topic, please be the fist one to post.</div>
+  <div id="snackbar_if_no_post_by_topic" class="show">Currently no post is available in this topic, please be the fist one to post.</div>
 </div>
   <div class="card py-2 " [hidden]="!posts_by_topic_boolean">
       <div *ngFor="let posts_by_topic_single_post of posts_by_topic;index as i;">

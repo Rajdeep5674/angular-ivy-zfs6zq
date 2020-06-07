@@ -752,14 +752,11 @@ viewAllPost_topic_wise(topic){
       this.posts_by_topic=posts;
       if(this.posts_by_topic.length===0){
         this.no_post_to_this_topic_boolean=true;
-        
+        this.snackbar_if_no_post_by_topic();
       }
-      this.posts_by_topic_boolean=true;
-      this.posts_length_array=[];
-      for(var i=0;i<this.posts_by_topic.length;i++)
-    {
-      this.posts_length_array.push(i);
-    }
+      else{
+        this.posts_by_topic_boolean=true;
+      }
     //this.view_all_posts_standby=false;
     });
   }
