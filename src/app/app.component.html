@@ -576,22 +576,12 @@
 
         <!--like comment show all comment hide all comments section-->
         </div>
-          <ul class="nav">
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="like(post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-thumbs-up'><figcaption><small>Like</small></figcaption></i></div></a>
-            </li>
-
-
-            <li [hidden]="!view_while_login_auth_true" class="nav-item">
-              <a style="color:green"  class="nav-link" (click)="comment(post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment'><figcaption><small>Comment</small></figcaption></i></div></a>
-            </li>
-            <li class="nav-item">
+        <div class="like_comment_section">
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="like(post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-thumbs-up'><figcaption><small>Like</small></figcaption></i></div></a>
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="comment(post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment'><figcaption><small>Comment</small></figcaption></i></div></a>
               <a style="color:green" class="nav-link" (click)="view_all_comments(post.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment-dots' ><figcaption><small>View comments</small></figcaption></i></div></a>
-            </li>
-            <li class="nav-item">
-              <a style="color:green" class="nav-link" (click)="hide_all_comments(post.post_id);"><div class="myfigcaption_for_post"><i class='fas fa-comment-slash'><figcaption><small>Hide comment</small></figcaption></i></div></a>
-            </li>
-          </ul>
+              <a style="color:green" class="nav-link" (click)="hide_all_comments(post.post_id);"><div class="myfigcaption_for_post"><i class='fas fa-comment-slash'><figcaption><small>Hide comments</small></figcaption></i></div></a>
+        </div>
           <div class="card"></div>
           <div class="card"></div>
           <div class="card"></div>
