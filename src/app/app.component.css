@@ -417,3 +417,9 @@ img {vertical-align: middle;}
   padding: 2px;
   text-align: center;
 }
+.myfigcaption_for_post {
+  display: inline-block;
+  color:green;
+  padding: 2px;
+  text-align: center;
+}
