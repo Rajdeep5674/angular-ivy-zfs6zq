@@ -426,3 +426,7 @@ img {vertical-align: middle;}
 .like_comment_section{
   display: inline-flex;
 }
+.delete_post{
+  display: inline-flex;
+  color:red;
+}
