@@ -78,6 +78,7 @@ i=0;
   like_hidden=false;
   like_can_be_done=false;
   no_notification=false;
+  view_post_topic_wise_boolean=false;
   //topics 
 
   topics:any=['Technology','Science','Movies ','Music','Health','Food','Books','Visiting and Travel','Business','Psychology','Others'];
@@ -756,12 +757,19 @@ viewAllPost_topic_wise(topic){
       }
       else{
         this.posts_by_topic_boolean=true;
+        this.view_post_topic_wise_boolean=true;
+              this.posts_length_array=[];
+      for(var i=0;i<this.posts_by_topic.length;i++)
+    {
+      this.posts_length_array.push(i);
+    }
       }
     //this.view_all_posts_standby=false;
     });
   }
   viewAllPost_topic_wise_close(){
     this.posts_by_topic_boolean=false;
+    this.view_post_topic_wise_boolean=false;
   }
   snackbar_if_no_post_by_topic() {
   // Get the snackbar DIV
