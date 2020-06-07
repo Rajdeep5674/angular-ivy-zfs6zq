@@ -406,4 +406,9 @@ img {vertical-align: middle;}
 } 
 /*snackbar ends*/
 /*checkbox*/
-
+.myfigcaption {
+  display: inline-block;
+  color: ;
+  padding: 2px;
+  text-align: center;
+}

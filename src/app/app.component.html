@@ -599,14 +599,15 @@
 </div>
 <br>
 <br>
+<br>
 <!--footer when login true-->
 <footer [hidden]="!view_while_login_auth_true" class="page-footer font-small blue footer_after_login">
-  <div class=" my_footer card bg-light footer-copyright text-center py-3">
-    <a href="#home" (click)="home();"><img src="https://image.flaticon.com/icons/svg/74/74807.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#notifications" (click)="notification_show_pressed();"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#your_post" (click)="your_posts();"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#post_here" (click)="post_here();"><img src="https://image.flaticon.com/icons/svg/1822/1822786.svg " class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="#topics" (click)="topic_wise_paging();"><img src="https://image.flaticon.com/icons/svg/1062/1062401.svg" class="icons"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <div class=" my_footer card bg-light text-center py-3">
+    <a href="#home" (click)="home();"><div class="myfigcaption"><img src="https://image.flaticon.com/icons/svg/74/74807.svg" class="icons"><figcaption><small>Home</small></figcaption></div></a>&nbsp;&nbsp;
+    <a href="#notifications" (click)="notification_show_pressed();"><div class="myfigcaption"><img src="https://image.flaticon.com/icons/svg/633/633816.svg" class="icons"><figcaption><small>Notifications</small></figcaption></div></a>&nbsp;&nbsp;
+    <a href="#your_post" (click)="your_posts();"><div class="myfigcaption"><img src="https://image.flaticon.com/icons/svg/2921/2921617.svg" class="icons"><figcaption><small>Your posts</small></figcaption></div></a>&nbsp;&nbsp;
+    <a href="#post_here" (click)="post_here();"><div class="myfigcaption"><img src="https://image.flaticon.com/icons/svg/1822/1822786.svg " class="icons"><figcaption><small>Add post</small></figcaption></div></a>&nbsp;&nbsp;
+    <a href="#topics" (click)="topic_wise_paging();"><div class="myfigcaption"><img src="https://image.flaticon.com/icons/svg/1062/1062401.svg" class="icons"><figcaption><small>Topic library</small></figcaption></div></a>&nbsp;&nbsp;
   </div>
 </footer>
 <!--footer when login true end-->
