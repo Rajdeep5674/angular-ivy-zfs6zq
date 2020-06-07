@@ -190,6 +190,7 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
+  max-height: 0px;
   /*text-align: center;*/
 }
 .my_footer{
@@ -408,7 +409,7 @@ img {vertical-align: middle;}
 /*checkbox*/
 .myfigcaption {
   display: inline-block;
-  color: ;
+  color:black;
   padding: 2px;
   text-align: center;
 }
