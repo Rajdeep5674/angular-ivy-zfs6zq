@@ -723,5 +723,41 @@ checkCookie() {
   } else {
     this.login();
   }
-} 
+}
+
+//topic functions
+//'Technology','Science','Movies ','Music','Health','Food','Books','Visiting and Travel','Business','Psychology','Others'
+Technology(){
+  this.closeNav_right();
+}
+Science(){
+  this.closeNav_right();
+}
+Movies(){
+  this.closeNav_right();
+}
+Music(){
+  this.closeNav_right();
+}
+Health(){
+  this.closeNav_right();
+}
+Food(){
+  this.closeNav_right();
+}
+Books(){
+  this.closeNav_right();
+}
+Travel(){
+  this.closeNav_right();
+}
+Business(){
+  
+}
+Psychology(){
+
+}
+Others(){
+
+}
 }
