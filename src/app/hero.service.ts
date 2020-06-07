@@ -9,10 +9,12 @@ import {CustomerDetaillsRoot} from './customer-detaills-root';
 import {LoginModel} from './login-model';
 import {PostDelete} from './post-delete';
 import {Notification} from './notification';
+import {Topic} from './topic';
 
 @Injectable()
 export class HeroService {
    _url='https://netBankingAppServer--rajdeep5674.repl.co/route';
+   _url_get_post_topic_wise='https://netBankingAppServer--rajdeep5674.repl.co/get_post_topic_wise'
    _url_like='https://netBankingAppServer--rajdeep5674.repl.co/like';
     _url_unlike='https://netBankingAppServer--rajdeep5674.repl.co/unlike';
    _url_who_like="https://netBankingAppServer--rajdeep5674.repl.co/who_like";
@@ -37,6 +39,9 @@ export class HeroService {
   getPosts()
   {
     return this.result=this._http.get<any>(this._url);
+  }
+  getPosts_topic_wise(Topic:Topic){
+    return this.result=this._http.post<any>(this._url_get_post_topic_wise,Topic);
   }
   like(PostModelAdv:PostModelAdv)
   {

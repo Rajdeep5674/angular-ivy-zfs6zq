@@ -11,6 +11,7 @@ import {ImageSnippet} from './image-snippet';
 import {PostIdLikeButtonVisible} from './post-id-like-button-visible';
 import {PostDelete} from './post-delete';
 import {Notification} from './notification';
+import {Topic} from './topic';
 //import {MatCheckboxModule} from '@angular/material/checkbox';
 //import * as CryptoJS from '@types/crypto-js';
 
@@ -103,6 +104,7 @@ i=0;
   PostIdLikeButtonVisible=new PostIdLikeButtonVisible(0,true);
   PostDelete=new PostDelete('',0);
   Notification=new Notification('',0,false);
+  Topic=new Topic('');
   selectedFile: ImageSnippet;
 
   submitted = false;
@@ -724,40 +726,101 @@ checkCookie() {
     this.login();
   }
 }
-
+posts_by_topic:any;
+posts_length_array=[];
+posts_by_topic_boolean=false;
+no_post_to_this_topic_boolean=false;
+no_post_to_this_topic_string='';
 //topic functions
+viewAllPost_topic_wise(topic){
+    this.Topic.topic=topic;
+    this.like_clicked=false;
+    //var hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
+    //console.log(hash);
+    var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+
+    //console.log(typeof(indiaTime));
+
+    //this.view_all_posts_standby=true;
+    this.you="";
+    //this.PostIdAndMessageToUser.message_to_user="";
+    //this.page_load=true;
+    this.view_all_post=true;
+           this._enrollmentService.getPosts_topic_wise(this.Topic).subscribe(
+    posts=>{
+      console.log(posts);
+      this.posts_by_topic=posts;
+      if(this.posts_by_topic.length===0){
+        this.no_post_to_this_topic_boolean=true;
+        
+      }
+      this.posts_by_topic_boolean=true;
+      this.posts_length_array=[];
+      for(var i=0;i<this.posts_by_topic.length;i++)
+    {
+      this.posts_length_array.push(i);
+    }
+    //this.view_all_posts_standby=false;
+    });
+  }
+  viewAllPost_topic_wise_close(){
+    this.posts_by_topic_boolean=false;
+  }
+  snackbar_if_no_post_by_topic() {
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar_if_no_post_by_topic");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+} 
 //'Technology','Science','Movies ','Music','Health','Food','Books','Visiting and Travel','Business','Psychology','Others'
 Technology(){
+  //this.Topic.topic="Technology";
+  //var topic="Technology";
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Technology");
 }
 Science(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Science");
 }
 Movies(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Movies");
 }
 Music(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Music");
 }
 Health(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Health");
 }
 Food(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Food");
 }
 Books(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Books");
 }
 Travel(){
   this.closeNav_right();
+  this.viewAllPost_topic_wise("Visiting and Travel");
 }
 Business(){
-  
+  this.closeNav_right();
+  this.viewAllPost_topic_wise("Business");
 }
 Psychology(){
-
+  this.closeNav_right();
+  this.viewAllPost_topic_wise("Psychology");
 }
 Others(){
-
+  this.closeNav_right();
+  this.viewAllPost_topic_wise("Others");
 }
 }
