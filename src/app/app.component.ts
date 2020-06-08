@@ -95,7 +95,7 @@ i=0;
   ngOnInit() {
   }
 
-  PostModel = new PostModel('','','',0,'','');
+  PostModel = new PostModel('','','',0,'','',false);
   PostModelAdv=new PostModelAdv(0,'','','',false);
   PostIdAndMessageToUser=new PostIdAndMessageToUser(0,0,'');
   CommentModel=new CommentModel(0,'','','');
@@ -116,6 +116,7 @@ i=0;
     this.PostModel.post_time=new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
     this.PostModel.name=this.full_name_received_from_server;
     this.PostModel.user_id=this.user_id_received_from_server;
+    console.log(this.PostModel.urgent);
        this._enrollmentService.enroll(this.PostModel).subscribe(
     (data=>{
       if((data.message_from_server)=="Data_inserted"){
@@ -156,6 +157,9 @@ i=0;
     }
     this.view_all_posts_standby=false;
     }));
+  }
+  urgent_post_know_more(){
+    alert("If you need urgent response from people, please mark your post as Urgent. Your post will be displayed in urgent section of our website, so that people can see your post easily. If you get your desired response, please do not forget to untag urgent from your post. You can do this from your post section which is located in view profile section.");
   }
 
   hideAllPost(){
@@ -506,6 +510,7 @@ i=0;
     this.PostModel.like_count=0;
     this.PostModel.post_time="";
     this.PostModel.topics="";
+    this.PostModel.urgent=false;
   }
   contact_us(){
     alert("Please email us your query or issue to\n raj.bhadra94@gmail.com\n");
@@ -646,6 +651,7 @@ home(){
   this.notifications_back();
   this.PostModel.message="";
   this.PostModel.topics="";
+  this.PostModel.urgent=false;
 }
 /////////
 slideIndex = 1;

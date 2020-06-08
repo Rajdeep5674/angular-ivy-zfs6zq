@@ -151,7 +151,10 @@
   <div class="card py-2 " [hidden]="!your_posts_boolean">
       <div *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
-              <div class="card-header "><span class="badge badge-primary"><h6>{{my_post.topic}}</h6></span>
+              <div class="card-header ">
+                <h6><span class="badge badge-warning" *ngIf="my_post.urgent">
+                Urgent</span></h6>
+                <span class="badge badge-primary"><h6>{{my_post.topic}}</h6></span>
                 Post id-{{my_post.post_id}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="text-right delete_post">
                               <a (click)="your_posts_delete(my_post.post_id)"><div class="myfigcaption "><img src="https://image.flaticon.com/icons/svg/2806/2806937.svg" class="icons"><figcaption><small style="color:red;">Delete</small></figcaption></div></a>&nbsp;
@@ -230,7 +233,10 @@
   <div class="card py-2 " [hidden]="!posts_by_topic_boolean">
       <div *ngFor="let posts_by_topic_single_post of posts_by_topic;index as i;">
           <div class="card text-center">
-              <div class="card-header"><span class="badge badge-primary">{{posts_by_topic_single_post.topic}}</span>
+              <div class="card-header">
+                <span class="badge badge-warning" *ngIf="posts_by_topic_single_post.urgent">
+                Urgent</span>
+                <span class="badge badge-primary">{{posts_by_topic_single_post.topic}}</span>
                 Post id-{{posts_by_topic_single_post.post_id}}
               </div>
               <div class="card-body">
@@ -475,7 +481,10 @@
                   Topic is required,if your topic does not match with any of the topics listed, please choose others.</small>
             </div>
         </div>
-
+        <div class="form-group">
+        <input [(ngModel)]="PostModel.urgent"  type="checkbox" id="remember_me" name="remember_me" [value]=true>
+              <label for="remember_me">&nbsp; Mark as urgent &nbsp;&nbsp;&nbsp;</label><a (click)="urgent_post_know_more();"><img src="https://image.flaticon.com/icons/png/512/868/868171.png" class="icons"></a>
+        </div>
       <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid || !view_while_login_auth_true || topicHasError">Post</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button type="button" class="btn btn-success" (click)="post_close();">Cancel</button>
       <hr>
@@ -501,7 +510,11 @@
           <div [hidden]="!view_all_post">
       <div class="card" *ngFor="let post of data;index as i;">
           <div class="card text-center">
-              <div class="card-header"><span class="badge badge-primary">{{post.topic}}</span>
+              <div class="card-header">
+                <span class="badge badge-warning" *ngIf="post.urgent">
+                Urgent</span>
+                <span class="badge badge-primary">
+                {{post.topic}}</span>
                 Post id-{{post.post_id}}
               </div>
               <div class="card-body">

@@ -5,6 +5,7 @@ export class PostModel {
     public message:string,
     public like_count:number,
     public post_time:string,
-    public topics:string
+    public topics:string,
+    public urgent:boolean
   ){}
 }
