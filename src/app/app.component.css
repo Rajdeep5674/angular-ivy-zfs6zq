@@ -430,3 +430,66 @@ img {vertical-align: middle;}
   display: inline-flex;
   color:red;
 }
+/* The navigation bar */
+.header_after_login{
+  position:  sticky;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-height: 150px;
+  background-color: white;
+
+  /*text-align: center;*/
+}
+
+/* Links inside the navbar */
+.header_after_login a {
+  display: inline;
+  background: green;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.top_navbar a:hover {
+  background: green;
+  color: white;
+}
+.my_content{
+  margin-top: 150px;
+}
+/*top menu bar---working and applied*/
+.top_ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: r;
+  position: -webkit-sticky;
+  top: 0;
+  left:0;
+  width: 100%;
+  overflow: visible;
+}
+
+.top_li {
+  float: left;
+}
+
+.top_li a {
+  display: block;
+  color: white;
+  background-color:green;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.top_li a:hover {
+  background-color: green;
+}
+
+.top_active {
+  background-color: #4CAF50;
+}

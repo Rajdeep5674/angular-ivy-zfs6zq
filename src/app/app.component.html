@@ -36,15 +36,18 @@
 </div>
 <div [hidden]="standby_home_page || who_liked_only_show">
 <!--top navigation bar start-->
-<div id="home" class="topnav" [hidden]="!view_while_login_auth_true">
-<div id="main">
-  <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile  <span class="badge badge-light">{{notification_counter}}</span></button>  
+<div [hidden]="!view_while_login_auth_true">
+    <div class="myShadow">
+    <ul class="top_ul">
+      <li class="top_li"><a href="#home" (click)="openNav();">Your Dashboard</a></li>&nbsp;&nbsp;&nbsp;&nbsp;
+      <li class="top_li"><a href="#news">Urgent Posts</a></li>
+    </ul>
 </div>
-  <div class="search-container">
-  </div>
-</div>
+<br>
+<br>
+<br>
 <!-- top nevigation bar end-->
-<div class="jumbotron card text-center myShadow" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/close-up-photography-of-colored-pencils-743986.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
+<div class="jumbotron my_content card text-center myShadow" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/close-up-photography-of-colored-pencils-743986.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
   <h1>askany.com
     <div [hidden]="!view_while_login_auth_true">
       welcomes {{full_name_received_from_server}}
