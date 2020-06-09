@@ -34,10 +34,12 @@
 </div><br>
   <button class="btn btn-success" (click)="who_liked_close();">Close</button>
 </div>
-<div [hidden]="standby_home_page || who_liked_only_show">
+<div id="main" [hidden]="standby_home_page || who_liked_only_show">
 <!--top navigation bar start-->
+  <button type="button" class="btn btn-success" (click)="openNav();">☰ View profile  <span class="badge badge-light">{{notification_counter}}</span></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning" (click)="urgent_posts_fn_show();">Urgent posts<span class="badge badge-light">{{urgent_post_counter}}</span></button>
 <!-- top nevigation bar end-->
-<div class="jumbotron  card text-center myShadow" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/close-up-photography-of-colored-pencils-743986.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
+<div class="jumbotron card text-center myShadow" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/close-up-photography-of-colored-pencils-743986.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
   <h1>askany.com
     <div [hidden]="!view_while_login_auth_true">
       welcomes {{full_name_received_from_server}}
@@ -139,6 +141,83 @@
   </div>
   <br>
 <!--notofication end-->
+<!--urgent posts start-->
+<div id="urgent_post"></div>
+  <div class="card py-2 " [hidden]="!urgent_posts_boolean">
+      <div *ngFor="let urgent_posts of urgent_posts_objs;index as i;">
+          <div class="card text-center">
+              <div class="card-header ">
+                <h6><span class="badge badge-warning" *ngIf="urgent_posts.urgent">
+                Urgent</span></h6>
+                <span class="badge badge-primary"><h6>{{urgent_posts.topic}}</h6></span>
+                Post id-{{urgent_posts.post_id}}
+              </div>
+              <div class="card-body">
+                <img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/profile-icon.jpg" alt="Avatar" class="avatar">
+                <h5 style="color:green"class="card-title text-primary">{{ urgent_posts.full_name }}</h5>
+                <p class="card-text">{{ urgent_posts.message }}</p>
+              </div>
+              <div class="card-footer text-muted">
+                posted on {{urgent_posts.post_time}}
+              </div>
+          </div>
+        <small *ngIf="PostIdAndMessageToUser.post_id===(urgent_posts.post_id) && like_clicked;else elseBlock" style="color:green">{{PostIdAndMessageToUser.message_to_user}}</small>
+        <ng-template #elseBlock><small style="color:green" class="text-right text-primary font-italic"><a (click)="who_liked(urgent_posts.post_id);">&nbsp;{{urgent_posts.like_count}}&nbsp;people liked this post</a></small></ng-template>
+        <br>
+
+
+        <!--form for accepting the comment-->
+        <div [hidden]="go" *ngIf="PostIdAndMessageToUser.post_id_for_comment===(urgent_posts.post_id)">
+          <form (ngSubmit)="commentSubmitted(urgent_posts.post_id)" #commentForm="ngForm">
+              <div class="form-group">
+                <input type="hidden" id="hidden_post_id" [(ngModel)]="CommentModel.post_id" value="urgent_posts.post_id" name="hidden_post_id"> 
+              <textarea rows="4" cols="50" name="comment" class="form-control" id="comment"
+                      required
+                      [(ngModel)]="CommentModel.comment"
+                      #message="ngModel" placeholder="Type your comment here." name="comment"></textarea><br>
+              </div>
+              <button type="submit" class="btn btn-success" [disabled]="!commentForm.form.valid">Go</button>&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="cancel(urgent_posts.post_id);">Cancel</button>
+              <hr>
+          </form>
+          <!--end of comment form-->
+        </div>
+              <div [hidden]="!view_all_commeents_loading" class="card-body">
+                <p class="card-text">Loading comemnts...</p>
+              </div>
+        <div *ngIf="view_all_comments_boolean && PostIdComments.post_id===(urgent_posts.post_id)">
+            <div *ngIf="no_comments_yet; else elseBlock">
+              <small style="color:blue" class="text-primary font-italic">&nbsp;Oops!! no comment yet, be the first one to comment !!</small>
+            </div>
+            <ng-template #elseBlock>
+          <div *ngFor="let comment of comment_array">
+            <div class="card">
+              <div class="card-header">
+                <small>{{data_from_server_for_comment[comment].commentor_name}}</small>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <small>{{data_from_server_for_comment[comment].comment}}</small>
+                  <footer class="blockquote-footer"><small>commented on <cite title="Source Title">{{data_from_server_for_comment[comment].comment_time}}</cite></small></footer>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+            </ng-template>
+
+        <!--like comment show all comment hide all comments section-->
+        </div>
+                <div class="like_comment_section">
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="like(urgent_posts.post_id);"><div class="myfigcaption_for_post"><i class='far fa-thumbs-up'><figcaption><small>Like</small></figcaption></i></div></a>
+              <a [hidden]="!view_while_login_auth_true" style="color:green"  class="nav-link" (click)="comment(urgent_posts.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment'><figcaption><small>Comment</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="view_all_comments(urgent_posts.post_id);"><div class="myfigcaption_for_post"><i class='far fa-comment-dots' ><figcaption><small>View comments</small></figcaption></i></div></a>
+              <a style="color:green" class="nav-link" (click)="hide_all_comments(urgent_posts.post_id);"><div class="myfigcaption_for_post"><i class='fas fa-comment-slash'><figcaption><small>Hide comments</small></figcaption></i></div></a>
+        </div>
+          <hr>
+      </div><br>
+      <div class="text-center"><button class="btn btn-success" (click)="urgent_posts_fn_close()">Close</button></div>
+</div>
+<!--urgent posts ends here-->
 <!--your posts start-->
 <div id="your_post"></div>
   <div class="card py-2 " [hidden]="!your_posts_boolean">

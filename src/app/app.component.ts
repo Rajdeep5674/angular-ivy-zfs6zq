@@ -91,6 +91,7 @@ i=0;
     this.checkCookie();
     this.showSlides(1);
     this.viewAllPost();
+    this.urgent_posts_fn();
   }
   ngOnInit() {
   }
@@ -123,6 +124,7 @@ i=0;
         this.message_to_user="You have sucessfully posted your message.";
         this.submitted = true; 
         console.log("post successful");
+        this.urgent_posts_fn();
         this.viewAllPost();
         }
       else{
@@ -135,16 +137,9 @@ i=0;
 
   viewAllPost(){
     this.like_clicked=false;
-    //var hash = CryptoJS.HmacMD5("Message", "Secret Passphrase");
-    //console.log(hash);
     var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
-
-    //console.log(typeof(indiaTime));
-
     this.view_all_posts_standby=true;
     this.you="";
-    //this.PostIdAndMessageToUser.message_to_user="";
-    //this.page_load=true;
     this.view_all_post=true;
            this._enrollmentService.getPosts().subscribe(
     (data=>{
@@ -157,6 +152,30 @@ i=0;
     }
     this.view_all_posts_standby=false;
     }));
+  }
+  urgent_post_counter=0;
+  urgent_posts_objs:any;
+  urgent_posts_boolean=false;
+  urgent_posts_fn_show(){
+    this.urgent_posts_fn();
+    this.urgent_posts_boolean=true;
+  }
+  urgent_posts_fn(){
+    /*this.like_clicked=false;
+    this.view_all_posts_standby=true;
+    this.you="";
+    this.view_all_post=true;*/
+    this.PostModel.urgent=true;
+           this._enrollmentService.getUrgentPosts(this.PostModel).subscribe(
+    (urgent_posts_objs=>{
+      this.urgent_posts_objs=urgent_posts_objs;
+      this.urgent_post_counter=this.urgent_posts_objs.length;
+      console.log(this.urgent_posts_objs);
+    this.view_all_posts_standby=false;
+    }));
+  }
+  urgent_posts_fn_close(){
+    this.urgent_posts_boolean=false;
   }
   urgent_post_know_more(){
     alert("If you need urgent response from people, please mark your post as Urgent. Your post will be displayed in urgent section of our website, so that people can see your post easily. If you get your desired response, please do not forget to untag urgent from your post. You can do this from your post section which is located in view profile section.");
