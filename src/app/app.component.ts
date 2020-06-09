@@ -717,6 +717,7 @@ validateTopic(topic){
 topic_wise_paging(){
   console.log("topic called");
   this.openNav_right();
+  this.urgent_posts_fn_close();
 }
 //js for snackbar
 snackbar() {
