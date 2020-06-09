@@ -471,13 +471,13 @@ i=0;
     openNav_right(){
     console.log("open called for topic");
     document.getElementById("mySidebar_right").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("main").style.marginRight = "250px";
   }
 
   closeNav_right() {
     console.log("close navbar for topic called");
   document.getElementById("mySidebar_right").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
+  document.getElementById("main").style.marginRight= "0";
   }
   logout(){
     var logout_confirmation=confirm("You are about to logout.");
