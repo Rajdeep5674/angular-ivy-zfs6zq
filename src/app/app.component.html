@@ -380,8 +380,9 @@
   Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>
 </div>
   <!--existing user login-->
-  <div [hidden]="view_while_login_auth_true">
-    &nbsp; &nbsp;<button type="button" class="btn btn-success myShadow" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
+  <div [hidden]="view_while_login_auth_true ">
+    <br><label class="alert alert-info card myShadow">Already signed up ? login here.</label><br>
+    <button type="button" class="btn btn-success myShadow" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
 
   <div class="card border py-3 myShadow" [hidden]="login_closed" *ngIf="login_boolean">
     <div class="container">
@@ -419,9 +420,12 @@
           </div>
         </div>
   <!--existing user login end-->
-
+  <br>
   <!--new user login-->
-  <button [hidden]="login_boolean || new_user_created_successfully" type="button" class="btn btn-success myShadow" (click)="singup();">Sign up</button>
+  <div [hidden]="new_user_created_successfully">
+    <br><label class="alert alert-info card myShadow">Don't have an account ? Sign up here.</label><br>
+  <button type="button" class="btn btn-success myShadow" (click)="singup();">Sign up</button>
+  </div>
   <hr>
   <div class="card border py-3 myShadow"[hidden]="signup_closed" *ngIf="signup_boolean">
     <div class="container">
