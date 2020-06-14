@@ -10,6 +10,7 @@ import {LoginModel} from './login-model';
 import {PostDelete} from './post-delete';
 import {Notification} from './notification';
 import {Topic} from './topic';
+import {YourBasicDetailsEditModel} from './your-basic-details-edit-model';
 
 @Injectable()
 export class HeroService {
@@ -29,6 +30,7 @@ export class HeroService {
    _url_notofications='https://netBankingAppServer--rajdeep5674.repl.co/notifications';
    _url_notofication_update='https://netBankingAppServer--rajdeep5674.repl.co/notification_update';
    _url_get_how_many_notifications_read='https://netBankingAppServer--rajdeep5674.repl.co/get_how_many_notifications_read';
+   _url_update_full_name='https://netBankingAppServer--rajdeep5674.repl.co/update_full_name';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -88,6 +90,9 @@ export class HeroService {
   }
   get_how_many_notifications_read(Notification:Notification){
      return this._http.post<any>(this._url_get_how_many_notifications_read,Notification);
+  }
+  update_full_name(YourBasicDetailsEditModel:YourBasicDetailsEditModel){
+    return this._http.post<any>(this._url_update_full_name,YourBasicDetailsEditModel);
   }
 
 

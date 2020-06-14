@@ -12,6 +12,7 @@ import {PostIdLikeButtonVisible} from './post-id-like-button-visible';
 import {PostDelete} from './post-delete';
 import {Notification} from './notification';
 import {Topic} from './topic';
+import {YourBasicDetailsEditModel} from './your-basic-details-edit-model';
 //import {MatCheckboxModule} from '@angular/material/checkbox';
 //import * as CryptoJS from '@types/crypto-js';
 
@@ -107,6 +108,7 @@ i=0;
   PostDelete=new PostDelete('',0);
   Notification=new Notification('',0,false);
   Topic=new Topic('');
+  YourBasicDetailsEditModel=new YourBasicDetailsEditModel('','','');
   selectedFile: ImageSnippet;
 
   submitted = false;
@@ -245,6 +247,7 @@ i=0;
       if(who_liked.length!==0){
         this.loading_status=false;
         this.who_liked_obj=who_liked;
+        console.log(this.who_liked_obj);
     }else{
       this.who_liked_string="Oops!! no like yet.";
         //alert("Oops!! no like yet.");
@@ -521,6 +524,46 @@ i=0;
       this.closeNav();
     }
 
+  }
+  fullname_edit_called=false;
+  fullname_edit_cancelled=false;
+  full_name_edit_saved=false;
+  fullname_edit(){
+    this.YourBasicDetailsEditModel.full_name='';
+    this.fullname_edit_called=true;
+    this.fullname_edit_cancelled=false;
+    this.full_name_edit_saved=false;
+  }
+  response_for_full_name_edit=false;
+  full_name_edit_submitted(){
+    console.log(this.YourBasicDetailsEditModel);
+    this.response_for_full_name_edit=confirm("You are about to change your full name as "+this.YourBasicDetailsEditModel.full_name+". Click ok to continue.");
+    if(this.response_for_full_name_edit){
+      //
+      this.YourBasicDetailsEditModel.user_id=this.user_id_received_from_server;
+      this._enrollmentService.update_full_name(this.YourBasicDetailsEditModel).subscribe(response_from_server_update_full_name=>{
+        console.log(response_from_server_update_full_name);
+        if(response_from_server_update_full_name.message_from_server="update_started"){
+          this.checkCookie();
+        }else{
+          alert("something went wrong. Please try again.")
+        }
+
+      
+      })
+      this.full_name_edit_saved=true;
+    }
+    else{
+      //
+      this.fullname_edit_cancel();
+    }
+  }
+  fullname_edit_cancel(){
+    this.fullname_edit_cancelled=true;
+    this.YourBasicDetailsEditModel.full_name='';
+  }
+  email_id_edit(){
+    alert("email id edit");
   }
   reset_post_Model(){
     this.PostModel.name="";

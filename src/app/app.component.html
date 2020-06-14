@@ -88,6 +88,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Your basic details</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -97,7 +98,21 @@
           <div>
             {{full_name_received_from_server}}
           </div>
+          <div [hidden]="!fullname_edit_called || fullname_edit_cancelled || full_name_edit_saved">
+            <form (ngSubmit)="full_name_edit_submitted();" #full_name_edit_from="ngForm">
+              <div class="form-group">
+              <br><label for="name"><small style="color:red;font-style: italic;">*can not be left blank</small></label>
+              <input type="text" class="form-control" id="full_name_edit"
+                                required
+                                [(ngModel)]="YourBasicDetailsEditModel.full_name" name="full_name_edit"
+                                #full_name_edit="ngModel" placeholder="Enter your full name">
+              <br><button type="submit" class="btn btn-success"[disabled]="!full_name_edit_from.form.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="fullname_edit_cancel();">Cancel</button>
+              </div>
+            </form>
+          </div>
           </td>
+          <td><button class="btn btn-success" (click)="fullname_edit();">Edit</button></td>
         </tr>
         <tr>
           <th scope="row">2</th>
@@ -113,6 +128,7 @@
             {{email_received_from_server}}
           </div>
           </td>
+          <td><button class="btn btn-success" (click)="email_id_edit();">Edit</button></td>
         </tr>
       </tbody>
     </table>
@@ -380,7 +396,7 @@
   Please login to post your query. You can like/comment on other's posts as well.<br><small class="font-italic">Note: You can always view all the posts without login.</small>
 </div>
   <!--existing user login-->
-  <div [hidden]="view_while_login_auth_true ">
+  <div [hidden]="view_while_login_auth_true">
     <br><label class="alert alert-info card myShadow">Already signed up ? login here.</label><br>
     <button type="button" class="btn btn-success myShadow" (click)="login();">Login</button> &nbsp;&nbsp;&nbsp;
 
