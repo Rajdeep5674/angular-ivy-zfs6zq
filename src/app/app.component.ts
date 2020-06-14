@@ -403,7 +403,7 @@ i=0;
     this.signup_calcelled=true;
   }
   terms(){
-    alert("Terms and conditions\n\nNo harmful or abusive comments or post shoul be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
+    alert("Terms and conditions\n\nNo harmful or abusive comments or post should be shared in this website. Authority reserves the right to block user's profile if such posts/comments are being reported and found to be authentic.")
   }
     login(){
       console.log("login clicked");
