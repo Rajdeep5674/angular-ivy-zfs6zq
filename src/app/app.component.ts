@@ -528,6 +528,8 @@ i=0;
   fullname_edit_called=false;
   fullname_edit_cancelled=false;
   full_name_edit_saved=false;
+
+  basic_details_updated=false;
   fullname_edit(){
     this.YourBasicDetailsEditModel.full_name='';
     this.fullname_edit_called=true;
@@ -544,7 +546,10 @@ i=0;
       this._enrollmentService.update_full_name(this.YourBasicDetailsEditModel).subscribe(response_from_server_update_full_name=>{
         console.log(response_from_server_update_full_name);
         if(response_from_server_update_full_name.message_from_server="update_started"){
-          this.checkCookie();
+          //need to change also
+          //this.checkCookie();
+          this.basic_details_updated=true;
+          this.get_latest_user_id_and_email();
         }else{
           alert("something went wrong. Please try again.")
         }
@@ -562,9 +567,53 @@ i=0;
     this.fullname_edit_cancelled=true;
     this.YourBasicDetailsEditModel.full_name='';
   }
-  email_id_edit(){
-    alert("email id edit");
+  email_edit_called=false;
+  email_edit_cancelled=false;
+  email_edit_saved=false;
+  email_edit(){
+    this.YourBasicDetailsEditModel.email='';
+    this.email_edit_called=true;
+    this.email_edit_cancelled=false;
+    this.email_edit_saved=false;
   }
+  response_for_email_edit=false;
+  email_edit_submitted(){
+    console.log(this.YourBasicDetailsEditModel);
+    this.response_for_email_edit=confirm("You are about to change your email id as "+this.YourBasicDetailsEditModel.email+". Click ok to continue.");
+    if(this.response_for_email_edit){
+      //
+      this.YourBasicDetailsEditModel.user_id=this.user_id_received_from_server;
+      this._enrollmentService.update_email(this.YourBasicDetailsEditModel).subscribe(response_from_server_update_email=>{
+        console.log(response_from_server_update_email);
+        if(response_from_server_update_email.message_from_server="update_started"){
+          //this.checkCookie();
+          //this.your_account();
+          this.basic_details_updated=true;
+          this.get_latest_user_id_and_email();
+        }else{
+          alert("something went wrong. Please try again.")
+        }
+      })
+      this.email_edit_saved=true;
+    }
+    else{
+      //
+      this.email_edit_cancel();
+    }
+  }
+  email_edit_cancel(){
+    this.email_edit_cancelled=true;
+    this.YourBasicDetailsEditModel.email='';
+  }
+  latest_user_id_and_email_objs:any;
+  get_latest_user_id_and_email(){
+    this.YourBasicDetailsEditModel.user_id=this.user_id_received_from_server;
+    this._enrollmentService.get_latest_user_id_and_email(this.YourBasicDetailsEditModel).subscribe(latest_user_id_and_email=>{
+      this.latest_user_id_and_email_objs=latest_user_id_and_email;
+      console.log(latest_user_id_and_email);
+    })
+  }
+  //
   reset_post_Model(){
     this.PostModel.name="";
     this.PostModel.user_id="";
@@ -680,6 +729,7 @@ i=0;
     this.no_notification=false;
   }
   your_account(){
+    console.log("your account called");
     this.your_account_boolean=true;
     this.your_posts_back();
     this.notifications_back();

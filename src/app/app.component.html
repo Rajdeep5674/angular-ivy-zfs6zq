@@ -95,8 +95,13 @@
         <tr>
           <th scope="row">1</th>
           <td><div style="color:#5cb85c"> Full name:</div> 
-          <div>
+          <div >
             {{full_name_received_from_server}}
+          </div>
+          <div *ngIf="basic_details_updated">
+            <div *ngFor="let latest_user_id_and_email of latest_user_id_and_email_objs">
+            {{latest_user_id_and_email.full_name}}
+            </div>
           </div>
           <div [hidden]="!fullname_edit_called || fullname_edit_cancelled || full_name_edit_saved">
             <form (ngSubmit)="full_name_edit_submitted();" #full_name_edit_from="ngForm">
@@ -124,11 +129,29 @@
         <tr>
           <th scope="row">3</th>
           <td><div style="color:#5cb85c">Email id: </div>
-          <div>
+          <div *ngIf="!basic_details_updated">
             {{email_received_from_server}}
           </div>
+          <div *ngIf="basic_details_updated">
+            <div *ngFor="let latest_user_id_and_email of latest_user_id_and_email_objs">
+            {{latest_user_id_and_email.email}}
+            </div>
+          </div>
+          <div [hidden]="!email_edit_called || email_edit_cancelled || email_edit_saved">
+            <form (ngSubmit)="email_edit_submitted();" #email_edit_from="ngForm">
+              <div class="form-group">
+              <br><label for="email_edit"><small style="color:red;font-style: italic;">*can not be left blank</small></label>
+              <input type="text" class="form-control" id="email_edit"
+                                required
+                                [(ngModel)]="YourBasicDetailsEditModel.email" name="email_edit"
+                                #full_name_edit="ngModel" placeholder="Enter your email id">
+              <br><button type="submit" class="btn btn-success"[disabled]="!email_edit_from.form.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-success" (click)="email_edit_cancel();">Cancel</button>
+              </div>
+            </form>
+          </div>
           </td>
-          <td><button class="btn btn-success" (click)="email_id_edit();">Edit</button></td>
+          <td><button class="btn btn-success" (click)="email_edit();">Edit</button></td>
         </tr>
       </tbody>
     </table>
