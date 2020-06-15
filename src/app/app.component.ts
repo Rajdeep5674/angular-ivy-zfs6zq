@@ -108,7 +108,7 @@ i=0;
   PostDelete=new PostDelete('',0);
   Notification=new Notification('',0,false);
   Topic=new Topic('');
-  YourBasicDetailsEditModel=new YourBasicDetailsEditModel('','','');
+  YourBasicDetailsEditModel=new YourBasicDetailsEditModel('','','','','');
   selectedFile: ImageSnippet;
 
   submitted = false;
@@ -604,6 +604,25 @@ i=0;
   email_edit_cancel(){
     this.email_edit_cancelled=true;
     this.YourBasicDetailsEditModel.email='';
+  }
+  password_edit_called=false;
+  password_edit_cancelled=false;
+  password_edit_saved=false;
+  password_edit_fun(){
+    console.log("change password called");
+    this.YourBasicDetailsEditModel.old_password='';
+    this.YourBasicDetailsEditModel.new_password='';
+    this.password_edit_called=true;
+    this.password_edit_cancelled=false;
+    this.password_edit_saved=false;
+  }
+  password_edit_submitted(){
+    this.password_edit_saved=true;
+    this.YourBasicDetailsEditModel.user_id=this.user_id_received_from_server;
+    console.log(this.YourBasicDetailsEditModel)
+  }
+  password_edit_cancel(){
+    this.password_edit_cancelled=true;
   }
   latest_user_id_and_email_objs:any;
   get_latest_user_id_and_email(){
