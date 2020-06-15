@@ -733,11 +733,11 @@ i=0;
   notification_counter:any;
   notification_exist=false;
   notifications(){
-    this.your_posts_back();
+    this.home();
+    //this.your_posts_back();
     console.log("notifications");
     this.notification_loading_status=true;
     this.notification_loading="loading...";
-    this.your_posts_back();
     this.your_account_back();
     this.closeNav();
     //this.PostModel;
@@ -772,7 +772,7 @@ i=0;
     this.Notification.user_id=this.user_id_received_from_server;
     this._enrollmentService.get_how_many_notifications_read(this.Notification).subscribe(response_get_how_many_notifications_read=>{
       this.how_many_notification_read=response_get_how_many_notifications_read[0].notification_count;
-      //this.notifications();
+      this.notifications();
       //console.log(response_get_how_many_notifications_read);
     });
   }
@@ -813,7 +813,7 @@ get_my_posts(user_id){
   this._enrollmentService.get_my_posts(this.LoginModel).subscribe(my_posts=>{
     if(my_posts.length!==0){
       this.my_posts=my_posts;
-      no_post_to_show
+      this.no_post_to_show=false;
     console.log(my_posts);
     }
     else{
@@ -899,7 +899,6 @@ snackbar_your_posts() {
   console.log("snackbar for your posts called");
   // Get the snackbar DIV
   var x = document.getElementById("snackbar_for_your_post");
-  console.log(x);
   // Add the "show" class to DIV
   x.className = "show";
 
