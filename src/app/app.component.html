@@ -43,9 +43,10 @@
 <!-- top nevigation bar end-->
 <div class="jumbotron card text-center myShadow" style="background-image: url('https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/close-up-photography-of-colored-pencils-743986.jpg'); background-repeat: no-repeat; background-size: 100% 100%; background-position: center center;">
   <h1>askany.com
-    <div [hidden]="!view_while_login_auth_true">
+    <div *ngIf="!basic_details_updated" [hidden]="!view_while_login_auth_true">
       welcomes {{full_name_received_from_server}}
-      </div></h1>      
+      </div>
+      <div *ngFor="let latest_user_id_and_email of latest_user_id_and_email_objs"><div *ngIf="basic_details_updated">welcomes {{latest_user_id_and_email.full_name}}</d</div></h1>      
   <p>Post any query/thoughts here. Everyone can see your post </p>
 </div>
 <!--collapsed side nav bar start-->
@@ -95,7 +96,7 @@
         <tr>
           <th scope="row">1</th>
           <td><div style="color:#5cb85c"> Full name:</div> 
-          <div >
+          <div *ngIf="!basic_details_updated">
             {{full_name_received_from_server}}
           </div>
           <div *ngIf="basic_details_updated">
@@ -173,7 +174,7 @@
                                 required
                                 [(ngModel)]="YourBasicDetailsEditModel.new_password" name="password_edit_new"
                                 #full_name_edit="ngModel" placeholder="Enter your new password">
-                    <input type="checkbox" (click)="show_hide_new_password();">&nbsp;&nbsp;Show Password<br<
+                    <input type="checkbox" (click)="show_hide_new_password();">&nbsp;&nbsp;Show Password<br>
               <button type="submit" class="btn btn-success"[disabled]="!password_edit_from.form.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
               <button type="button" class="btn btn-success" (click)="password_edit_cancel();">Cancel</button>
               </div>
