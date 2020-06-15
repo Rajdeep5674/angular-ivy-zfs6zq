@@ -608,6 +608,8 @@ i=0;
   password_edit_called=false;
   password_edit_cancelled=false;
   password_edit_saved=false;
+  messgae_password_edit_boolean=false;
+  message_password_edit="";
   password_edit_fun(){
     console.log("change password called");
     this.YourBasicDetailsEditModel.old_password='';
@@ -617,12 +619,51 @@ i=0;
     this.password_edit_saved=false;
   }
   password_edit_submitted(){
-    this.password_edit_saved=true;
+    if(this.YourBasicDetailsEditModel.old_password===this.password_received_from_server){
+          this.password_edit_saved=true;
     this.YourBasicDetailsEditModel.user_id=this.user_id_received_from_server;
-    console.log(this.YourBasicDetailsEditModel)
+    //console.log(this.YourBasicDetailsEditModel);
+    this._enrollmentService.update_password(this.YourBasicDetailsEditModel).subscribe(response_from_server_password_update=>{
+      if(response_from_server_password_update.message_from_server==="password_updated"){
+        //let uses know password updated successfully
+        //this.messgae_password_edit_boolean=true;
+        this.setCookie_password("password",this.YourBasicDetailsEditModel.new_password, 365);
+        alert("Password updated successfully");
+      }else{
+        //this.messgae_password_edit_boolean=true;
+        alert("Something went wrong. Your password did not change. Please try again after sometime.");
+        //let user know password did not update successfully
+      }
+      //console.log(response_from_server_password_update);
+    })
+    }
+    else{
+      alert("Old password is not matched.");
+      this.password_edit_saved=false;
+    }
   }
   password_edit_cancel(){
     this.password_edit_cancelled=true;
+  }
+  id_password_old:any;
+  id_password_new:any;
+  show_hide_old_password(){
+    this.id_password_old=document.getElementById("password_edit_old");
+    if(this.id_password_old.type==="password"){
+      this.id_password_old.type="text";
+    }
+    else{
+      this.id_password_old.type="password";
+    }
+  }
+  show_hide_new_password(){
+    this.id_password_new=document.getElementById("password_edit_new");
+    if(this.id_password_new.type==="password"){
+      this.id_password_new.type="text";
+    }
+    else{
+      this.id_password_new.type="password";
+    }
   }
   latest_user_id_and_email_objs:any;
   get_latest_user_id_and_email(){

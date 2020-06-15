@@ -161,17 +161,19 @@
                         <form (ngSubmit)="password_edit_submitted();" #password_edit_from="ngForm">
               <div class="form-group">
               <br><label for="password_edit_old"><small style="color:red;font-style: italic;">*can not be left blank</small></label>
-              <input type="text" class="form-control" id="password_edit_old"
+              <input type="password" class="form-control" id="password_edit_old"
                                 required
                                 [(ngModel)]="YourBasicDetailsEditModel.old_password" name="password_edit"
                                 #password_edit="ngModel" placeholder="Enter your old password">
+                      <input type="checkbox" (click)="show_hide_old_password();">&nbsp;&nbsp;Show Password
               </div>
                               <div class="form-group">
               <label for="password_edit_new"><small style="color:red;font-style: italic;">*can not be left blank</small></label>
-              <input type="text" class="form-control" id="password_edit_new"
+              <input type="password" class="form-control" id="password_edit_new"
                                 required
                                 [(ngModel)]="YourBasicDetailsEditModel.new_password" name="password_edit_new"
                                 #full_name_edit="ngModel" placeholder="Enter your new password">
+                    <input type="checkbox" (click)="show_hide_new_password();">&nbsp;&nbsp;Show Password<br<
               <button type="submit" class="btn btn-success"[disabled]="!password_edit_from.form.valid">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;
               <button type="button" class="btn btn-success" (click)="password_edit_cancel();">Cancel</button>
               </div>

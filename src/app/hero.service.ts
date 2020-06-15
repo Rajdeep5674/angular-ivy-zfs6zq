@@ -33,6 +33,7 @@ export class HeroService {
    _url_update_full_name='https://netBankingAppServer--rajdeep5674.repl.co/update_full_name';
    _url_update_email='https://netBankingAppServer--rajdeep5674.repl.co/update_email';
    _url_get_latest_user_id_and_email='https://netBankingAppServer--rajdeep5674.repl.co/get_latest_user_id_and_email';
+   _url_password_update='https://netBankingAppServer--rajdeep5674.repl.co/password_update';
   result:any;
  enroll(PostModel:PostModel)
   {
@@ -99,8 +100,11 @@ export class HeroService {
   update_email(YourBasicDetailsEditModel:YourBasicDetailsEditModel){
     return this._http.post<any>(this._url_update_email,YourBasicDetailsEditModel);
   }
-  get_latest_user_id_and_email(YourBasicDetailsEditModel){
+  get_latest_user_id_and_email(YourBasicDetailsEditModel:YourBasicDetailsEditModel){
     return this._http.post<any>(this._url_get_latest_user_id_and_email,YourBasicDetailsEditModel);
+  }
+  update_password(YourBasicDetailsEditModel:YourBasicDetailsEditModel){
+    return this._http.post<any>(this._url_password_update,YourBasicDetailsEditModel);
   }
 
 
