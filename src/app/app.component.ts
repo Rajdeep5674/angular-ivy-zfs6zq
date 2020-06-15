@@ -688,6 +688,7 @@ i=0;
     this.closeNav();
   }
   your_posts(){
+    console.log("your posts called");
     this.get_my_posts(this.user_id_received_from_server);
     this.your_posts_boolean=true;
     this.notifications_back();
@@ -707,8 +708,7 @@ i=0;
     this._enrollmentService.delete_my_post(this.PostDelete).subscribe(message_from_server_for_delete_my_post=>{
       //console.log(message_from_server_for_delete_my_post);
       if(message_from_server_for_delete_my_post.message_from_server==="post_deleted"){
-          this.your_posts();
-          this.get_how_many_notifications_read();
+        this.your_posts();
       }
       else{
         this.your_posts();
@@ -717,6 +717,8 @@ i=0;
     }else{
       //
     }
+    //this.your_posts();
+    this.get_how_many_notifications_read();
   }
   notification_show_pressed(){
     this.notifications();
@@ -770,7 +772,7 @@ i=0;
     this.Notification.user_id=this.user_id_received_from_server;
     this._enrollmentService.get_how_many_notifications_read(this.Notification).subscribe(response_get_how_many_notifications_read=>{
       this.how_many_notification_read=response_get_how_many_notifications_read[0].notification_count;
-      this.notifications();
+      //this.notifications();
       //console.log(response_get_how_many_notifications_read);
     });
   }
@@ -803,13 +805,22 @@ i=0;
     
   }
   my_posts:any;
+  no_post_to_show=false;
 get_my_posts(user_id){
   this.LoginModel.user_id=this.user_id_received_from_server;
   console.log(this.user_id_received_from_server);
   //this.CustomerDetaillsRoot.user_id=this.user_id_received_from_server;
   this._enrollmentService.get_my_posts(this.LoginModel).subscribe(my_posts=>{
-    this.my_posts=my_posts;
+    if(my_posts.length!==0){
+      this.my_posts=my_posts;
+      no_post_to_show
     console.log(my_posts);
+    }
+    else{
+      //no post to show.
+      this.no_post_to_show=true;
+      this.snackbar_your_posts();
+    }
   })
 }
 post_here(){
@@ -878,6 +889,17 @@ snackbar() {
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
 
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+} 
+snackbar_your_posts() {
+  console.log("snackbar for your posts called");
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar_for_your_post");
+  console.log(x);
   // Add the "show" class to DIV
   x.className = "show";
 

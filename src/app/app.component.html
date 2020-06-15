@@ -46,7 +46,7 @@
     <div *ngIf="!basic_details_updated" [hidden]="!view_while_login_auth_true">
       welcomes {{full_name_received_from_server}}
       </div>
-      <div *ngFor="let latest_user_id_and_email of latest_user_id_and_email_objs"><div *ngIf="basic_details_updated">welcomes {{latest_user_id_and_email.full_name}}</d</div></h1>      
+      <div *ngFor="let latest_user_id_and_email of latest_user_id_and_email_objs"><div *ngIf="basic_details_updated">welcomes {{latest_user_id_and_email.full_name}}</div></div></h1>      
   <p>Post any query/thoughts here. Everyone can see your post </p>
 </div>
 <!--collapsed side nav bar start-->
@@ -289,8 +289,9 @@
 </div>
 <!--urgent posts ends here-->
 <!--your posts start-->
+<div [hidden]="!no_post_to_show" id="snackbar_for_your_post">You don't have any post at this moment.</div>
 <div id="your_post"></div>
-  <div class="card py-2 " [hidden]="!your_posts_boolean">
+  <div class="card py-2 " [hidden]="!your_posts_boolean || no_post_to_show">
       <div *ngFor="let my_post of my_posts;index as i;">
           <div class="card text-center">
               <div class="card-header ">
