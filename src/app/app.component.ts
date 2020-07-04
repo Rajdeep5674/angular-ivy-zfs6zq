@@ -230,14 +230,30 @@ i=0;
       
     ));
   }
+  //view wholikedyourpostfromside navbar
+      openNav_right_view_who_liked(){
+    console.log("open called for view who liked");
+    document.getElementById("mySidebar_right_who_liked").style.width = "250px";
+    document.getElementById("main").style.marginRight = "250px";
+  }
+
+  closeNav_right_view_who_liked() {
+    console.log("close navbar for view who liked called");
+  document.getElementById("mySidebar_right_who_liked").style.width = "0";
+  document.getElementById("main").style.marginRight= "0";
+  this.who_liked_close();
+  }
+
   who_liked_only_show=false;
   who_liked_obj:any;
   who_liked_string="";
   loading_status=false;
+  no_like_yet=false;
   who_liked(post_id){
-    this.loading_status=true;
-    this.who_liked_only_show=true;
-    this.who_liked_string="loading..";
+    //this.loading_status=true;
+    //this.who_liked_only_show=true;
+    //this.who_liked_string="loading..";
+    this.openNav_right_view_who_liked();
     this.PostModelAdv.post_id=post_id;
   this._enrollmentService.who_liked(this.PostModelAdv).subscribe(
     who_liked=>{
@@ -245,10 +261,11 @@ i=0;
       //console.log(who_liked.length);
       this.who_liked_string="";
       if(who_liked.length!==0){
-        this.loading_status=false;
+        //this.loading_status=false;
         this.who_liked_obj=who_liked;
         console.log(this.who_liked_obj);
     }else{
+      this.no_like_yet=true;
       this.who_liked_string="Oops!! no like yet.";
         //alert("Oops!! no like yet.");
       //this.who_liked_string="";
@@ -262,6 +279,7 @@ i=0;
     this.who_liked_string="";
     this.who_liked_obj=[];
     this.loading_status=false;
+    this.no_like_yet=false;
   }
 
 //event handler for comment button pressed

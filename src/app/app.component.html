@@ -22,18 +22,6 @@
     </div>
   </div>
 </div>
-<div [hidden]="!who_liked_only_show">
-  <div class="card bg-info" [hidden]="!loading_status"><p>{{who_liked_string}}</p></div>
-  <div *ngFor="let people of who_liked_obj">
-  <div class="card bg-light">
-    <div class="p-2 m1">
-      <span style="display:inline"><h4><img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/profile-icon.jpg" alt="Avatar" class="avatar">
-        {{people.liker_name}}</h4></span>
-      </div>
-    </div>
-</div><br>
-  <button class="btn btn-success" (click)="who_liked_close();">Close</button>
-</div>
 <div [hidden]="standby_home_page || who_liked_only_show">
 <!--top navigation bar start-->
 <div id="main">
@@ -82,6 +70,23 @@
   <a href="#Others" (click)="Others();"><img src="https://image.flaticon.com/icons/svg/620/620419.svg" class="icons">&nbsp;&nbsp;Others</a>
 </div>
 <!--collapsed sidebar for topic ends here-->
+<!--view who liked from sidenavbar starts here-->
+<div id="mySidebar_right_who_liked" class="sidebar_right">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav_right_view_who_liked()">×</a>
+    <div *ngIf="no_like_yet" ><h4 style="color:#5cb85c">{{who_liked_string}}</h4></div>
+    <div *ngIf="!no_like_yet" class="card py-2 m bg-light text-center">
+      <h4 style="color:#5cb85c">&nbsp;&nbsp;People who liked your post</h4>
+        <div *ngFor="let people of who_liked_obj">
+        <div class="card bg-light">
+          <div class="p-2 m1">
+            <span style="display:inline"><h4><img src="https://raw.githubusercontent.com/Rajdeep5674/angular-ivy-zfs6zq/master/src/app/assets/profile-icon.jpg" alt="Avatar" class="avatar">
+              {{people.liker_name}}</h4></span>
+            </div>
+          </div>
+      </div><br>
+    </div>
+</div>
+<!--view who liked from sidenavbar ends here-->
 <!--your account start-->
   <div id="Your_Account" class="card border py-3" [hidden]="!your_account_boolean">
         <table class="table table-hover table-striped">
